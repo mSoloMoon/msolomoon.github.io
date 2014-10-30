@@ -66,7 +66,7 @@
 			        
 						<li><a href="/categories/书籍">书籍</a></li>
 			        
-						<li><a href="/categories/android">Android</a></li>
+						<li><a href="/categories/java-android">Java/Android</a></li>
 			        
 						<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
 			        
@@ -92,7 +92,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/思考/" style="font-size: 20.00px;">思考</a><a href="/tags/软件语言/" style="font-size: 10.00px;">软件语言</a>
+					<a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/思考/" style="font-size: 20.00px;">思考</a><a href="/tags/软件框架/" style="font-size: 10.00px;">软件框架</a><a href="/tags/软件语言/" style="font-size: 20.00px;">软件语言</a>
 				</div>
 			</section>
 			
@@ -126,7 +126,7 @@
 		        
 					<li><a href="/categories/书籍">书籍</a></li>
 		        
-					<li><a href="/categories/android">Android</a></li>
+					<li><a href="/categories/java-android">Java/Android</a></li>
 		        
 					<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
 		        
@@ -152,6 +152,91 @@
 	</div>
 </nav>
       
+  
+    <article id="post-learning-play-framework-i" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/18/learning-play-framework-i/" class="article-date">
+  	<time datetime="2014-10-18T01:20:20.000Z" itemprop="datePublished">10月 18 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Web/">Java Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件框架/">软件框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件语言/">软件语言</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/18/learning-play-framework-i/">学习 play! 框架（Part One）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Creating_a_new_application">Creating a new application</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ activator new my-first-app play-java	</div><div class="line">or</div><div class="line">$ activator new								<span class="comment"># prompt</span></div></pre></td></tr></table></figure>
+
+<h2 id="The_standard_application_layout">The standard application layout</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">app                    		-&gt; Application sources</div><div class="line">└ assets                	-&gt; Compiled asset sources</div><div class="line">	└ stylesheets    		 		-&gt; Typically LESS CSS sources</div><div class="line">	└ javascripts     			-&gt; Typically CoffeeScript sources</div><div class="line">└ controllers           	-&gt; Application controllers</div><div class="line">	└ Application.java</div><div class="line">└ models                	-&gt; Application business layer</div><div class="line">└ views                 	-&gt; Templates</div><div class="line">	└ index.scala.html</div><div class="line">	└ main.scala.html</div><div class="line">└ utils										-&gt; add your own packages here</div><div class="line">build.sbt                	-&gt; Application build script</div><div class="line">conf         							-&gt; Configurations files and other non-compiled resources (on classpath)</div><div class="line">└ application.conf      	-&gt; Main configuration file</div><div class="line">└ routes                	-&gt; Routes definition</div><div class="line">public                   	-&gt; Public assets</div><div class="line">└ stylesheets           	-&gt; CSS files</div><div class="line">└ javascripts           	-&gt; Javascript files</div><div class="line">└ images                	-&gt; Image files</div><div class="line">project                  	-&gt; sbt configuration files</div><div class="line">└ build.properties      	-&gt; Marker <span class="keyword">for</span> sbt project</div><div class="line">└ plugins.sbt           	-&gt; sbt plugins including the declaration <span class="keyword">for</span> Play itself</div><div class="line">lib                      	-&gt; Unmanaged libraries dependencies</div><div class="line">logs                     	-&gt; Standard logs folder</div><div class="line">└ application.log       	-&gt; Default log file</div><div class="line">target                   	-&gt; Generated stuff</div><div class="line">└ scala-<span class="number">2.10</span>.<span class="number">0</span>            	</div><div class="line">	└ cache              	</div><div class="line">	└ classes         		 	-&gt; Compiled class files</div><div class="line">	└ classes_managed 		 	-&gt; Managed class files (templates, ...)</div><div class="line">	└ resource_managed		 	-&gt; Managed resources (less, ...)</div><div class="line">	└ src_managed      		 	-&gt; Generated sources (templates, ...)</div><div class="line">test                     	-&gt; <span class="built_in">source</span> folder <span class="keyword">for</span> unit or functional tests</div><div class="line">└ ApplicationTest.java</div><div class="line">└ IntegrationTest.java</div></pre></td></tr></table></figure>
+
+<h3 id="app/controllers/Application-java">app/controllers/Application.java</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">Controller</span> </span>{</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">index</span>() {</div><div class="line">        <span class="keyword">return</span> ok(index.render(<span class="string">"Your new application is ready."</span>));</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="conf/routes">conf/routes</h3>
+<blockquote>
+<h1 id="Home_page">Home page</h1>
+<p>GET         /                                 controllers.Application.index()</p>
+<h1 id="Map_static_resources_from_the_/public_folder_to_the_/assets_URL_path">Map static resources from the /public folder to the /assets URL path</h1>
+<p>GET         /assets/*file         controllers.Assets.at(path=”/public”, file)</p>
+</blockquote>
+<h3 id="another">another</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">hello</span>(String name) {</div><div class="line">	<span class="keyword">return</span> ok(views.html.hello.render(name));</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ console</div><div class="line">scala&gt; views.html.hello.render(<span class="string">"Play!"</span>)</div></pre></td></tr></table></figure>
+
+<h2 id="A_basic_CRUD_application_example">A basic CRUD application example</h2>
+<h3 id="conf/routes-1">conf/routes</h3>
+<blockquote>
+<p>GET         /                                                     controllers.Products.index()<br>GET         /products/                                     controllers.Products.list()<br>GET         /products/new                             controllers.Products.newProduct()<br>GET         /products/:ean                             controllers.Products.details(ean: String)<br>GET         /product/$ean&lt;[0-9]{13}&gt;        controllers.Products.details(ean: Long)<br>POST         /products/                                     controllers.Products.save()</p>
+<p>GET         /products/:page                         controllers.Products.list(page:Int)<br>                   <a href="http://localhost/products/2" target="_blank" rel="external">http://localhost/products/2</a><br>GET         /products/                                     controllers.Products.list(page:Int)<br>                   <a href="http://localhost/products/?page=2" target="_blank" rel="external">http://localhost/products/?page=2</a></p>
+<p>Route with default value<br>GET         /products                                     controllers.Products.list(page:Int ?= 0)<br>Fixed value as parameter<br>GET         /                                                     controllers.Products.list(page: Int = 0)</p>
+</blockquote>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/10/18/learning-play-framework-i/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-programmer-thoughts" class="article article-type-post" itemscope itemprop="blogPost">
   
