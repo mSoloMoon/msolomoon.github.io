@@ -156,8 +156,8 @@
     <article id="post-go-knowledge" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/10/13/go-knowledge/" class="article-date">
-  	<time datetime="2014-10-13T03:07:34.000Z" itemprop="datePublished">10月 13 2014</time>
+      <a href="/2014/07/13/go-knowledge/" class="article-date">
+  	<time datetime="2014-07-13T03:07:34.000Z" itemprop="datePublished">7月 13 2014</time>
 </a>
       
   <div class="article-category">
@@ -178,7 +178,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/13/go-knowledge/">Go语言精简总结 - The way to Go</a>
+      <a class="article-title" href="/2014/07/13/go-knowledge/">Go语言精简总结 - The way to Go</a>
     </h1>
   
 
@@ -187,22 +187,36 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="安装">安装</h3>
-<p>‘’’ bash<br>$ apt-get install bison ed gawk libc6-dev mercurial python-setuptools python-dev build-essential<br>$ hg clone -r release <a href="https://go.googlecode.com/hg/" target="_blank" rel="external">https://go.googlecode.com/hg/</a> go<br>$ export GOROOT=$HOME/go<br>$ export GOARCH=amd64<br>$ export GOOS=linux<br>$ export GOTOOL=$HOME/go/pkg/tool/linux_amd64/<br>$ export PATH=.:$PATH:$GOBIN:$GOTOOL<br>$ cd go/src<br>$ ./all.bash<br>‘’’</p>
-<p>更新go版本<br>‘’’ bash<br>$ cd $GOROOT &amp;&amp; hg identify<br>$ hg pull &amp;&amp; hg update release<br>$ ./all.bash<br>‘’’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ apt-get install bison ed gawk libc6-dev mercurial python-setuptools python-dev build-essential</div><div class="line">$ hg clone -r release https://go.googlecode.com/hg/ go</div><div class="line">$ <span class="keyword">export</span> GOROOT=<span class="variable">$HOME</span>/go</div><div class="line">$ <span class="keyword">export</span> GOARCH=amd64</div><div class="line">$ <span class="keyword">export</span> GOOS=linux</div><div class="line">$ <span class="keyword">export</span> GOTOOL=<span class="variable">$HOME</span>/go/pkg/tool/linux_amd64/</div><div class="line">$ <span class="keyword">export</span> PATH=.:<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span>:<span class="variable">$GOTOOL</span></div><div class="line">$ <span class="built_in">cd</span> go/src</div><div class="line">$ ./all.bash</div></pre></td></tr></table></figure>
+
+<p>更新go版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> <span class="variable">$GOROOT</span> && hg identify</div><div class="line">$ hg pull && hg update release</div><div class="line">$ ./all.bash</div></pre></td></tr></table></figure>
+
 <h3 id="Workspace_示例">Workspace 示例</h3>
-<p>‘’’ bash<br>bin/<br>    todo                               # command executable<br>pkg/<br>    linux_amd64/<br>        code.google.com/p/goauth2/<br>            oauth.a                    # package object<br>        github.com/nf/todo/            task.a<br>src/<br>    code.google.com/p/goauth2/<br>        .hg/                           # mercurial repository metadata<br>        oauth/<br>            oauth.go                  # package source<br>            oauth_test.go             # test source<br>    github.com/nf/<br>        todo/<br>            .git/<br>            task/<br>                task.go                # package source<br>            todo.go<br>‘’’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">bin/</div><div class="line">    todo                               <span class="comment"># command executable</span></div><div class="line">pkg/</div><div class="line">    linux_amd64/</div><div class="line">        code.google.com/p/goauth2/</div><div class="line">            oauth.a                    <span class="comment"># package object</span></div><div class="line">        github.com/nf/todo/            task.a                   </div><div class="line">src/</div><div class="line">    code.google.com/p/goauth2/</div><div class="line">        .hg/                           <span class="comment"># mercurial repository metadata</span></div><div class="line">        oauth/</div><div class="line">            oauth.go                  <span class="comment"># package source</span></div><div class="line">            oauth_test.go             <span class="comment"># test source</span></div><div class="line">    github.com/nf/</div><div class="line">        todo/</div><div class="line">            .git/</div><div class="line">            task/</div><div class="line">                task.go                <span class="comment"># package source</span></div><div class="line">            todo.go</div></pre></td></tr></table></figure>
+
 <h4 id="hello,_world">hello, world</h4>
 <ol>
-<li>例子1<br>‘’’ go<br>package main<br>import “fmt”<br>func main() {<br>  fmt.Printf(“hello, world\n”)<br>}<br>‘’’<br>‘’’ bash<br>$ 6g helloworld.go<br>$ 6l helloworld.6<br>$ ./6.out        或者         $ go run helloworld.go<br>‘’’</li>
-<li>例子2<br>‘’’ bash<br>$HOME/HelloWorldWorkspace/<br>bin/<br> helloworld                      # after go install<br>pkg/<br>src/<br> github.com/msolo/helloworld<pre><code> .git
- helloworld.<span class="keyword">go</span>
-</code></pre></li>
+<li>例子1</li>
 </ol>
-<p>$ export GOPATH=$HOME/HelloWorldWorkspace<br>$ go install github.com/msolo/helloworld<br>$ $GOPATH/bin/helloworld<br>‘’’</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"><span class="keyword">func</span> main() {</div><div class="line">     fmt.Printf(<span class="string">"hello, world\n"</span>)</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="number">6</span>g helloworld.go</div><div class="line">$ <span class="number">6</span>l helloworld.<span class="number">6</span></div><div class="line">$ ./<span class="number">6</span>.out        或者         $ go run helloworld.go</div></pre></td></tr></table></figure>
+
+<ol>
+<li>例子2</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$HOME</span>/HelloWorldWorkspace/</div><div class="line">bin/</div><div class="line">    helloworld                      <span class="comment"># after go install</span></div><div class="line">pkg/</div><div class="line">src/</div><div class="line">    github.com/msolo/helloworld</div><div class="line">        .git</div><div class="line">        helloworld.go</div><div class="line"> </div><div class="line">$ <span class="keyword">export</span> GOPATH=<span class="variable">$HOME</span>/HelloWorldWorkspace</div><div class="line">$ go install github.com/msolo/helloworld</div><div class="line">$ <span class="variable">$GOPATH</span>/bin/helloworld</div></pre></td></tr></table></figure>
+
 <h4 id="使用自定义包/库">使用自定义包/库</h4>
-<p>‘’’ go<br>package main<br>import (<br>    “fmt”<br>    “github.com/user/newmath”<br>)<br>func main() {<br>     fmt.Printf(“Hello, world.  Sqrt(2) = %v\n”, newmath.Sqrt(2))<br>}</p>
-<p>package newmath<br>// Sqrt returns an approximation to the square root of x.<br>func Sqrt(x float64) float64 {<br>     z := 1.0<br>     for i := 0; i &lt; 1000; i++ {<br>         z -= (z<em>z - x) / (2 </em> z)<br>     }<br>     return z<br>}<br>‘’’<br>‘’’ bash<br>$HOME/HelloWorldWorkspace/<br>bin/<br>    helloworld<br>pkg/<br>    linux_amd64/                  # reflect your OS and architecture<br>        github.com/user/<br>            newmath.a             # package object<br>src/<br>    github.com/user/helloworld<br>            helloworld.go<br>    github.com/user/newmath<br>            sqrt.go</p>
-<p>$ go install github.com/user/helloworld<br>‘’’</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"github.com/user/newmath"</span></div><div class="line">)</div><div class="line"><span class="keyword">func</span> main() {</div><div class="line">     fmt.Printf(<span class="string">"Hello, world.  Sqrt(2) = %v\n"</span>, newmath.Sqrt<span class="number">(2</span>))</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">package</span> newmath</div><div class="line"><span class="comment">// Sqrt returns an approximation to the square root of x.</span></div><div class="line"><span class="keyword">func</span> Sqrt(x <span class="typename">float64</span>) <span class="typename">float64</span> {</div><div class="line">     z :=<span class="number"> 1.0</span></div><div class="line">     <span class="keyword">for</span> i :=<span class="number"> 0</span>; i &lt;<span class="number"> 1000</span>; i++ {</div><div class="line">         z -= (z*z - x) / <span class="number">(2</span> * z)</div><div class="line">     }</div><div class="line">     <span class="keyword">return</span> z</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$HOME</span>/HelloWorldWorkspace/</div><div class="line">bin/</div><div class="line">    helloworld</div><div class="line">pkg/</div><div class="line">    linux_amd64/                  <span class="comment"># reflect your OS and architecture</span></div><div class="line">        github.com/user/</div><div class="line">            newmath.a             <span class="comment"># package object</span></div><div class="line">src/</div><div class="line">    github.com/user/helloworld</div><div class="line">            helloworld.go</div><div class="line">    github.com/user/newmath</div><div class="line">            sqrt.go</div><div class="line"> </div><div class="line">$ go install github.com/user/helloworld</div></pre></td></tr></table></figure>
+
 
       
     </div>
