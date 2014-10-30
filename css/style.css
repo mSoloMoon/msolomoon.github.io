@@ -496,6 +496,20 @@ a {
 #header .header-nav .social a:last-of-type {
   margin-right: 0;
 }
+#header .header-nav .social a.email {
+  background: url("/img/email.png") center no-repeat #aaf;
+  border: 1px solid #aaf;
+}
+#header .header-nav .social a.email:hover {
+  border: 1px solid #aaf;
+}
+#header .header-nav .social a.qq {
+  background: url("/img/qq.png") center no-repeat #aaf;
+  border: 1px solid #aaf;
+}
+#header .header-nav .social a.qq:hover {
+  border: 1px solid #aaf;
+}
 #header .header-nav .social a.weibo {
   background: url("/img/weibo.png") center no-repeat #aaf;
   border: 1px solid #aaf;
