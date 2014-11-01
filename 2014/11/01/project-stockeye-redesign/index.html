@@ -12,7 +12,7 @@
 
 核心对象举例
 
-··· javaStockPriceObjList stock">
+1234567891011121314151617StockP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stockeye 项目重新设计指引">
 <meta property="og:url" content="http://yoursite.com/2014/11/01/project-stockeye-redesign/">
@@ -24,7 +24,7 @@
 
 核心对象举例
 
-··· javaStockPriceObjList stock">
+1234567891011121314151617StockP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stockeye 项目重新设计指引">
 <meta name="twitter:description" content="将原先在软件中不可分割的包按功能、使用方式的思路重新设计，可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；
@@ -34,7 +34,7 @@
 
 核心对象举例
 
-··· javaStockPriceObjList stock">
+1234567891011121314151617StockP">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -229,23 +229,15 @@
 <ul>
 <li>核心对象举例</li>
 </ul>
-<p>··· java<br>StockPriceObjList stockPriceObjList = StockPriceObjList.getInstance();<br>stockPriceObjList.init();<br>stockPriceObjList.addStock();<br>stockPriceObjList.addStockArray();<br>StockPriceObj obj = stockPriceObjList.get(0);</p>
-<p>class StockPriceObj {</p>
-<pre><code><span class="title">String</span> sName;
-<span class="title">String</span> sCode;
-<span class="title">boolean</span> hasSettedAlert
-int alertPrice;
-<span class="title">long</span> alertVolume;
-<span class="title">int</span> curPrice;
-<span class="title">long</span> curVolume;
-</code></pre><p>}</p>
-<p>···</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">StockPriceObjList stockPriceObjList = StockPriceObjList.getInstance();</div><div class="line">stockPriceObjList.init();</div><div class="line">stockPriceObjList.addStock();</div><div class="line">stockPriceObjList.addStockArray();</div><div class="line">StockPriceObj obj = stockPriceObjList.get(<span class="number">0</span>);</div><div class="line"></div><div class="line">class StockPriceObj {</div><div class="line"></div><div class="line">	String sName;</div><div class="line">	String sCode;</div><div class="line">	<span class="keyword">boolean</span> hasSettedAlert</div><div class="line">	<span class="keyword">int</span> alertPrice;</div><div class="line">	<span class="keyword">long</span> alertVolume;</div><div class="line">	<span class="keyword">int</span> curPrice;</div><div class="line">	<span class="keyword">long</span> curVolume;</div><div class="line">	</div><div class="line">}</div></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
 <ul>
 <li>股票报价重构使用示例：</li>
 </ul>
-<p>··· java<br>String[] stocks = new String[]{“sz000002”, “sz002024”, “sh601299”};<br>StockPriceQuotationList stockPriceQuotationList = StockPriceQuotationList.getInstance();<br>stockPriceQuotationList.init(stocks);<br>String[] firstOriginalResult = stockPriceQuotationList.get(0);            // “sz000002”<br>stockPriceQuotationList.get(1);            // “sz002024”<br>String[] firstResultByDigital = stockPriceQuotationList.get(0).digital();<br>stockPriceQuotationList.get(0).percentage();<br>stockPriceQuotationList.get(0).from(20140104).digital();<br>String resultForSpeak = stockPriceQuotationList.speak(S_DIGITAL);            // S_PERCENTAGE<br>···</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String[] stocks = <span class="keyword">new</span> String[]{<span class="string">"sz000002"</span>, <span class="string">"sz002024"</span>, <span class="string">"sh601299"</span>};</div><div class="line">StockPriceQuotationList stockPriceQuotationList = StockPriceQuotationList.getInstance();</div><div class="line">stockPriceQuotationList.init(stocks);</div><div class="line">String[] firstOriginalResult = stockPriceQuotationList.get(<span class="number">0</span>);			<span class="comment">// "sz000002"</span></div><div class="line">stockPriceQuotationList.get(<span class="number">1</span>);			<span class="comment">// "sz002024"</span></div><div class="line">String[] firstResultByDigital = stockPriceQuotationList.get(<span class="number">0</span>).digital();</div><div class="line">stockPriceQuotationList.get(<span class="number">0</span>).percentage();</div><div class="line">stockPriceQuotationList.get(<span class="number">0</span>).from(<span class="number">20140104</span>).digital();</div><div class="line">String resultForSpeak = stockPriceQuotationList.speak(S_DIGITAL);			<span class="comment">// S_PERCENTAGE</span></div></pre></td></tr></table></figure>
+
 <p>2、股票的图表库</p>
 <ul>
 <li>该图表库目前专注于K线图；</li>
