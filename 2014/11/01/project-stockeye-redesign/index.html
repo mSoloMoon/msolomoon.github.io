@@ -3,38 +3,38 @@
 <head>
   <meta charset="utf-8">
   
-  <title>月光独奏 | 月光独奏</title>
+  <title>Stockeye 项目重新设计指引 | 月光独奏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于我
+  <meta name="description" content="将原先在软件中不可分割的包按功能、使用方式的思路重新设计，可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；
 
-五分死磕自己，六分懒惰，七分勤奋，八分安静，九分思考，十分无趣。理想化编程：预构 -&gt; TDD -&gt; 代码编写- &gt; 重构 -&gt; 自动化测试 -&gt; 必要文档 -&gt; 持续交付/反馈；
+库的设计
+1、关于股票报价、股票的预警、股票的资产状况
 
-技能：Android
+核心对象举例
 
-理解Android软件栈，基本运行机制；
-  软件栈：Applications、Application Framework、Libraries &">
-<meta property="og:type" content="website">
-<meta property="og:title" content="月光独奏">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+··· javaStockPriceObjList stock">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stockeye 项目重新设计指引">
+<meta property="og:url" content="http://yoursite.com/2014/11/01/project-stockeye-redesign/">
 <meta property="og:site_name" content="月光独奏">
-<meta property="og:description" content="关于我
+<meta property="og:description" content="将原先在软件中不可分割的包按功能、使用方式的思路重新设计，可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；
 
-五分死磕自己，六分懒惰，七分勤奋，八分安静，九分思考，十分无趣。理想化编程：预构 -&gt; TDD -&gt; 代码编写- &gt; 重构 -&gt; 自动化测试 -&gt; 必要文档 -&gt; 持续交付/反馈；
+库的设计
+1、关于股票报价、股票的预警、股票的资产状况
 
-技能：Android
+核心对象举例
 
-理解Android软件栈，基本运行机制；
-  软件栈：Applications、Application Framework、Libraries &">
+··· javaStockPriceObjList stock">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="月光独奏">
-<meta name="twitter:description" content="关于我
+<meta name="twitter:title" content="Stockeye 项目重新设计指引">
+<meta name="twitter:description" content="将原先在软件中不可分割的包按功能、使用方式的思路重新设计，可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；
 
-五分死磕自己，六分懒惰，七分勤奋，八分安静，九分思考，十分无趣。理想化编程：预构 -&gt; TDD -&gt; 代码编写- &gt; 重构 -&gt; 自动化测试 -&gt; 必要文档 -&gt; 持续交付/反馈；
+库的设计
+1、关于股票报价、股票的预警、股票的资产状况
 
-技能：Android
+核心对象举例
 
-理解Android软件栈，基本运行机制；
-  软件栈：Applications、Application Framework、Libraries &">
+··· javaStockPriceObjList stock">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -188,14 +188,20 @@
 		</header>				
 	</div>
 </nav>
-      <article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <article id="post-project-stockeye-redesign" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-  	<time datetime="2014-10-30T11:09:41.000Z" itemprop="datePublished">10月 30 2014</time>
+      <a href="/2014/11/01/project-stockeye-redesign/" class="article-date">
+  	<time datetime="2014-11-01T12:01:11.000Z" itemprop="datePublished">11月 1 2014</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件框架/">软件框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
     </div>
   
   <div class="article-inner">
@@ -207,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      月光独奏
+      Stockeye 项目重新设计指引
     </h1>
   
 
@@ -215,37 +221,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于我">关于我</h2>
-<blockquote>
-<p>五分死磕自己，六分懒惰，七分勤奋，八分安静，九分思考，十分无趣。<br>理想化编程：预构 -&gt; TDD -&gt; 代码编写- &gt; 重构 -&gt; 自动化测试 -&gt; 必要文档 -&gt; 持续交付/反馈；</p>
+        <blockquote>
+<p>将原先在软件中不可分割的包按功能、使用方式的思路重新设计，<br>可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；<br>可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；</p>
 </blockquote>
-<h3 id="技能：Android">技能：Android</h3>
+<h3 id="库的设计"><strong>库的设计</strong></h3>
+<p>1、关于股票报价、股票的预警、股票的资产状况</p>
 <ul>
-<li><p>理解Android软件栈，基本运行机制；</p>
-<p>  软件栈：Applications、Application Framework、Libraries &amp; Android Runtime and Linux Kernel</p>
-<p>  基本运行机制：Zygote -&gt; starts up a VM -&gt; listening on a socket -&gt; forking its prewarmed VM and a new child process -&gt; app.</p>
-</li>
-<li><p>理解Android虚拟机：Dalvik Virtual Machine(DVM) —— Dalvik executable file(DEX)</p>
-</li>
-<li>理解UI main主线程及其影响，以及ANR；</li>
-<li><p>熟练使用以下机制及对象创作Android App：</p>
-  <table><tr><br>      </tr><tr><td>Activity [Fragment]</td><td>Service</td><td>Content Provider、SQLite</td><td>Broadcast Receiver、Intent</td></tr><br>      <tr><td>Notification</td><td>View (包括自定义)</td><td>Animation</td><td>web（html、css、javascript及其库）</td></tr><br>    </table>
-</li>
-<li><p>熟练使用相关机制进行屏幕适配；</p>
-</li>
-<li>熟练使用第三方库，如Okhttp、Volley等；</li>
-<li>熟悉并能使用相关 Android Security 机制；</li>
-<li>熟悉 Android 基本测试机制；</li>
+<li>核心对象举例</li>
 </ul>
-<p>目前计划技能补充（since 2014-10）：</p>
-<blockquote>
-<p>熟练使用 Android 测试机制进行 TDD；<br>熟练使用 Voice Android 开发；<br>熟悉并能对 Android 进行渗透测试；<br>熟悉并能使用 Cocos2d-x 平台开发</p>
-</blockquote>
-<hr>
-<h3 id="技能：Java_Web_之_Play！框架">技能：Java Web 之 Play！框架</h3>
-<p>To do</p>
-<h3 id="技能：Web_之_NodeJs">技能：Web 之 NodeJs</h3>
-<p>To do</p>
+<p>··· java<br>StockPriceObjList stockPriceObjList = StockPriceObjList.getInstance();<br>stockPriceObjList.init();<br>stockPriceObjList.addStock();<br>stockPriceObjList.addStockArray();<br>StockPriceObj obj = stockPriceObjList.get(0);</p>
+<p>class StockPriceObj {</p>
+<pre><code><span class="title">String</span> sName;
+<span class="title">String</span> sCode;
+<span class="title">boolean</span> hasSettedAlert
+int alertPrice;
+<span class="title">long</span> alertVolume;
+<span class="title">int</span> curPrice;
+<span class="title">long</span> curVolume;
+</code></pre><p>}</p>
+<p>···</p>
+<a id="more"></a>
+
+<ul>
+<li>股票报价重构使用示例：</li>
+</ul>
+<p>··· java<br>String[] stocks = new String[]{“sz000002”, “sz002024”, “sh601299”};<br>StockPriceQuotationList stockPriceQuotationList = StockPriceQuotationList.getInstance();<br>stockPriceQuotationList.init(stocks);<br>String[] firstOriginalResult = stockPriceQuotationList.get(0);            // “sz000002”<br>stockPriceQuotationList.get(1);            // “sz002024”<br>String[] firstResultByDigital = stockPriceQuotationList.get(0).digital();<br>stockPriceQuotationList.get(0).percentage();<br>stockPriceQuotationList.get(0).from(20140104).digital();<br>String resultForSpeak = stockPriceQuotationList.speak(S_DIGITAL);            // S_PERCENTAGE<br>···</p>
+<p>2、股票的图表库</p>
+<ul>
+<li>该图表库目前专注于K线图；</li>
+<li>该图表库需要结合外部基本交易数据，该数据暂定为ArrayList<string[]>对象；</string[]></li>
+</ul>
+<p>3、股票的聊天库</p>
+<ul>
+<li>To do</li>
+</ul>
+<p>4、股票的数据库设计</p>
+<ul>
+<li>直接以SQLite为主进行搭建</li>
+<li>可考虑Content Provider 或 框架</li>
+</ul>
+<p>5、股票的定制查询库</p>
+<ul>
+<li>To do</li>
+</ul>
 
       
     </div>
@@ -256,6 +274,25 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2014/11/01/life-daily-log-141101/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          生活点滴 - 141101
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/31/excerpt-song-dynasty-qing-dynasty-18-compare/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">宋朝与清朝的18个细节对比</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -279,7 +316,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="月光独奏" data-url="http://yoursite.com/about/index.html"></div>
+	<div class="ds-thread" data-thread-key="project-stockeye-redesign" data-title="Stockeye 项目重新设计指引" data-url="http://yoursite.com/2014/11/01/project-stockeye-redesign/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

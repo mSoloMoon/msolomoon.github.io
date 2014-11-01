@@ -74,6 +74,8 @@
 			        
 						<li><a href="/categories/java-android">Java/Android</a></li>
 			        
+						<li><a href="/categories/project">Project</a></li>
+			        
 						<li><a href="/categories/programmer-daily-log">程序员日志</a></li>
 			        
 						<li><a href="/about">关于</a></li>
@@ -98,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 20.00px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 10.00px;">生活记录</a><a href="/tags/程序员日志/" style="font-size: 10.00px;">程序员日志</a><a href="/tags/软件框架/" style="font-size: 10.00px;">软件框架</a><a href="/tags/软件语言/" style="font-size: 20.00px;">软件语言</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a>
+					<a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 20.00px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 20.00px;">生活记录</a><a href="/tags/程序员日志/" style="font-size: 10.00px;">程序员日志</a><a href="/tags/软件开发/" style="font-size: 10.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 20.00px;">软件框架</a><a href="/tags/软件语言/" style="font-size: 20.00px;">软件语言</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a><a href="/tags/项目/" style="font-size: 10.00px;">项目</a>
 				</div>
 			</section>
 			
@@ -140,6 +142,8 @@
 		        
 					<li><a href="/categories/java-android">Java/Android</a></li>
 		        
+					<li><a href="/categories/project">Project</a></li>
+		        
 					<li><a href="/categories/programmer-daily-log">程序员日志</a></li>
 		        
 					<li><a href="/about">关于</a></li>
@@ -164,6 +168,80 @@
 	</div>
 </nav>
       
+  
+    <article id="post-project-stockeye-redesign" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/01/project-stockeye-redesign/" class="article-date">
+  	<time datetime="2014-11-01T12:01:11.000Z" itemprop="datePublished">11月 1 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件框架/">软件框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/01/project-stockeye-redesign/">Stockeye 项目重新设计指引</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>将原先在软件中不可分割的包按功能、使用方式的思路重新设计，<br>可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；<br>可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；</p>
+</blockquote>
+<h3 id="库的设计"><strong>库的设计</strong></h3>
+<p>1、关于股票报价、股票的预警、股票的资产状况</p>
+<ul>
+<li>核心对象举例</li>
+</ul>
+<p>··· java<br>StockPriceObjList stockPriceObjList = StockPriceObjList.getInstance();<br>stockPriceObjList.init();<br>stockPriceObjList.addStock();<br>stockPriceObjList.addStockArray();<br>StockPriceObj obj = stockPriceObjList.get(0);</p>
+<p>class StockPriceObj {</p>
+<pre><code><span class="title">String</span> sName;
+<span class="title">String</span> sCode;
+<span class="title">boolean</span> hasSettedAlert
+int alertPrice;
+<span class="title">long</span> alertVolume;
+<span class="title">int</span> curPrice;
+<span class="title">long</span> curVolume;
+</code></pre><p>}</p>
+<p>···</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/01/project-stockeye-redesign/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-learning-play-framework-i" class="article article-type-post" itemscope itemprop="blogPost">
   
