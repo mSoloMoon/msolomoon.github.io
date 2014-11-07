@@ -236,10 +236,12 @@ Hastmap是Java 1.2引进的Map interface的一个实现；其中键和值都是�
 <h3 id="ArrayList、LinkedList和Vector">ArrayList、LinkedList和Vector</h3>
 <ul>
 <li>ArrayList和Vector是采用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，但是插入数据要涉及到数组元素移动等操作，所以索引数据快而插入数据慢;</li>
-<li>Vector由于使用了synchronized方法，所以性能上比ArrayList要差；</li>
+<li>ArrayList，长于随机访问元素，但在中间插入和移除元素时较慢；</li>
 <li>ArrayList和Vector的访问性能是 O(1); 尽管扩展长度时将花费 O(n) 的时间, 但由于很少发生，通常情况下摊销(amortize)后的性能仍是 O(1)；</li>
+<li>Vector由于使用了synchronized方法，所以性能上比ArrayList要差；</li>
 <li>Vector缺省情况下自动增长原来一倍的数组长度，而ArrayList是原来的50% (但CareerUp 150这本书则是说Double)；</li>
 <li>LinkedList使用双向链表实现存储，按序号索引数据需要进行向前或向后遍历，但是插入数据时只需要记录本项的前后项即可，所以插入数度较快！</li>
+<li>LinkedList，较之ArrayList在中间插入和移除元素时代价低，但随机访问方面相对较慢，不过它的特性集较ArrayList更大；</li>
 </ul>
 <h3 id="StringBuffer_和_StringBuilder">StringBuffer 和 StringBuilder</h3>
 <blockquote>
