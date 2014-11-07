@@ -3,42 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第一遍拜读Bruce大作 —— 《Java编程思想》 | 月光独奏</title>
+  <title>拜读Bruce大作 —— 《Java编程思想》(第一遍) | 月光独奏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次。
 
 第一章 对象导论
 
-对象是一个通过对问题域中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
+对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-
-对象始于抽象 -&gt; 抽象始于问题建模【问题域受限于上下文】；
-可替代性(substitutability)：某一特定">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一遍拜读Bruce大作 —— 《Java编程思想》">
+<meta property="og:title" content="拜读Bruce大作 —— 《Java编程思想》(第一遍)">
 <meta property="og:url" content="http://yoursite.com/2014/11/05/reading-bruce-thinking-in-java/">
 <meta property="og:site_name" content="月光独奏">
 <meta property="og:description" content="所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次。
 
 第一章 对象导论
 
-对象是一个通过对问题域中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
+对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-
-对象始于抽象 -&gt; 抽象始于问题建模【问题域受限于上下文】；
-可替代性(substitutability)：某一特定">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
 <meta property="og:image" content="https://msolomoon.github.io/images/bookcover_bruce_thinking_in_java.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一遍拜读Bruce大作 —— 《Java编程思想》">
+<meta name="twitter:title" content="拜读Bruce大作 —— 《Java编程思想》(第一遍)">
 <meta name="twitter:description" content="所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次。
 
 第一章 对象导论
 
-对象是一个通过对问题域中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
+对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-
-对象始于抽象 -&gt; 抽象始于问题建模【问题域受限于上下文】；
-可替代性(substitutability)：某一特定">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -217,7 +211,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      第一遍拜读Bruce大作 —— 《Java编程思想》
+      拜读Bruce大作 —— 《Java编程思想》(第一遍)
     </h1>
   
 
@@ -232,24 +226,23 @@
 </blockquote>
 <h3 id="第一章_对象导论">第一章 对象导论</h3>
 <blockquote>
-<p><strong>对象是一个通过对问题域中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
+<p><strong>对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
+<ol>
+<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；<br>**2. 每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</li>
+<li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧**；</li>
+</ol>
 </blockquote>
 <ul>
-<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域受限于上下文】；</li>
-<li>可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息；</li>
-<li><strong>每个对象都有一个接口，接口体现服务；每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；可隐藏具体实现；对象复用，即组合对象以实现灵活的代码复用；便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态等高级开发技巧</strong>；</li>
 <li>继承关系探讨，“是一个” 与 “像是一个”，【书：有时必须在导出类型中添加新的接口元素，这个新的类型仍然可以替代基类，但是这种替代并不完美，因为基类无法访问新添加的方法。这种情况我们可以描述为is-like-a关系。】</li>
-<li>多态的可互换对象，【书：为了执行动态绑定，Java使用一小段特殊代码来替代绝对地址调用；我们要编写一段代码，它忽略类型的具体细节，仅仅和基类交互。这段代码和具体类型信息是分离的…把将导出类看做是它的基类的过程称为向上转型(upcasting)…这里要表达的是，如果你是一个Shape，我知道你可以 erase() 和 draw() 你自己，那么去做吧…】</li>
-<li>单根继承结构的好处：简化参数传递，保证所有对象都具有某些功能，执行基本操作；使得垃圾回收器的实现变得容易多；为异常处理等系统级操作带来灵活性；</li>
-<li>对象的创建和生命期：如何才能知道何时销毁对象呢？垃圾回收器！</li>
+<li>多态的可互换对象，【书：为了执行动态绑定，Java使用一小段特殊代码来替代绝对地址调用；它忽略类型的具体细节，仅仅和基类交互。这段代码和具体类型信息是分离的…把将导出类看做是它的基类的过程称为向上转型(upcasting)…这里要表达的是，如果你是一个Shape，我知道你可以 erase() 和 draw() 你自己，那么去做吧…】</li>
+<li>单根继承结构的好处：1.简化参数传递，保证所有对象都具有某些功能，执行基本操作；2.使得垃圾回收器的实现变得容易多；3.为异常处理等系统级操作带来灵活性；</li>
 <li>异常处理：异常是一种对象；有助于编写出更健壮程序的机制；</li>
 </ul>
 <h3 id="第二章_一切都是对象">第二章 一切都是对象</h3>
+<blockquote>
+<p>一切都是引用，引用操纵对象；<br>对象存储到什么地方：new 对象存储在堆（寄存器、堆栈、堆、常量存储区、非RAM存储区[流对象和持久化对象-即磁盘等]）；<br>基本类型存储到什么地方：变量直接存储“值”，并置于堆栈中，更加高效；<br>java中的数组，【书：当创建一个数组对象时，实际上就是创建一个引用数组。并且每个引用都会被初始化为一个特定值，该值拥有自己的关键字null】；</p>
+</blockquote>
 <ul>
-<li>用引用操纵对象；</li>
-<li>对象存储到什么地方：new对象存储在堆（寄存器(处理器内部)、堆栈、堆、常量存储区、非RAM存储区(流对象和持久化对象-即磁盘等)）；</li>
-<li>基本类型存储到什么地方：变量直接存储“值”，并置于堆栈中，更加高效；</li>
-<li>java中的数组，【书：当创建一个数组对象时，实际上就是创建一个引用数组。并且每个引用都会被初始化为一个特定值，该值拥有自己的关键字null】；</li>
 <li><strong>永远不需要销毁对象?!</strong></li>
 <li>static 关键字：static 方法可以创建或使用与其类型相同的被命名对象；因此常常拿来做“牧羊人”的角色，负责看护与其隶属统一类型的实例群；</li>
 </ul>
@@ -266,27 +259,54 @@
 <ul>
 <li>用构造器确保初始化，【书：在Java中，“初始化”和“创建”捆绑在一起，两者不可分离】;</li>
 <li>方法重载：每个重载的方法都必须有一个独一无二的参数类型列表(尽管参数顺序不同也是被允许的，但会带来代码的混乱使得程序难以维护)；另外，只要编译器可以根据语境判断出语义，那么就可以使用返回值区分重载方法(但通常不采用此做法)；</li>
-<li>this关键字；</li>
 <li>在构造器中调用构造器：尽管可以用this调用一个构造器，但却不能调用两个；此外，必须将构造器调用置于最起始处，否则编译器会报错。</li>
 <li>static 的含义，static 方法就是没有this 的方法。</li>
 <li><strong>清理, 终结处理和垃圾回收：在 java 中，对象可能不被垃圾回收；垃圾回收并不等于“析构”。看来之所以要有finalize()，是由于在分配内存时可能采用了类似C语言中的做法，而非 java 中的通常做法。这种情况主要发生在使用“本地方法”的情况下</strong>。</li>
-<li>只要对象中存在没有被适当清理的部分，程序就存在很隐晦的缺陷。</li>
+<li>只要对象中存在没有被适当清理的部分，程序就存在很隐晦的缺陷。(近来，在某些情况下，单例模式也被认为有此问题。)</li>
 </ul>
+<p><a href="https://msolomoon.github.io/images/class_file_run_in_jvm.png" target="_blank" rel="external">class文件在JVM中的视图</a></p>
+<blockquote>
+<p>JVM - 类加载器</p>
+<ol>
+<li>bootstrap class loader（引导类加载器）：是其他类加载器的父类，它用于加载Java核心库，并且是唯一一个用本地代码编写的类加载器。</li>
+<li>extension class loader（扩展类加载器）：是bootstrap class loader加载器的子类，用于加载扩展库。</li>
+<li>system class loader（系统类加载器）：是extension class loader加载器的子类，用于加载在classpath中的应用程序的类文件。</li>
+<li>user-defined class loader（用户定义的类加载器）：是系统类加载器或其他用户定义的类加载器的子类。 </li>
+</ol>
+</blockquote>
+<hr>
+<blockquote>
+<p><a href="http://www.importnew.com/13504.html" target="_blank" rel="external">Java GC系列（1）：Java垃圾回收简介</a><br>在JVM体系结构中，与垃圾回收相关的两个主要组件是堆内存和垃圾回收器。堆内存用来保存运行时的对象实例。<br>堆内存有以下三个主要区域：</p>
+<ol>
+<li>新生代（Young Generation）<br>Eden空间（Eden space，任何实例都通过Eden空间进入运行时内存区域）<br>S0 Survivor空间（S0 Survivor space，存在时间长的实例将会从Eden空间移动到S0 Survivor空间）<br>S1 Survivor空间 （存在时间更长的实例将会从S0 Survivor空间移动到S1 Survivor空间）</li>
+<li>老年代（Old Generation）实例将从S1提升到Tenured（终身代）</li>
+<li>永久代（Permanent Generation）包含类、方法等细节的元信息。(在Java SE8特性中已经被移除)</li>
+</ol>
+</blockquote>
+<hr>
 <blockquote>
 <p><strong>垃圾回收器如何工作？</strong></p>
 <ol>
 <li>当它工作时，将一面回收空间，一面使堆中的对象紧凑排列，这样“堆指针”可以很容易移动到更靠近“传送带”的开始处，也就尽量避免了页面错误。</li>
 <li>引用计数是一种简单但速度很慢的垃圾回收技术。这种方法有个缺陷，如果对象之间存在循环引用，可能会出现“对象应该被回收，但引用计数却不为零”的情况。对垃圾回收器来说，定位这样的交互自引用的对象组所需的工作量极大。</li>
 <li>在一些更快的模式中，垃圾回收器并非基于引用计数。它们依据的思想是：对任何“活”的对象，一定能最终追溯到其存活在堆栈或静态存储区之中的引用。在这种方式下，Java虚拟机将采用一种自适应的垃圾回收技术。至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。有一种做法名为stop-and-copy。显然，这意味着，先暂停程序的运行（所以它不属于后台回收模式），然后将所有存活的对象从当前堆复制到另一个堆，没有被复制的全部都是垃圾。复制式回收器仍然会将所有内存自一处复制到另一处，这很浪费。为了避免这种情形，一些虚拟机会进行检查：钥匙没有新垃圾产生，就会转换到另一种工作模式（即“自适应”）。这种模式称为标记-清扫（mark-and-sweep），只有全部标记工作完成的时候，清理工作才会开始。没有标记的对象将被释放，不会发生任复制动作。所以省下的堆空间是不连续的。</li>
-<li>内存分配以较大的“块”为单位。如果对象较大，它会单占用单独的块。每个块都用相应的代数来记录它是否还存活。通常，如果块在某处被引用，其代数会增加；大型对象仍然不会被复制（只是其代数会增加）。</li>
-<li>Java虚拟机会进行监视，如果所有对象都很稳定，垃圾回收器的效率降低的话，就切换到“标记-清扫”方式；同样，Java虚拟机会跟踪“标记-清扫”的效果，要是堆空间出现很多碎片，就会切换回“停止-复制”方式。这就是“自适应”技术。</li>
+<li>内存分配以较大的“块”为单位。如果对象较大，它会单占用单独的块。每个块都用相应的代数来记录它是否还存活。通常，如果块在某处被引用，其代数会增加；大型对象仍然不会被复制（只是其代数会增加）。<br><strong>5. Java虚拟机会进行监视，如果所有对象都很稳定，垃圾回收器的效率降低的话，就切换到“标记-清扫”方式；同样，Java虚拟机会跟踪“标记-清扫”的效果，要是堆空间出现很多碎片，就会切换回“停止-复制”方式。这就是“自适应”技术。</strong></li>
 </ol>
 </blockquote>
 <ul>
 <li>构造器初始化：初始化顺序（在类的内部，变量定义的先后顺序决定了初始化的顺序，即使变量定义散布于方法定义之间，它们仍旧会在任何方法(包括构造器)被调用之前得到初始化，先是静态对象，然后是“非静态”对象）。</li>
-<li><strong>对象的创建过程（假设有个名为Dog的类）：1. 即使没有显式地使用static关键字，构造器实际上也是静态方法（或者可看成静态方法）。因此，当首次创建类型为Dog的对象时，或者Dog类的静态方法/静态域首次被访问时，Java解释器必须查找类路径，以定位Dog.class文件；2. 然后载入Dog.class，有关静态初始化的所有动作都会执行。因此，静态初始化只在Class对象首次加载的时候进行一次；3. 当用new创建对象的时候，首先将在堆上位Dog对象分配足够的存储空间；4. 这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置成了默认值，而引用则被设置成了null；5. 执行所有出现于字段定义处的初始化动作；6. 执行构造器；</strong></li>
-<li>显示的静态初始化，代码仅执行一次：当首次生成这个类的一个对象时，或者首次访问于那个类的静态数据成员时。非静态实例初始化与此类似；</li>
 </ul>
+<blockquote>
+<p><strong>对象的创建过程（假设有个名为Dog的类）：</strong></p>
+<ol>
+<li>即使没有显式地使用static关键字，构造器实际上也是静态方法（或者可看成静态方法）。因此，当首次创建类型为Dog的对象时，或者Dog类的静态方法/静态域首次被访问时，Java解释器必须查找类路径，以定位Dog.class文件；</li>
+<li>然后载入Dog.class，有关静态初始化的所有动作都会执行。因此，静态初始化只在Class对象首次加载的时候进行一次；</li>
+<li>当用new创建对象的时候，首先将在堆上位Dog对象分配足够的存储空间；</li>
+<li>这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置成了默认值，而引用则被设置成了null；</li>
+<li>执行所有出现于字段定义处的初始化动作；</li>
+<li>执行构造器；</li>
+</ol>
+</blockquote>
 <h3 id="第六章_访问权限控制">第六章 访问权限控制</h3>
 <ul>
 <li>Java 访问权限修饰词：包访问权限（无关键字，默认）；public（接口访问权限）；private（私有）；protected（继承访问权限，同时也具有包访问权限）；</li>
@@ -294,12 +314,11 @@
 </ul>
 <h3 id="第七章_复用类">第七章 复用类</h3>
 <ul>
-<li>两种方法：组合与继承</li>
 <li>初始化基类：【书：当创建一个导出类的对象时，该对象包含了一个基类的子对象…Java会自动在导出类的构造器中插入对基类构造器的调用。】，（super 关键字）</li>
 <li>对接口进行编程，优先考虑组合；</li>
 <li><strong>空白final：可做到根据对象而有所不同，却又保持其恒定不变的特性；</strong></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankFinal</span> </span>{</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> j; 			<span class="comment">// blank final</span></div><div class="line">	<span class="keyword">private</span> fianl Poppet p;		<span class="comment">// blank final reference</span></div><div class="line">	<span class="keyword">public</span> <span class="title">BlankFinal</span>() {	j = <span class="number">1</span>; p = <span class="keyword">new</span> Poppet(<span class="number">1</span>); }</div><div class="line">	<span class="keyword">public</span> <span class="title">BlankFinal</span>(<span class="keyword">int</span> x) { j = x; p = <span class="keyword">new</span> Poppet(x); }</div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankFinal</span> </span>{</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> j; 		<span class="comment">// blank final</span></div><div class="line">	<span class="keyword">private</span> fianl Poppet p;		<span class="comment">// blank final reference</span></div><div class="line">	<span class="keyword">public</span> <span class="title">BlankFinal</span>() {	j = <span class="number">1</span>; p = <span class="keyword">new</span> Poppet(<span class="number">1</span>); }</div><div class="line">	<span class="keyword">public</span> <span class="title">BlankFinal</span>(<span class="keyword">int</span> x) { j = x; p = <span class="keyword">new</span> Poppet(x); }</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <ul>
 <li>final参数：无法在方法中更改参数引用所指向的对象；</li>
@@ -421,7 +440,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="reading-bruce-thinking-in-java" data-title="第一遍拜读Bruce大作 —— 《Java编程思想》" data-url="http://yoursite.com/2014/11/05/reading-bruce-thinking-in-java/"></div>
+	<div class="ds-thread" data-thread-key="reading-bruce-thinking-in-java" data-title="拜读Bruce大作 —— 《Java编程思想》(第一遍)" data-url="http://yoursite.com/2014/11/05/reading-bruce-thinking-in-java/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
