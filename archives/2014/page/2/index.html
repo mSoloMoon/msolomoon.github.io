@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 10.00px;">Android</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 15.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 20.00px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 15.00px;">软件框架</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a><a href="/tags/项目/" style="font-size: 10.00px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 10.00px;">Android</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 13.33px;">IT面试</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 13.33px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 13.33px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 20.00px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 16.67px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 13.33px;">软件框架</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a><a href="/tags/项目/" style="font-size: 10.00px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,71 @@
 	</div>
 </nav>
       
+  
+    <article id="post-project-stockeye-redesign" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/01/project-stockeye-redesign/" class="article-date">
+  	<time datetime="2014-11-01T12:01:11.000Z" itemprop="datePublished">11月 1 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件框架/">软件框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/01/project-stockeye-redesign/">Stockeye 项目重新设计指引</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>将原先在软件中不可分割的包按功能、使用方式的思路重新设计，<br>可做成以第三方库为基准的组件有：股票的报价、股票的预警、股票的资产状况；股票的资讯；股票的图表库（基础K线图）；股票的聊天库；<br>可高度组件化、不可分割的组件有：股票的数据库设计及实现；股票的定制查询库；</p>
+</blockquote>
+<h3 id="库的设计"><strong>库的设计</strong></h3>
+<p>1、关于股票报价、股票的预警、股票的资产状况</p>
+<ul>
+<li>核心对象举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">StockPriceObjList stockPriceObjList = StockPriceObjList.getInstance();</div><div class="line">stockPriceObjList.init();</div><div class="line">stockPriceObjList.addStock();</div><div class="line">stockPriceObjList.addStockArray();</div><div class="line">StockPriceObj obj = stockPriceObjList.get(<span class="number">0</span>);</div><div class="line"></div><div class="line">class StockPriceObj {</div><div class="line"></div><div class="line">	String sName;</div><div class="line">	String sCode;</div><div class="line">	<span class="keyword">boolean</span> hasSettedAlert</div><div class="line">	<span class="keyword">int</span> alertPrice;</div><div class="line">	<span class="keyword">long</span> alertVolume;</div><div class="line">	<span class="keyword">int</span> curPrice;</div><div class="line">	<span class="keyword">long</span> curVolume;</div><div class="line">	</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/01/project-stockeye-redesign/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-excerpt-song-dynasty-qing-dynasty-18-compare" class="article article-type-post" itemscope itemprop="blogPost">
   
