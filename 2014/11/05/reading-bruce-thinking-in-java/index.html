@@ -11,7 +11,7 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拜读Bruce大作 —— 《Java编程思想》(第一遍)">
 <meta property="og:url" content="http://yoursite.com/2014/11/05/reading-bruce-thinking-in-java/">
@@ -22,8 +22,9 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
 <meta property="og:image" content="https://msolomoon.github.io/images/bookcover_bruce_thinking_in_java.jpg">
+<meta property="og:image" content="https://msolomoon.github.io/images/class_file_run_in_jvm.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拜读Bruce大作 —— 《Java编程思想》(第一遍)">
 <meta name="twitter:description" content="所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次。
@@ -32,7 +33,7 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；**2. 每个对象都有一个接口，接口体现服务，每个">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -228,8 +229,8 @@
 <blockquote>
 <p><strong>对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
 <ol>
-<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；<br>**2. 每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</li>
-<li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧**；</li>
+<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；<br><strong>2. 每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</strong></li>
+<li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧；</li>
 </ol>
 </blockquote>
 <ul>
@@ -264,7 +265,7 @@
 <li><strong>清理, 终结处理和垃圾回收：在 java 中，对象可能不被垃圾回收；垃圾回收并不等于“析构”。看来之所以要有finalize()，是由于在分配内存时可能采用了类似C语言中的做法，而非 java 中的通常做法。这种情况主要发生在使用“本地方法”的情况下</strong>。</li>
 <li>只要对象中存在没有被适当清理的部分，程序就存在很隐晦的缺陷。(近来，在某些情况下，单例模式也被认为有此问题。)</li>
 </ul>
-<p><a href="https://msolomoon.github.io/images/class_file_run_in_jvm.png" target="_blank" rel="external">class文件在JVM中的视图</a></p>
+<p><img src="https://msolomoon.github.io/images/class_file_run_in_jvm.png" alt="class文件在JVM中的视图"></p>
 <blockquote>
 <p>JVM - 类加载器</p>
 <ol>
