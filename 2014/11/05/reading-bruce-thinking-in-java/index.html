@@ -11,7 +11,8 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；
+每个对象都有一个接口，接口体现服务，每个对象都提">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拜读Bruce大作 —— 《Java编程思想》(第一遍)">
 <meta property="og:url" content="http://yoursite.com/2014/11/05/reading-bruce-thinking-in-java/">
@@ -22,7 +23,8 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；
+每个对象都有一个接口，接口体现服务，每个对象都提">
 <meta property="og:image" content="https://msolomoon.github.io/images/bookcover_bruce_thinking_in_java.jpg">
 <meta property="og:image" content="https://msolomoon.github.io/images/class_file_run_in_jvm.png">
 <meta property="og:image" content="https://msolomoon.github.io/images/Java_full_container_taxonomy.JPG">
@@ -34,7 +36,8 @@
 
 对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念。
 
-对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；2. 每个对象都有一个接口，接口体现服务，每个对象">
+对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；
+每个对象都有一个接口，接口体现服务，每个对象都提">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -230,7 +233,8 @@
 <blockquote>
 <p><strong>对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
 <ol>
-<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；<br><strong>2. 每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</strong></li>
+<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；</li>
+<li><strong>每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</strong></li>
 <li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧；</li>
 </ol>
 </blockquote>
@@ -424,7 +428,25 @@
 </ol>
 </blockquote>
 <h3 id="第十三章_字符串">第十三章 字符串</h3>
+<p><br></p>
 <h3 id="第十四章_类型信息">第十四章 类型信息</h3>
+<blockquote>
+<p>迄今为止，已知的RTTI形式包括：</p>
+<ol>
+<li>传统的类型转换；</li>
+<li>代表对象的类型的Class对象。通过查询Class对象可获取运行时所需的信息；</li>
+<li>关键字instanceof。</li>
+</ol>
+</blockquote>
+<ul>
+<li>反射：运行时的类信息；</li>
+<li>代理</li>
+<li>空对象</li>
+<li>接口与类型信息：interface关键字的一种重要目标就是允许程序员隔离构件，进而降低耦合性。但是通过类型信息，这种耦合性还是会传播出去，接口并非是对解耦的一种无懈可击的保障。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class C implements A {</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span>() { ... }</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HiddenC</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> A <span class="title">makeA</span>() {</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> C();</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="第十五章_泛型">第十五章 泛型</h3>
 
       
     </div>
