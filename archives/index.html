@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 10.00px;">Android</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 13.33px;">IT面试</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 13.33px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 13.33px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 20.00px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 16.67px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 13.33px;">软件框架</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a><a href="/tags/项目/" style="font-size: 10.00px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 12.50px;">Android</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 12.50px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 12.50px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 17.50px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,250 @@
 	</div>
 </nav>
       
+  
+    <article id="post-begin-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/09/begin-hello-world/" class="article-date">
+  	<time datetime="2014-11-09T06:50:50.000Z" itemprop="datePublished">11月 9 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Cpp-Go/">C-Cpp-Go</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/09/begin-hello-world/">程序员的自我修养 - 从Hello World！说起</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决。</p>
+</blockquote>
+<h3 id="背景知识">背景知识</h3>
+<ul>
+<li>不要让CPU打盹：分时多任务、进程、抢占式分配CPU；</li>
+<li>磁盘：扇区、LBS（逻辑扇区号）、文件系统;</li>
+<li>内存不够怎么办：1. 分段（解决地址空间不隔离）；2. 分页【页大小、虚拟页/物理页、页错误和MMU(虚拟地址到物理地址的转换)】（解决使用效率低）;</li>
+<li>线程：一个进程由一个或多个线程组成；一个标准的线程由线程ID、当前指令指针（PC）、寄存器集合和堆栈组成；状态（就绪、运行、等待）；Linux的多线程（fork、exec和clone、写时复制）；</li>
+<li>线程安全：竞争与原子操作、同步与锁（二元信号量和信号量【即多元信号量】、互斥量和临界区、读写锁、条件变量）；可重入；</li>
+<li>volatile：阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回；</li>
+<li>对象构造（pInst = new PInst()）包含三个顺序的步骤：1. 分配内存；2. 在内存的位置上调用构造函数；3. 将内存的地址赋值给pInst；【在上述三个步骤中，CPU完全有可能动态调整2和3的执行顺序！】</li>
+<li>线程并发模型：1. 一对一模型；2. 多对一模型（将多个用户线程映射到一个内核线程上）；3. 多对多模型； </li>
+</ul>
+<h3 id="Hello_World_程序构建">Hello World 程序构建</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></div><div class="line"><span class="keyword">int</span> main() </div><div class="line">{</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>初级：</strong></p>
+<ol>
+<li>预处理: $ gcc -E hello.c -o hello.i 或 $ cpp hello.c &gt; hello.i</li>
+<li>编译: $ gcc -S hello.i -o hello.s（现在版本的 GCC 把预处理和编译两个步骤合并成一个步骤，使用一个cc1的程序。）</li>
+<li>汇编：$ as hello.s -o hello.o 或 $ gcc -c hello.s -o hello.o（根据汇编指令和机器指令的对照表一一翻译即可。）</li>
+<li>链接：$ ld -static /usr/lib/crt1.o /usr/lib/crti.o /usr/lib/gcc/i486-linux-gnu/4.1.3/crtbeginT.o -L/usr/lib/gcc/1486-linux-gnu/4.1.3 -L/usr/lib -L/lib hello.o —start-group -lgcc -lgcc_eh -lc —end-group /usr/lib/gcc/i486-linux-gnu/4.1.3/crtend.o /usr/lib/crtn.o</li>
+</ol>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/09/begin-hello-world/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-android-interview-i" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/09/android-interview-i/" class="article-date">
+  	<time datetime="2014-11-08T18:18:48.000Z" itemprop="datePublished">11月 9 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/09/android-interview-i/">android-interview-i</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_JVM和DVM的不同">1. JVM和DVM的不同</h3>
+<ul>
+<li>JVM is a stack-based machine; while DVM is register-based;</li>
+<li>A stack-based virtual machine must transfer data from registers to the operand stack before manipulating them. In contrast, a register-based VM operates by directly using virtual registers. This increases the relative size of instructions because they must specify which registers to use, but reduces the number of instructions that must be executed to achieve the same result.</li>
+</ul>
+<h3 id="2-_What_the_Zygote_is_and_How_to_startup_an_application">2. What the Zygote is and How to startup an application</h3>
+<ul>
+<li>A special process called the Zygote is launched when Android initially boots. The Zygote starts up a virtual machine, preloads the core libraries, and initializes various shared structures. It then waits for instructions by listening on a socket.</li>
+<li>When a new Android application is launched, the Zygote receives a command to create a virtual machine to run the application on. It does this by forking its prewarmed VM process and creating a new child process that shares its memory with the parent, using a technique called Copy-On-Write.</li>
+<li>Within a process, there may be many threads of execution.</li>
+</ul>
+<h3 id="3-_The_UI_thread">3. The UI thread</h3>
+<ul>
+<li>By default, any code that we write in our applications will be executed by the main thread.</li>
+<li>If an app does not respond to user input within 5 seconds, the user will see the Application Not Responding (ANR) dialog and be offered the option to quit the app.</li>
+<li>Android works hard to synchronize user interface redraws with the hardware refresh rate. This means that it aims to redraw at 60 frames per-second.</li>
+<li>The common thread communication use case in Android is between the UI thread and worker threads. Hence, the Android platform defines its own message passing mechanism for communication between threads. The UI thread can offload long tasks by sending data messages to be processed on background threads. The message passing mechanism is a nonblocking consumer-producer pattern, where neither the producer thread nor the consumer thread will block during the message handoff.API level 16, Android introduced a new entity, the Choreographer, to oversee timing issues. It will start issuing dropped-frame warnings in the log if you drop more than 30 consecutive frames.</li>
+<li>The producers can insert new messages in the queue at any time and on any position in the queue.</li>
+</ul>
+<blockquote>
+<p>API overview<br>android.os.Handler: Consumer thread message processor, and the interface for a producer thread to insert messages into the queue. A Looper can have many associated handlers, but they all insert messages into the same queue.<br>android.os.Looper: A message dispatcher associated with the one and only consumer thread.<br>android.os.MessageQueue: Unbounded linked list of messages to be processed on the consumer thread. Every Looper—and Thread—has at most one  MessageQueue.<br>android.os.Message: Message to be executed on the consumer thread.</p>
+</blockquote>
+<p><img src="https://msolomoon.github.io/images/the_ui_thread_message_passing_api.png" alt="message-passing机制概览"></p>
+<ul>
+<li>Insert: The producer thread inserts messages in the queue by using the Handler connected to the consumer thread.</li>
+<li>Retrieve: The  Looper, runs in the consumer thread and retrieves messages from the queue in a sequential order.</li>
+<li>Dispatch: The handlers are responsible for processing the messages on the consumer thread. A thread may have multiple Handler instances for processing messages; the Looper ensures that messages are dispatched to the correct Handler.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Example: Basic Message Passing</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LooperActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    LooperThread mLooperThread;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{ <span class="comment">// for inserting messages in the queue</span></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">            Looper.prepare(); </div><div class="line">            mHandler = <span class="keyword">new</span> Handler() { </div><div class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) { </div><div class="line">                    <span class="keyword">if</span>(msg.what == <span class="number">0</span>) { doLongRunningOperation(); }</div><div class="line">                }</div><div class="line">            };</div><div class="line">						<span class="comment">// Start dispatching messages from the message queue to the consumer thread.</span></div><div class="line">						<span class="comment">// This is a blocking call, so the worker thread will not finish.</span></div><div class="line">            Looper.loop(); </div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mLooperThread = <span class="keyword">new</span> LooperThread(); </div><div class="line">        mLooperThread.start();</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span>(View v) {</div><div class="line">        <span class="keyword">if</span> (mLooperThread.mHandler != <span class="keyword">null</span>) {</div><div class="line">            Message msg = mLooperThread.mHandler.obtainMessage(<span class="number">0</span>); </div><div class="line">            mLooperThread.mHandler.sendMessage(msg); <span class="comment">// Insert the message in the queue.</span></div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doLongRunningOperation</span>() {</div><div class="line">        <span class="comment">// Add long running operation here.</span></div><div class="line">    }</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">        mLooperThread.mHandler.getLooper().quit(); <span class="comment">// Terminate the background thread.</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<blockquote>
+<p>MessageQueue.IdleHandler<br>If there is no message to process, a consumer thread has some idle time. Instead of waiting, the thread can be utilized to execute other tasks during these idle slots.<br>When the message queue detects idle time for the consumer thread, it invokes  queueI dle() on all registered  IdleHandler-instances. It is up to the application to implement the callback responsibly. You should usually avoid long-running tasks because they will delay pending messages during the time they run.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Get the message queue of the current thread.</span></div><div class="line">MessageQueue mq = Looper.myQueue();</div><div class="line"><span class="comment">// Create and register an idle listener.</span></div><div class="line">MessageQueue.IdleHandler idleHandler = <span class="keyword">new</span> MessageQueue.IdleHandler();</div><div class="line">mq.addIdleHandler(idleHandler)</div><div class="line"><span class="comment">// Unregister an idle listener.</span></div><div class="line">mq.removeIdleHandler(idleHandler)</div><div class="line"></div><div class="line">interface IdleHandler {</div><div class="line">    <span class="keyword">boolean</span> queueIdle();</div><div class="line">}</div><div class="line"><span class="comment">// The implementation of queueIdle() must return a Boolean value with the following meanings:</span></div><div class="line"><span class="comment">// true: The idle handler is kept active; it will continue to receive callbacks for successive idle time slots.</span></div><div class="line"><span class="comment">// false: The idle handler is inactive; it will not receive anymore callbacks for successive idle time  slots.  </span></div><div class="line"><span class="comment">// This is the same thing as removing the listener through Message Queue.removeIdleHandler().</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-project-stockeye-package-calendarstock" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/08/project-stockeye-package-calendarstock/" class="article-date">
+  	<time datetime="2014-11-08T07:00:38.000Z" itemprop="datePublished">11月 8 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/08/project-stockeye-package-calendarstock/">Stockeye项目 - CalendarStock包（初步设计）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="预构">预构</h3>
+<blockquote>
+<p><strong>class UtilCalTime</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
+
+<h3 id="TDD">TDD</h3>
+<p>``` java<br>package com.msolo.stockeye.calendarstock;</p>
+<p>import static org.junit.Assert.assertEquals;<br>import org.junit.Test;<br>import org.junit.Ignore;<br>import org.junit.runner.RunWith;<br>import org.junit.runners.JUnit4;</p>
+<p>/**</p>
+<ul>
+<li>Tests for UtilCalTime<br>*</li>
+<li><p>@author yuezhi.msolo@outlook.com (kevin mSolo)<br>*/<br>public class UtilCalTimeTest {</p>
+<pre><code> <span class="keyword">private</span> UtilCalTime utilCalTime = UtilCalTime.getInstance();
+</code></pre><p> @Test<br> public void testAssertClassSingleton() {</p>
+<pre><code><span class="constant">     UtilCalTime utilCalTimeAnother</span> = UtilCalTime.getInstance();
+     assertSame(<span class="string">"should be same"</span>, utilCalTime, utilCalTimeAnother);
+</code></pre><p> }</p>
+<pre><code> <span class="annotation">@Test</span>
+ <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGetIntCal</span>() {
+     <span class="keyword">int</span> intCal = utilCalTime.getIntCal(<span class="keyword">new</span> GregorianCalendar());    
+     <span class="keyword">int</span> intCalTest = <span class="number">20141108</span>;
+     testAssertEquals(<span class="string">"should be equal"</span>, intCal, intCalTest);
+ }
+</code></pre></li>
+</ul>
+<p>}</p>
+<h3 id="Coding">Coding</h3>
+<h3 id="TDD-1">TDD</h3>
+<h3 id="Document">Document</h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-life-daily-log-141106" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -401,7 +645,7 @@
   </div>
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
 
     </div>
   
@@ -474,7 +718,7 @@
   </div>
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
 
     </div>
   
@@ -662,205 +906,9 @@
 
 
   
-    <article id="post-life-daily-log-141102" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/02/life-daily-log-141102/" class="article-date">
-  	<time datetime="2014-11-02T12:30:46.000Z" itemprop="datePublished">11月 2 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活记录/">生活记录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/02/life-daily-log-141102/">生活点滴 - 141102</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="日程：">日程：</h3>
-<ol>
-<li>上午九点左右出发去起点咖啡，悲催~，今天不开张。</li>
-<li>之后去拜访大姐一家，两个小家伙如今懂事多了，也开始正式有了真正的互动，另外，菁菁居然学会了从一个板凳调到另一个板凳的做法，她才两岁多，就很“大胆了”，让人惊讶！</li>
-<li>回到家后，继续学习复习 Android voice development。</li>
-<li>边吃晚饭，边看电影《大卫戈尔的一生》，今天我打算聊聊它。</li>
-</ol>
-<p><br></p>
-<p>可敬、可惜、可恶的主人公！</p>
-<p>可敬在于戈尔为实现自己的信念付出了自己的生命，并且没有直接伤害到别人；<br>可惜在于戈尔智商高，情商却低，并且如同预言一般：智者千虑，必有一失，在失去孩子的探视权后，戈尔迷失了。<br>可恶在于戈尔虽然无直接伤害别人，却有可能伤害了别人的精神世界（施以洗脑的人往往神智清醒，而被洗脑的人则失去了理智，为反对而反对，为赞成而赞成…）。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/02/life-daily-log-141102/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-android-voice-dev-no-interaction" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/02/android-voice-dev-no-interaction/" class="article-date">
-  	<time datetime="2014-11-02T07:27:43.000Z" itemprop="datePublished">11月 2 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java-android/">java-android</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/02/android-voice-dev-no-interaction/">Android 语音开发（无交互）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://developer.android.com/reference/android/speech/tts/package-summary.html" target="_blank" rel="external">ANDROID SDK TTS Package Summary</a></p>
-</blockquote>
-<p><br></p>
-<h3 id="Starting_the_TTS_engine">Starting the TTS engine</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TextToSpeech tts = <span class="keyword">new</span> TextToSpeech(<span class="keyword">this</span>, <span class="keyword">new</span> OnInitListener() {</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInit</span>(<span class="keyword">int</span> status){ </div><div class="line">        <span class="keyword">if</span> (status == TextToSpeech.SUCCESS) </div><div class="line">              speak(<span class="string">"Hello world"</span>, TextToSpeech.QUEUE_ADD, <span class="keyword">null</span>); </div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<ul>
-<li>QUEUE_ADD: The new entry placed at the end of the playback queue.</li>
-<li>QUEUE_FLUSH: All entries in the playback queue are dropped and replaced by the new entry.</li>
-</ul>
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initTTS</span>() { 		</div><div class="line">	disableSpeakButton(); 			<span class="comment">//Disable speak button during the initialization of the text to speech engine</span></div><div class="line">	</div><div class="line">	<span class="comment">//Check if a the engine is installed, when the check is finished, the onActivityResult method is executed</span></div><div class="line">	Intent checkIntent = <span class="keyword">new</span> Intent(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);  </div><div class="line">	startActivityForResult(checkIntent, TTS_DATA_CHECK); 		</div><div class="line">}</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> *  Callback from check for text to speech engine installed</div><div class="line"> *  If positive, then creates a new &lt;code&gt;TextToSpeech&lt;/code&gt; instance which will be called when user clicks on the 'Speak' button</div><div class="line"> *  If negative, creates an intent to install a &lt;code&gt;TextToSpeech&lt;/code&gt; engine</div><div class="line">*/	</div><div class="line"><span class="annotation">@Override</span></div><div class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span>(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data) {  </div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (requestCode == TTS_DATA_CHECK) { 		</div><div class="line">		<span class="comment">// Check that the resultCode is CHECK_VOICE_DATA_PASS, it was the TTS which result is being processed and not any other activity</span></div><div class="line">		<span class="keyword">if</span> (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {  </div><div class="line">			tts = <span class="keyword">new</span> TextToSpeech(<span class="keyword">this</span>, <span class="keyword">new</span> OnInitListener() { 		<span class="comment">// Create a TextToSpeech instance  </span></div><div class="line">				<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInit</span>(<span class="keyword">int</span> status) {</div><div class="line">					<span class="keyword">if</span> ( (status == TextToSpeech.SUCCESS) &&  (tts.isLanguageAvailable(Locale.US) &gt;= <span class="number">0</span>) )	{</div><div class="line">							tts.setLanguage(Locale.US);</div><div class="line">					}</div><div class="line">					enableSpeakButton();</div><div class="line">				}</div><div class="line">			}); </div><div class="line">		} <span class="keyword">else</span> {  <span class="comment">// Install missing data  </span></div><div class="line">			PackageManager pm = getPackageManager();</div><div class="line">			Intent installIntent = <span class="keyword">new</span> Intent();</div><div class="line">			installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);</div><div class="line">			ResolveInfo resolveInfo = pm.resolveActivity( installIntent, PackageManager.MATCH_DEFAULT_ONLY );</div><div class="line"></div><div class="line">			<span class="keyword">if</span>( resolveInfo == <span class="keyword">null</span> ) {</div><div class="line">				Toast.makeText(TTSWithIntent.<span class="keyword">this</span>, </div><div class="line">											<span class="string">"There is no TTS installed, please download it from Google Play"</span>, </div><div class="line">											Toast.LENGTH_LONG).show();</div><div class="line">			} <span class="keyword">else</span> {</div><div class="line">			  startActivity( installIntent );</div><div class="line">			}</div><div class="line">		}  </div><div class="line">	}  </div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/02/android-voice-dev-no-interaction/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-life-daily-log-141101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/01/life-daily-log-141101/" class="article-date">
-  	<time datetime="2014-11-01T14:41:13.000Z" itemprop="datePublished">11月 1 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活记录/">生活记录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/01/life-daily-log-141101/">生活点滴 - 141101</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>早上，半醒状态下，我一边开始调制黑芝麻糊做早餐，一边听着神思者的【Love】曲子。不过一会，没等我发觉，外面围栏的保安敲打着围栏，叫我把车开走，因为把别人的车给挡住了。这个时候，得交代一下上下文，或者说故事背景，这个词汇可不仅仅属于IT业，这可是常识！</p>
-<p>事情是这样的：</p>
-<p>家住一楼，偏偏小区很小，不到3平方米的阳台和小区的停车场中间隔着一围栏，大概是上个世纪90年代建造的，但“保养”得还算可以，另外小区的小资，中产家庭的数量开始慢慢增多，于是，停车场需求上去了，如今，就连中间车辆进出的道停满车辆也不足为奇了。</p>
-<p>还是让我把镜头重新回到保安敲打围栏的时候开始吧，就以保安二号人物称呼他吧。</p>
-<p>我捉摸着，为什么看到我的时候，不叫我，哪怕说“D102”（门牌号）也是可以的，可是他偏不，因为他的年龄于我的父亲差不了几岁，长辈先开口，尤其还隔着那层诡异的身份象征，怕是更开不了这个口吧。这让我想其以前发生的另一件事：之前有次深夜回到家后，好不容易发掘到小区还剩下最后一个车位，在停车的时候，保安二号出现了，可是他没有像对待其他车主那样帮助我对车进行“走位”。而是默默地在那看着，直到我先开口，他才费劲地应答一声。我感到自己有点不受尊重，但很快地我就没在意了。</p>
-<p>如今，保安二号仍旧如此粗暴，我“新仇旧恨”般地感到有些愤怒。</p>
-<p>但很快地，我发现，我冷静下来了，甚至有些同情他，他大概心理很纠结吧。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/01/life-daily-log-141101/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
     </nav>
   
 

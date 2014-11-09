@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 10.00px;">Android</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 13.33px;">IT面试</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 13.33px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 13.33px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 20.00px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 16.67px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 13.33px;">软件框架</a><a href="/tags/随笔/" style="font-size: 20.00px;">随笔</a><a href="/tags/项目/" style="font-size: 10.00px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 12.50px;">Android</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 12.50px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 12.50px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 17.50px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,86 @@
 	</div>
 </nav>
       
+  
+    <article id="post-project-stockeye-package-calendarstock" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/08/project-stockeye-package-calendarstock/" class="article-date">
+  	<time datetime="2014-11-08T07:00:38.000Z" itemprop="datePublished">11月 8 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/08/project-stockeye-package-calendarstock/">Stockeye项目 - CalendarStock包（初步设计）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="预构">预构</h3>
+<blockquote>
+<p><strong>class UtilCalTime</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
+
+<h3 id="TDD">TDD</h3>
+<p>``` java<br>package com.msolo.stockeye.calendarstock;</p>
+<p>import static org.junit.Assert.assertEquals;<br>import org.junit.Test;<br>import org.junit.Ignore;<br>import org.junit.runner.RunWith;<br>import org.junit.runners.JUnit4;</p>
+<p>/**</p>
+<ul>
+<li>Tests for UtilCalTime<br>*</li>
+<li><p>@author yuezhi.msolo@outlook.com (kevin mSolo)<br>*/<br>public class UtilCalTimeTest {</p>
+<pre><code> <span class="keyword">private</span> UtilCalTime utilCalTime = UtilCalTime.getInstance();
+</code></pre><p> @Test<br> public void testAssertClassSingleton() {</p>
+<pre><code><span class="constant">     UtilCalTime utilCalTimeAnother</span> = UtilCalTime.getInstance();
+     assertSame(<span class="string">"should be same"</span>, utilCalTime, utilCalTimeAnother);
+</code></pre><p> }</p>
+<pre><code> <span class="annotation">@Test</span>
+ <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGetIntCal</span>() {
+     <span class="keyword">int</span> intCal = utilCalTime.getIntCal(<span class="keyword">new</span> GregorianCalendar());    
+     <span class="keyword">int</span> intCalTest = <span class="number">20141108</span>;
+     testAssertEquals(<span class="string">"should be equal"</span>, intCal, intCalTest);
+ }
+</code></pre></li>
+</ul>
+<p>}</p>
+<h3 id="Coding">Coding</h3>
+<h3 id="TDD-1">TDD</h3>
+<h3 id="Document">Document</h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-project-stockeye-redesign" class="article article-type-post" itemscope itemprop="blogPost">
   
