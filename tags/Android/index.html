@@ -194,7 +194,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/09/android-interview-i/">android-interview-i</a>
+      <a class="article-title" href="/2014/11/09/android-interview-i/">Android 面试题纪录</a>
     </h1>
   
 
@@ -207,37 +207,29 @@
 <li>JVM is a stack-based machine; while DVM is register-based;</li>
 <li>A stack-based virtual machine must transfer data from registers to the operand stack before manipulating them. In contrast, a register-based VM operates by directly using virtual registers. This increases the relative size of instructions because they must specify which registers to use, but reduces the number of instructions that must be executed to achieve the same result.</li>
 </ul>
-<h3 id="2-_What_the_Zygote_is_and_How_to_startup_an_application">2. What the Zygote is and How to startup an application</h3>
+<h3 id="2-_Android如何启动一个应用">2. Android如何启动一个应用</h3>
+<blockquote>
+<p>A special process called the Zygote is launched when Android initially boots. The Zygote starts up a virtual machine, preloads the core libraries, and initializes various shared structures. It then waits for instructions by listening on a socket.</p>
+</blockquote>
 <ul>
-<li>A special process called the Zygote is launched when Android initially boots. The Zygote starts up a virtual machine, preloads the core libraries, and initializes various shared structures. It then waits for instructions by listening on a socket.</li>
 <li>When a new Android application is launched, the Zygote receives a command to create a virtual machine to run the application on. It does this by forking its prewarmed VM process and creating a new child process that shares its memory with the parent, using a technique called Copy-On-Write.</li>
-<li>Within a process, there may be many threads of execution.</li>
 </ul>
-<h3 id="3-_The_UI_thread">3. The UI thread</h3>
+<h3 id="3-_UI_Thread_如何工作">3. UI Thread 如何工作</h3>
+<blockquote>
+<p>By default, any code that we write in our applications will be executed by the main thread.<br>If an app does not respond to user input within 5 seconds, the user will see the Application Not Responding (ANR) dialog and be offered the option to quit the app.<br>Android works hard to synchronize user interface redraws with the hardware refresh rate. This means that it aims to redraw at 60 frames per-second.</p>
+</blockquote>
 <ul>
-<li>By default, any code that we write in our applications will be executed by the main thread.</li>
-<li>If an app does not respond to user input within 5 seconds, the user will see the Application Not Responding (ANR) dialog and be offered the option to quit the app.</li>
-<li>Android works hard to synchronize user interface redraws with the hardware refresh rate. This means that it aims to redraw at 60 frames per-second.</li>
-<li>The common thread communication use case in Android is between the UI thread and worker threads. Hence, the Android platform defines its own message passing mechanism for communication between threads. The UI thread can offload long tasks by sending data messages to be processed on background threads. The message passing mechanism is a nonblocking consumer-producer pattern, where neither the producer thread nor the consumer thread will block during the message handoff.API level 16, Android introduced a new entity, the Choreographer, to oversee timing issues. It will start issuing dropped-frame warnings in the log if you drop more than 30 consecutive frames.</li>
+<li>Android platform defines its own message passing mechanism for communication between threads. The UI thread can offload long tasks by sending data messages to be processed on background threads. </li>
+<li>The message passing mechanism is a nonblocking consumer-producer pattern, where neither the producer thread nor the consumer thread will block during the message handoff. </li>
+<li>After API level 16, Android introduced a new entity, the Choreographer, to oversee timing issues. It will start issuing dropped-frame warnings in the log if you drop more than 30 consecutive frames.</li>
 <li>The producers can insert new messages in the queue at any time and on any position in the queue.</li>
 </ul>
-<blockquote>
-<p>API overview<br>android.os.Handler: Consumer thread message processor, and the interface for a producer thread to insert messages into the queue. A Looper can have many associated handlers, but they all insert messages into the same queue.<br>android.os.Looper: A message dispatcher associated with the one and only consumer thread.<br>android.os.MessageQueue: Unbounded linked list of messages to be processed on the consumer thread. Every Looper—and Thread—has at most one  MessageQueue.<br>android.os.Message: Message to be executed on the consumer thread.</p>
-</blockquote>
-<p><img src="https://msolomoon.github.io/images/the_ui_thread_message_passing_api.png" alt="message-passing机制概览"></p>
-<ul>
-<li>Insert: The producer thread inserts messages in the queue by using the Handler connected to the consumer thread.</li>
-<li>Retrieve: The  Looper, runs in the consumer thread and retrieves messages from the queue in a sequential order.</li>
-<li>Dispatch: The handlers are responsible for processing the messages on the consumer thread. A thread may have multiple Handler instances for processing messages; the Looper ensures that messages are dispatched to the correct Handler.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Example: Basic Message Passing</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LooperActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    LooperThread mLooperThread;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{ <span class="comment">// for inserting messages in the queue</span></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">            Looper.prepare(); </div><div class="line">            mHandler = <span class="keyword">new</span> Handler() { </div><div class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) { </div><div class="line">                    <span class="keyword">if</span>(msg.what == <span class="number">0</span>) { doLongRunningOperation(); }</div><div class="line">                }</div><div class="line">            };</div><div class="line">						<span class="comment">// Start dispatching messages from the message queue to the consumer thread.</span></div><div class="line">						<span class="comment">// This is a blocking call, so the worker thread will not finish.</span></div><div class="line">            Looper.loop(); </div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mLooperThread = <span class="keyword">new</span> LooperThread(); </div><div class="line">        mLooperThread.start();</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span>(View v) {</div><div class="line">        <span class="keyword">if</span> (mLooperThread.mHandler != <span class="keyword">null</span>) {</div><div class="line">            Message msg = mLooperThread.mHandler.obtainMessage(<span class="number">0</span>); </div><div class="line">            mLooperThread.mHandler.sendMessage(msg); <span class="comment">// Insert the message in the queue.</span></div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doLongRunningOperation</span>() {</div><div class="line">        <span class="comment">// Add long running operation here.</span></div><div class="line">    }</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">        mLooperThread.mHandler.getLooper().quit(); <span class="comment">// Terminate the background thread.</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<blockquote>
-<p>MessageQueue.IdleHandler<br>If there is no message to process, a consumer thread has some idle time. Instead of waiting, the thread can be utilized to execute other tasks during these idle slots.<br>When the message queue detects idle time for the consumer thread, it invokes  queueI dle() on all registered  IdleHandler-instances. It is up to the application to implement the callback responsibly. You should usually avoid long-running tasks because they will delay pending messages during the time they run.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Get the message queue of the current thread.</span></div><div class="line">MessageQueue mq = Looper.myQueue();</div><div class="line"><span class="comment">// Create and register an idle listener.</span></div><div class="line">MessageQueue.IdleHandler idleHandler = <span class="keyword">new</span> MessageQueue.IdleHandler();</div><div class="line">mq.addIdleHandler(idleHandler)</div><div class="line"><span class="comment">// Unregister an idle listener.</span></div><div class="line">mq.removeIdleHandler(idleHandler)</div><div class="line"></div><div class="line">interface IdleHandler {</div><div class="line">    <span class="keyword">boolean</span> queueIdle();</div><div class="line">}</div><div class="line"><span class="comment">// The implementation of queueIdle() must return a Boolean value with the following meanings:</span></div><div class="line"><span class="comment">// true: The idle handler is kept active; it will continue to receive callbacks for successive idle time slots.</span></div><div class="line"><span class="comment">// false: The idle handler is inactive; it will not receive anymore callbacks for successive idle time  slots.  </span></div><div class="line"><span class="comment">// This is the same thing as removing the listener through Message Queue.removeIdleHandler().</span></div></pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2014/11/09/android-interview-i/#more">more >></a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
