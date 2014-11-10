@@ -294,6 +294,7 @@
 <li>When a new Android application is launched, the Zygote receives a command to create a virtual machine to run the application on. It does this by forking its prewarmed VM process and creating a new child process that shares its memory with the parent, using a technique called Copy-On-Write.</li>
 </ul>
 <h3 id="3-_UI_Thread_如何工作">3. UI Thread 如何工作</h3>
+<p>The UI thread is managed by the platform internal class android.app.ActivityThread.</p>
 <blockquote>
 <p>By default, any code that we write in our applications will be executed by the main thread.<br>If an app does not respond to user input within 5 seconds, the user will see the Application Not Responding (ANR) dialog and be offered the option to quit the app.<br>Android works hard to synchronize user interface redraws with the hardware refresh rate. This means that it aims to redraw at 60 frames per-second.</p>
 </blockquote>
@@ -359,36 +360,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="预构">预构</h3>
-<blockquote>
-<p><strong>class UtilCalTime</strong></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// class UtilCalTime</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
 
-<h3 id="TDD">TDD</h3>
-<p>``` java<br>package com.msolo.stockeye.calendarstock;</p>
-<p>import static org.junit.Assert.assertEquals;<br>import org.junit.Test;<br>import org.junit.Ignore;<br>import org.junit.runner.RunWith;<br>import org.junit.runners.JUnit4;</p>
-<p>/**</p>
-<ul>
-<li>Tests for UtilCalTime<br>*</li>
-<li><p>@author yuezhi.msolo@outlook.com (kevin mSolo)<br>*/<br>public class UtilCalTimeTest {</p>
-<pre><code> <span class="keyword">private</span> UtilCalTime utilCalTime = UtilCalTime.getInstance();
-</code></pre><p> @Test<br> public void testAssertClassSingleton() {</p>
-<pre><code><span class="constant">     UtilCalTime utilCalTimeAnother</span> = UtilCalTime.getInstance();
-     assertSame(<span class="string">"should be same"</span>, utilCalTime, utilCalTimeAnother);
-</code></pre><p> }</p>
-<pre><code> <span class="annotation">@Test</span>
- <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGetIntCal</span>() {
-     <span class="keyword">int</span> intCal = utilCalTime.getIntCal(<span class="keyword">new</span> GregorianCalendar());    
-     <span class="keyword">int</span> intCalTest = <span class="number">20141108</span>;
-     testAssertEquals(<span class="string">"should be equal"</span>, intCal, intCalTest);
- }
-</code></pre></li>
-</ul>
-<p>}</p>
-<h3 id="Coding">Coding</h3>
-<h3 id="TDD-1">TDD</h3>
-<h3 id="Document">Document</h3>
 
+        
+          <p class="article-more-link">
+            <a href="/2014/11/08/project-stockeye-package-calendarstock/#more">more >></a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

@@ -294,6 +294,7 @@
 <li>When a new Android application is launched, the Zygote receives a command to create a virtual machine to run the application on. It does this by forking its prewarmed VM process and creating a new child process that shares its memory with the parent, using a technique called Copy-On-Write.</li>
 </ul>
 <h3 id="3-_UI_Thread_如何工作">3. UI Thread 如何工作</h3>
+<p>The UI thread is managed by the platform internal class android.app.ActivityThread.</p>
 <blockquote>
 <p>By default, any code that we write in our applications will be executed by the main thread.<br>If an app does not respond to user input within 5 seconds, the user will see the Application Not Responding (ANR) dialog and be offered the option to quit the app.<br>Android works hard to synchronize user interface redraws with the hardware refresh rate. This means that it aims to redraw at 60 frames per-second.</p>
 </blockquote>

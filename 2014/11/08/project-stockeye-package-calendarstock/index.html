@@ -6,26 +6,17 @@
   <title>Stockeye项目 - CalendarStock包（初步设计） | 月光独奏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="预构
-
-class UtilCalTime
-
-12345678910111213141516public int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public Stri">
+1234567891011121314151617// class UtilCalTimepublic int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public St">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stockeye项目 - CalendarStock包（初步设计）">
 <meta property="og:url" content="http://yoursite.com/2014/11/08/project-stockeye-package-calendarstock/">
 <meta property="og:site_name" content="月光独奏">
 <meta property="og:description" content="预构
-
-class UtilCalTime
-
-12345678910111213141516public int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public Stri">
+1234567891011121314151617// class UtilCalTimepublic int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public St">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stockeye项目 - CalendarStock包（初步设计）">
 <meta name="twitter:description" content="预构
-
-class UtilCalTime
-
-12345678910111213141516public int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public Stri">
+1234567891011121314151617// class UtilCalTimepublic int getIntCal(); public String getStrCal(); public String getCalFormat(); public String getTimeHHMMSS(); public String getTimeFormat(); public St">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -213,34 +204,15 @@ class UtilCalTime
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="预构">预构</h3>
-<blockquote>
-<p><strong>class UtilCalTime</strong></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// class UtilCalTime</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h3 id="TDD">TDD</h3>
-<p>``` java<br>package com.msolo.stockeye.calendarstock;</p>
-<p>import static org.junit.Assert.assertEquals;<br>import org.junit.Test;<br>import org.junit.Ignore;<br>import org.junit.runner.RunWith;<br>import org.junit.runners.JUnit4;</p>
-<p>/**</p>
-<ul>
-<li>Tests for UtilCalTime<br>*</li>
-<li><p>@author yuezhi.msolo@outlook.com (kevin mSolo)<br>*/<br>public class UtilCalTimeTest {</p>
-<pre><code> <span class="keyword">private</span> UtilCalTime utilCalTime = UtilCalTime.getInstance();
-</code></pre><p> @Test<br> public void testAssertClassSingleton() {</p>
-<pre><code><span class="constant">     UtilCalTime utilCalTimeAnother</span> = UtilCalTime.getInstance();
-     assertSame(<span class="string">"should be same"</span>, utilCalTime, utilCalTimeAnother);
-</code></pre><p> }</p>
-<pre><code> <span class="annotation">@Test</span>
- <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGetIntCal</span>() {
-     <span class="keyword">int</span> intCal = utilCalTime.getIntCal(<span class="keyword">new</span> GregorianCalendar());    
-     <span class="keyword">int</span> intCalTest = <span class="number">20141108</span>;
-     testAssertEquals(<span class="string">"should be equal"</span>, intCal, intCalTest);
- }
-</code></pre></li>
-</ul>
-<p>}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.msolo.stockeye.calendarstock;</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"><span class="keyword">import</span> org.junit.Ignore;</div><div class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</div><div class="line"><span class="keyword">import</span> org.junit.runners.JUnit4;</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * Tests for UtilCalTime</div><div class="line"> *</div><div class="line"> *<span class="javadoctag"> @author</span> yuezhi.msolo@outlook.com (kevin mSolo)</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UtilCalTimeTest</span> </span>{</div><div class="line"></div><div class="line">		<span class="keyword">private</span> UtilCalTime utilCalTime = UtilCalTime.getInstance();</div><div class="line"></div><div class="line">    <span class="annotation">@Test</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAssertClassSingleton</span>() {</div><div class="line">			UtilCalTime utilCalTimeAnother = UtilCalTime.getInstance();</div><div class="line">			assertSame(<span class="string">"should be same"</span>, utilCalTime, utilCalTimeAnother);</div><div class="line">    }</div><div class="line"></div><div class="line">		<span class="annotation">@Test</span></div><div class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGetIntCal</span>() {</div><div class="line">			<span class="keyword">int</span> intCal = utilCalTime.getIntCal(<span class="keyword">new</span> GregorianCalendar());	</div><div class="line">			<span class="keyword">int</span> intCalTest = <span class="number">20141108</span>;</div><div class="line">			testAssertEquals(<span class="string">"should be equal"</span>, intCal, intCalTest);</div><div class="line">		}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
 <h3 id="Coding">Coding</h3>
-<h3 id="TDD-1">TDD</h3>
+<h3 id="CI">CI</h3>
 <h3 id="Document">Document</h3>
 
       
