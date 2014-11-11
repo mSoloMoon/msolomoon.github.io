@@ -169,6 +169,70 @@
 </nav>
       
   
+    <article id="post-go-knowledge" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/13/go-knowledge/" class="article-date">
+  	<time datetime="2014-07-13T03:07:34.000Z" itemprop="datePublished">7月 13 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Cpp-Go/">C-Cpp-Go</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go/">Go</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/13/go-knowledge/">Go语言精简总结(Part One) - The way to Go</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装">安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ apt-get install bison ed gawk libc6-dev mercurial python-setuptools python-dev build-essential</div><div class="line">$ hg clone -r release https://go.googlecode.com/hg/ go</div><div class="line">$ <span class="keyword">export</span> GOROOT=<span class="variable">$HOME</span>/go</div><div class="line">$ <span class="keyword">export</span> GOARCH=amd64</div><div class="line">$ <span class="keyword">export</span> GOOS=linux</div><div class="line">$ <span class="keyword">export</span> GOTOOL=<span class="variable">$HOME</span>/go/pkg/tool/linux_amd64/</div><div class="line">$ <span class="keyword">export</span> PATH=.:<span class="variable">$PATH</span>:<span class="variable">$GOBIN</span>:<span class="variable">$GOTOOL</span></div><div class="line">$ <span class="built_in">cd</span> go/src</div><div class="line">$ ./all.bash</div></pre></td></tr></table></figure>
+
+<h3 id="更新go版本">更新go版本</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> <span class="variable">$GOROOT</span> && hg identify</div><div class="line">$ hg pull && hg update release</div><div class="line">$ ./all.bash</div></pre></td></tr></table></figure>
+
+<h2 id="Workspace_示例">Workspace 示例</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">bin/</div><div class="line">    todo                               <span class="comment"># command executable</span></div><div class="line">pkg/</div><div class="line">    linux_amd64/</div><div class="line">        code.google.com/p/goauth2/</div><div class="line">            oauth.a                    <span class="comment"># package object</span></div><div class="line">        github.com/nf/todo/            task.a                   </div><div class="line">src/</div><div class="line">    code.google.com/p/goauth2/</div><div class="line">        .hg/                           <span class="comment"># mercurial repository metadata</span></div><div class="line">        oauth/</div><div class="line">            oauth.go                  <span class="comment"># package source</span></div><div class="line">            oauth_test.go             <span class="comment"># test source</span></div><div class="line">    github.com/nf/</div><div class="line">        todo/</div><div class="line">            .git/</div><div class="line">            task/</div><div class="line">                task.go                <span class="comment"># package source</span></div><div class="line">            todo.go</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2014/07/13/go-knowledge/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-reading-kk-out-of-control" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
