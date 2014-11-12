@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 12.50px;">Android</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 12.50px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 12.50px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 17.50px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 16.25px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -169,6 +169,76 @@
 </nav>
       
   
+    <article id="post-android-interview-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/12/android-interview-ii/" class="article-date">
+  	<time datetime="2014-11-12T03:04:46.000Z" itemprop="datePublished">11月 12 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/12/android-interview-ii/">Android 面试题记录（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_管理基本线程的生命期">1. 管理基本线程的生命期</h3>
+<p><strong>生命期</strong> ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated</p>
+<p>Uncaught Exceptions</p>
+<ul>
+<li>Thread global handler：static void setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Thread local handler：void setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Unhandled Exceptions on the UI Thread，参见<a href="http://msolomoon.github.io/2014/11/09/android-interview-i/" target="_blank" rel="external">面试题记录（一）</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unexpected error occurred"</span>);</div><div class="line">    }</div><div class="line">});</div><div class="line">t.setUncaughtExceptionHandler(<span class="keyword">new</span> Thread.UncaughtExceptionHandler() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span>(Thread thread, Throwable throwable) {</div><div class="line">        <span class="comment">// A basic logging of the message. Could be replaced by log to file or a network post.</span></div><div class="line">        Log.d(TAG, throwable.toString());</div><div class="line">    }</div><div class="line">});</div><div class="line">t.start();</div></pre></td></tr></table></figure>
+
+<p><strong>在 Activity 中保持线程</strong></p>
+<ul>
+<li>public Object onRetainNonConfigurationInstance()：Called by the platform before a configuration change occurs, the implementation should return any object that you want to be retained across a configuration change (e.g., a thread) and passed to the new  Activity object.</li>
+<li>public Object getLastNonConfigurationInstance()：Called by the platform before a configuration change occurs, it can be called in onCreate or onStart and returns null if the Activity is started for another reason than a configuration change.  </li>
+</ul>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/12/android-interview-ii/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-android-interview-i" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -194,7 +264,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/09/android-interview-i/">Android 面试题纪录</a>
+      <a class="article-title" href="/2014/11/09/android-interview-i/">Android 面试题纪录（一）</a>
     </h1>
   
 
@@ -202,7 +272,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-_JVM和DVM的不同">1. JVM和DVM的不同</h3>
+        <h3 id="目录">目录</h3>
+<ol>
+<li>JVM和DVM的不同</li>
+<li>Android如何启动一个应用</li>
+<li>UI Thread 如何工作</li>
+<li>UI Thread 消息机制 API 概览</li>
+<li>阐述 MessageQueue.IdleHandler</li>
+<li>Android 平台如何调度线程</li>
+<li>Android下线程有哪些通信方式</li>
+<li>进程间如何通信</li>
+<li>Android 如何管理内存 </li>
+</ol>
+<p><br></p>
+<h3 id="1-_JVM和DVM的不同">1. JVM和DVM的不同</h3>
 <ul>
 <li>JVM is a stack-based machine; while DVM is register-based（执行相同任务比JVM使用更少的指令）;</li>
 <li>A stack-based virtual machine must transfer data from registers to the operand stack before manipulating them. In contrast, a register-based VM operates by directly using virtual registers. This increases the relative size of instructions because they must specify which registers to use, but reduces the number of instructions that must be executed to achieve the same result.</li>
@@ -210,17 +293,8 @@
 <h3 id="2-_Android如何启动一个应用">2. Android如何启动一个应用</h3>
 <p><img src="https://msolomoon.github.io/images/Zygote_VM_Startup.png" alt="Zygote启动应用流程"></p>
 <ul>
-<li>Android启动时将率先运行一个独特的进程<strong>Zygote</strong>。 而Zygote将启动一虚拟机，该虚拟机将预先加载Android核心库并初始化各种共享资源体，最后它将使用套接字进行监听。 </li>
+<li>Android启动时将率先运行一个独特的进程<strong>Zygote</strong>。而Zygote将启动一虚拟机，该虚拟机将预先加载Android核心库并初始化各种共享资源体，最后它将使用套接字进行监听。 </li>
 <li>当用户启动一个Android应用时，Zygote将创建一个虚拟机以便其运行。它通过写时复制（Copy-On-Write）的技术拷贝Zygote虚拟机并以子进程的身份和其父进程共享内存实现的。</li>
-</ul>
-<h3 id="3-_UI_Thread_如何工作">3. UI Thread 如何工作</h3>
-<p>UI Thread 由平台内部的类 android.app.ActivityThread 管理。</p>
-<ul>
-<li>默认情况下，为Android应用开发的代码都会通过主线程（UI Thread）运行；</li>
-<li>如果应用不能在5秒内响应用户，那么用户将会看到一个显示ANR对话框并提供退出选项以允许用户终止该应用;</li>
-<li>Android设计致力于同步人眼与硬件（屏幕）刷新率，这意味着Android每秒绘制屏幕60帧数；</li>
-<li>Android平台线程通信拥有自己的处理机制（Message Passing Mechanism）。该机制以非阻塞生产者消费者模式实现，其生产者和消费者在消息传送时都不会被阻塞；另外生产者可往消息队列在任意时间任意位置中插入新的消息；</li>
-<li>API 16之后，Android引进了一个新的Choreographer对象以监控帧数时序，并在连续丢掉30帧后在日志中生成丢帧的警告；</li>
 </ul>
 
         

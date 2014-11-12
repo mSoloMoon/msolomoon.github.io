@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android 面试题记录（二） | 月光独奏</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 管理基本线程的生命期
+生命期 ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated
+Uncaught Exceptions
+
+Thread global handler：static void setDefaultUncaughtExceptionHandler(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 面试题记录（二）">
+<meta property="og:url" content="http://yoursite.com/2014/11/12/android-interview-ii/">
+<meta property="og:site_name" content="月光独奏">
+<meta property="og:description" content="1. 管理基本线程的生命期
+生命期 ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated
+Uncaught Exceptions
+
+Thread global handler：static void setDefaultUncaughtExceptionHandler(">
+<meta property="og:image" content="https://msolomoon.github.io/images/lifecycle_threadpool.png">
+<meta property="og:image" content="https://msolomoon.github.io/images/AsyncTask_overview.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 面试题记录（二）">
+<meta name="twitter:description" content="1. 管理基本线程的生命期
+生命期 ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated
+Uncaught Exceptions
+
+Thread global handler：static void setDefaultUncaughtExceptionHandler(">
+
+  
+    <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">软件设计及开发者</p>
+		
+
+		
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		
+
+		<div class="switch-area">
+			<section class="first-part">
+				<nav class="header-menu">
+					<ul>
+					
+						<li><a href="/">主页</a></li>
+			        
+						<li><a href="/archives">所有文章</a></li>
+			        
+						<li><a href="/categories/随笔">随笔</a></li>
+			        
+						<li><a href="/categories/摘录">摘录</a></li>
+			        
+						<li><a href="/categories/书籍">书籍</a></li>
+			        
+						<li><a href="/categories/Web">Web</a></li>
+			        
+						<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+			        
+						<li><a href="/categories/java-android">Java/Android</a></li>
+			        
+						<li><a href="/categories/project">Project</a></li>
+			        
+						<li><a href="/categories/程序员日志">程序员日志</a></li>
+			        
+						<li><a href="/about">关于</a></li>
+			        
+					</ul>
+				</nav>
+				<nav class="header-nav">
+					<div class="social">
+						
+							<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+				        
+							<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+				        
+							<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+				        
+							<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+				        
+					</div>
+				</nav>
+			</section>
+			
+			
+			<section class="second-part">
+				<div class="widget tagcloud">
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 16.25px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+				</div>
+			</section>
+			
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">软件设计及开发者</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+					<li><a href="/categories/摘录">摘录</a></li>
+		        
+					<li><a href="/categories/书籍">书籍</a></li>
+		        
+					<li><a href="/categories/Web">Web</a></li>
+		        
+					<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+		        
+					<li><a href="/categories/java-android">Java/Android</a></li>
+		        
+					<li><a href="/categories/project">Project</a></li>
+		        
+					<li><a href="/categories/程序员日志">程序员日志</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+			        
+						<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+			        
+						<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-android-interview-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/12/android-interview-ii/" class="article-date">
+  	<time datetime="2014-11-12T03:04:46.000Z" itemprop="datePublished">11月 12 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 面试题记录（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_管理基本线程的生命期">1. 管理基本线程的生命期</h3>
+<p><strong>生命期</strong> ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated</p>
+<p>Uncaught Exceptions</p>
+<ul>
+<li>Thread global handler：static void setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Thread local handler：void setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Unhandled Exceptions on the UI Thread，参见<a href="http://msolomoon.github.io/2014/11/09/android-interview-i/" target="_blank" rel="external">面试题记录（一）</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unexpected error occurred"</span>);</div><div class="line">    }</div><div class="line">});</div><div class="line">t.setUncaughtExceptionHandler(<span class="keyword">new</span> Thread.UncaughtExceptionHandler() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span>(Thread thread, Throwable throwable) {</div><div class="line">        <span class="comment">// A basic logging of the message. Could be replaced by log to file or a network post.</span></div><div class="line">        Log.d(TAG, throwable.toString());</div><div class="line">    }</div><div class="line">});</div><div class="line">t.start();</div></pre></td></tr></table></figure>
+
+<p><strong>在 Activity 中保持线程</strong></p>
+<ul>
+<li>public Object onRetainNonConfigurationInstance()：Called by the platform before a configuration change occurs, the implementation should return any object that you want to be retained across a configuration change (e.g., a thread) and passed to the new  Activity object.</li>
+<li>public Object getLastNonConfigurationInstance()：Called by the platform before a configuration change occurs, it can be called in onCreate or onStart and returns null if the Activity is started for another reason than a configuration change.  </li>
+</ul>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadRetainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{ </div><div class="line">        ...</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyThread t;</div><div class="line">    <span class="keyword">private</span> TextView textView;</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_retain_thread);</div><div class="line">        textView = (TextView) findViewById(R.id.text_retain);</div><div class="line">        Object retainedObject = getLastNonConfigurationInstance(); </div><div class="line">        <span class="keyword">if</span> (retainedObject != <span class="keyword">null</span>) {</div><div class="line">            t = (MyThread) retainedObject;</div><div class="line">            t.attach(<span class="keyword">this</span>);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> Object <span class="title">onRetainNonConfigurationInstance</span>() { </div><div class="line">        <span class="keyword">if</span> (t != <span class="keyword">null</span> && t.isAlive()) {</div><div class="line">            <span class="keyword">return</span> t;</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickStartThread</span>(View v) { </div><div class="line">        t = <span class="keyword">new</span> MyThread(<span class="keyword">this</span>);</div><div class="line">        t.start();</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setText</span>(<span class="keyword">final</span> String text) {</div><div class="line">        runOnUiThread(<span class="keyword">new</span> Runnable() {</div><div class="line">            <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">                textView.setText(text);</div><div class="line">            }</div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>在 Fragment 中保持线程</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadRetainWithFragmentActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    <span class="keyword">private</span> ThreadFragment mThreadFragment;</div><div class="line">    <span class="keyword">private</span> TextView mTextView;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        setContentView(R.layout.activity_retain_thread);</div><div class="line">        mTextView = (TextView) findViewById(R.id.text_retain);</div><div class="line">        FragmentManager manager = getFragmentManager(); </div><div class="line">        mThreadFragment = (ThreadFragment) manager.findFragmentByTag(<span class="string">"threadfragment"</span>);</div><div class="line">        <span class="keyword">if</span> (mThreadFragment == <span class="keyword">null</span>) {</div><div class="line">            FragmentTransaction transaction = manager.beginTransaction();</div><div class="line">            mThreadFragment = <span class="keyword">new</span> ThreadFragment();</div><div class="line">            transaction.add(mThreadFragment, <span class="string">"threadfragment"</span>).commit();</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartThread</span>(View v) { <span class="comment">// Method called to start a worker thread</span></div><div class="line">        mThreadFragment.execute(); </div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setText</span>(<span class="keyword">final</span> String text) { </div><div class="line">        runOnUiThread(<span class="keyword">new</span> Runnable() {</div><div class="line">            <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">                mTextView.setText(text);</div><div class="line">            }</div><div class="line">        });</div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>{</div><div class="line">    <span class="keyword">private</span> ThreadRetainWithFragmentActivity mActivity; </div><div class="line">    <span class="keyword">private</span> MyThread t;</div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">            <span class="keyword">final</span> String text = getTextFromNetwork();</div><div class="line">            mActivity.setText(text);</div><div class="line">        }</div><div class="line">        <span class="keyword">private</span> String <span class="title">getTextFromNetwork</span>() {</div><div class="line">            SystemClock.sleep(<span class="number">5000</span>); <span class="comment">// Simulate network operation</span></div><div class="line">            <span class="keyword">return</span> <span class="string">"Text from network"</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setRetainInstance(<span class="keyword">true</span>); <span class="comment">// Retain the platform handle on configuration changes.</span></div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span>(Activity activity) {</div><div class="line">        <span class="keyword">super</span>.onAttach(activity);</div><div class="line">        mActivity = (ThreadRetainWithFragmentActivity) activity;</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDetach</span>() {</div><div class="line">        <span class="keyword">super</span>.onDetach();</div><div class="line">        mActivity = <span class="keyword">null</span>;</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span>() { </div><div class="line">        t = <span class="keyword">new</span> MyThread();</div><div class="line">        t.start();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="2-_使用_HandlerThread（A_High-Level_Queueing_Mechanism）">2. 使用 HandlerThread（A High-Level Queueing Mechanism）</h3>
+<p><strong>基础</strong></p>
+<ul>
+<li>HandlerThread 该线程是一个包装了线程，Looper 和消息队列（MessageQueue）。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HandlerThread handlerThread = <span class="keyword">new</span> HandlerThread(<span class="string">"HandlerThread"</span>);</div><div class="line">handlerThread.start();</div><div class="line">mHandler = <span class="keyword">new</span> Handler(handlerThread.getLooper()) {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line">        <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">        <span class="comment">// Process messages here</span></div><div class="line">    }</div><div class="line">};</div></pre></td></tr></table></figure>
+
+<ul>
+<li>限制 HandlerThread 的可见性</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandlerThread</span> <span class="keyword">extends</span> <span class="title">HandlerThread</span> </span>{</div><div class="line">    <span class="keyword">private</span> Handler mHandler;</div><div class="line">    <span class="keyword">public</span> <span class="title">MyHandlerThread</span>() {</div><div class="line">        <span class="keyword">super</span>(<span class="string">"MyHandlerThread"</span>, Process.THREAD_PRIORITY_BACKGROUND);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLooperPrepared</span>() {</div><div class="line">        <span class="keyword">super</span>.onLooperPrepared();</div><div class="line">        mHandler = <span class="keyword">new</span> Handler(getLooper()) {</div><div class="line">            <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line">                <span class="keyword">switch</span>(msg.what) {</div><div class="line">                    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// Handle message</span></div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// Handle message</span></div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                }</div><div class="line">            }</div><div class="line">        };</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publishedMethod1</span>() {</div><div class="line">        mHandler.sendEmptyMessage(<span class="number">1</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publishedMethod2</span>() {</div><div class="line">        mHandler.sendEmptyMessage(<span class="number">2</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCount;</div><div class="line">    <span class="keyword">private</span> SharedPreferenceThread mThread;</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_shared_preferences);</div><div class="line">        mTextValue = (TextView) findViewById(R.id.text_value);</div><div class="line">        mThread = <span class="keyword">new</span> SharedPreferenceThread();</div><div class="line">        mThread.start(); </div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onButtonClickWrite</span>(View v) {</div><div class="line">        mThread.write(mCount++);</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onButtonClickRead</span>(View v) {</div><div class="line">        mThread.read();</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        mThread.quit(); <span class="comment">// Ensure that the background thread is terminated with the Activity.</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>串联任务</strong></p>
+<ul>
+<li>串联任务模式：由 Handler 定义的任务通过在 handleMessage() 中进行解耦和串联，该模式执行的关键在于 Message.what 参数，任何任务都可以独立地被访问；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainedNetworkActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DIALOG_LOADING = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SHOW_LOADING = <span class="number">1</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DISMISS_LOADING = <span class="number">2</span>;</div><div class="line">    Handler dialogHandler = <span class="keyword">new</span> Handler() { </div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line">            <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">            <span class="keyword">switch</span> (msg.what) {</div><div class="line">                <span class="keyword">case</span> SHOW_LOADING:</div><div class="line">                    showDialog(DIALOG_LOADING);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> DISMISS_LOADING:</div><div class="line">                    dismissDialog(DIALOG_LOADING);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    };</div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">NetworkHandlerThread</span> <span class="keyword">extends</span> <span class="title">HandlerThread</span> </span>{</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STATE_A = <span class="number">1</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STATE_B = <span class="number">2</span>;</div><div class="line">        <span class="keyword">private</span> Handler mHandler;</div><div class="line">        <span class="keyword">public</span> <span class="title">NetworkHandlerThread</span>() {</div><div class="line">            <span class="keyword">super</span>(<span class="string">"NetworkHandlerThread"</span>, Process.THREAD_PRIORITY_BACKGROUND);</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLooperPrepared</span>() {</div><div class="line">            <span class="keyword">super</span>.onLooperPrepared();</div><div class="line">            mHandler = <span class="keyword">new</span> Handler(getLooper()) {</div><div class="line">                <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {</div><div class="line">                    <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">                    <span class="keyword">switch</span> (msg.what) {</div><div class="line">                        <span class="keyword">case</span> STATE_A: </div><div class="line">                            dialogHandler.sendEmptyMessage(SHOW_LOADING);</div><div class="line">                            String result = networkOperation1();</div><div class="line">                            <span class="keyword">if</span> (result != <span class="keyword">null</span>) {</div><div class="line">                                sendMessage(obtainMessage(STATE_B, result));</div><div class="line">                            } <span class="keyword">else</span> {</div><div class="line">                                dialogHandler.sendEmptyMessage(DISMISS_LOADING);</div><div class="line">                            }</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">case</span> STATE_B: </div><div class="line">                            networkOperation2((String) msg.obj);</div><div class="line">                            dialogHandler.sendEmptyMessage(DISMISS_LOADING);</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                    }</div><div class="line">                }</div><div class="line">            };</div><div class="line">            fetchDataFromNetwork(); </div><div class="line">        }</div><div class="line">        <span class="keyword">private</span> String <span class="title">networkOperation1</span>() {</div><div class="line">            SystemClock.sleep(<span class="number">2000</span>); </div><div class="line">            <span class="keyword">return</span> <span class="string">"A string"</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">networkOperation2</span>(String data) {</div><div class="line">            SystemClock.sleep(<span class="number">2000</span>); <span class="comment">// Dummy</span></div><div class="line">        }</div><div class="line">        <span class="comment">// Publically exposed network operation</span></div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fetchDataFromNetwork</span>() {</div><div class="line">            mHandler.sendEmptyMessage(STATE_A);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> NetworkHandlerThread mThread;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mThread = <span class="keyword">new</span> NetworkHandlerThread();</div><div class="line">        mThread.start();</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> Dialog <span class="title">onCreateDialog</span>(<span class="keyword">int</span> id) {</div><div class="line">        Dialog dialog = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">switch</span> (id) {</div><div class="line">            <span class="keyword">case</span> DIALOG_LOADING:</div><div class="line">            		AlertDialog.Builder builder = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</div><div class="line">            		builder.setMessage(<span class="string">"Loading..."</span>);</div><div class="line">            		dialog = builder.create();</div><div class="line">            		<span class="keyword">break</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> dialog;</div><div class="line">    }</div><div class="line">    <span class="comment">// Ensure that the background thread is terminated with the Activity.</span></div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        mThread.quit();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>有选择地插入任务</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">handler.hasMessages(<span class="keyword">int</span> what)</div><div class="line">handler.hasMessages(<span class="keyword">int</span> what, Object tag)</div><div class="line"><span class="keyword">if</span> (handler.hasMessages(MESSAGE_WHAT) == <span class="keyword">false</span>) {</div><div class="line">    handler.sendEmptyMessage(MESSAGE_WHAT);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="3-_如何使用_Java_Executor_框架">3. 如何使用 Java Executor 框架</h3>
+<p><strong>Executor</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executor</span> </span>{</div><div class="line">    <span class="keyword">void</span> execute(Runnable command);</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>{</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span>(Runnable runnable) {</div><div class="line">        <span class="keyword">new</span> Thread(runnable).start();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>线程池</strong></p>
+<ul>
+<li>固定数量：Executors.newFixedThreadPool(n)，使用时，可重配置数量，((ThreadPoolExecutor)executor).setCorePoolSize(4);</li>
+<li>动态大小：Executors.newCachedThreadPool()</li>
+<li>单线程：Executors.newSingleThreadExecutor()</li>
+</ul>
+<h3 id="4-_如何自定义线程池">4. 如何自定义线程池</h3>
+<p><strong>ThreadPoolExecutor 配置</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ThreadPoolExecutor executor = <span class="keyword">new</span> ThreadPoolExecutor(</div><div class="line">    <span class="keyword">int</span> corePoolSize,			<span class="comment">// 该值设定的允许的线程数量，线程数量 &lt; 该值</span></div><div class="line">    <span class="keyword">int</span> maximumPoolSize,	<span class="comment">// 允许同时并发的数量</span></div><div class="line">    <span class="keyword">long</span> keepAliveTime,		<span class="comment">// 允许线程存活以等待下一任务的时间</span></div><div class="line">    TimeUnit unit,				<span class="comment">// 配置存活时间的单位</span></div><div class="line">    BlockingQueue&lt;Runnable&gt; workQueue);	<span class="comment">// 任务队列</span></div></pre></td></tr></table></figure>
+
+<p><strong>设计</strong></p>
+<ul>
+<li>线程数量 &lt;- CPU 核心数量；另外需要记住的是：线程数量是依据线程创建和消亡而动态变化的！</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> N = Runtime.getRuntime().availableProcessors();	<span class="comment">// 获取 CPU 核心数量</span></div><div class="line"><span class="comment">// Brian Goetz 建议：N+1个线程的数量性能最好；</span></div><div class="line"><span class="comment">// Kirk Pepperdine 则推荐： 2*N 个线程性能也不错；</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>Bounded or unbounded task queue：LinkedBlockingQueue（无数量限制）, PriorityBlockingQueue（有数量限制）, and ArrayBlockingQueue.</li>
+<li>线程配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class LowPriorityThreadFactory implements ThreadFactory {</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> Thread <span class="title">newThread</span>(Runnable r) {</div><div class="line">        Thread t = <span class="keyword">new</span> Thread(r);</div><div class="line">        t.setName(<span class="string">"LowPrio "</span> + count++);</div><div class="line">        t.setPriority(<span class="number">4</span>);</div><div class="line">        t.setUncaughtExceptionHandler(<span class="keyword">new</span> Thread.UncaughtExceptionHandler() {</div><div class="line">            <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span>(Thread t, Throwable e) {</div><div class="line">                Log.d(TAG, <span class="string">"Thread = "</span> + t.getName() + <span class="string">", error = "</span> + e.getMessage());</div><div class="line">            }</div><div class="line">        });</div><div class="line">        <span class="keyword">return</span> t;</div><div class="line">    }</div><div class="line">}</div><div class="line">Executors.newFixedThreadPool(<span class="number">10</span>, <span class="keyword">new</span> LowPriorityThreadFactory());</div></pre></td></tr></table></figure>
+
+<ul>
+<li>扩展 ThreadPoolExecutor</li>
+<li>void beforeExecute(Thread t, Runnable r)：在执行线程之前执行；</li>
+<li>void afterExecute(Runnable r, Throwable t)：在线程执行结束后（不管有没有异常）执行；</li>
+<li>void terminated()：在没有线程执行任务的前提下，线程池关闭后执行；</li>
+<li>生命期</li>
+<li>Shutdown: 在调用 ExecutorService.shutdown() 后，线程池仍会继续执行未完的线程任务，但新的任务添加请求则会被拒接；</li>
+<li>Stop: 在调用 ExecutorService.shutdownNow() 后，正在执行的任务线程会被中止，未被执行的任务则被移除；</li>
+<li>Terminated: 在调用 ThreadPoolExecutor.terminated() 后的状态，所有数据结构将被释放；</li>
+</ul>
+<p><img src="https://msolomoon.github.io/images/lifecycle_threadpool.png" alt="线程池生命期"></p>
+<p><strong>使用例子和陷阱</strong></p>
+<ul>
+<li>一般情况下，线程池创建的线程即使终止后也不会被系统所回收，若要回收，可调用语句：executor.allowCoreThreadTimeOut(true);</li>
+<li>处理预先加载的任务：一般情况下，线程池创建后等待任务，但可以使用如示方法在线程池创建后不必等待任务 prestartAllCoreThreads() or prestartCoreThread();</li>
+<li>陷阱：创建零线程的线程池，当任务队列满了才会触发一个线程执行任务，如下所示，当第11个任务插入队列时才会触发执行一个线程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> N = Runtime.getRuntime().availableProcessors();</div><div class="line">ThreadPoolExecutor executor = <span class="keyword">new</span> ThreadPoolExecutor(</div><div class="line">                <span class="number">0</span>,</div><div class="line">                N*<span class="number">2</span>,</div><div class="line">                <span class="number">60</span>L, TimeUnit.SECONDS,</div><div class="line">                <span class="keyword">new</span> ArrayBlockingQueue&lt;Runnable&gt;(<span class="number">10</span>));</div></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-_如何使用AsyncTask">5. 如何使用AsyncTask</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FullTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Params</span>, <span class="title">Progress</span>, <span class="title">Result</span>&gt; </span>{</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPreExecute</span>() { ... }</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> Result <span class="title">doInBackground</span>(Params... params) { ... }</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span>(Progress... progress) { ... }</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span>(Result result) { ... }</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCancelled</span>(Result result) { ... }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://msolomoon.github.io/images/AsyncTask_overview.png" alt="AsyncTask概览"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 示例：下载图片</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDownloadActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] DOWNLOAD_URLS = { </div><div class="line">        <span class="string">"http://developer.android.com/design/media/devices_displays_density@2x.png"</span>,</div><div class="line">        <span class="string">"http://developer.android.com/design/media/iconography_launcher_example2.png"</span>,</div><div class="line">        <span class="string">"http://developer.android.com/design/media/iconography_actionbar_focal.png"</span>,</div><div class="line">        <span class="string">"http://developer.android.com/design/media/iconography_actionbar_colors.png"</span></div><div class="line">    };</div><div class="line">    DownloadTask mFileDownloaderTask;</div><div class="line">    ProgressBar mProgressBar;</div><div class="line">    LinearLayout mLayoutImages;</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_file_download);</div><div class="line">        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);</div><div class="line">        mProgressBar.setMax(DOWNLOAD_URLS.length);</div><div class="line">        mLayoutImages = (LinearLayout) findViewById(R.id.layout_images);</div><div class="line">        mFileDownloaderTask = <span class="keyword">new</span> DownloadTask(<span class="keyword">this</span>);</div><div class="line">        mFileDownloaderTask.execute(DOWNLOAD_URLS); </div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() { </div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        mFileDownloaderTask.setActivity(<span class="keyword">null</span>);</div><div class="line">        mFileDownloaderTask.cancel(<span class="keyword">true</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DownloadTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">Bitmap</span>, <span class="title">Void</span>&gt; </span>{ </div><div class="line">        <span class="keyword">private</span> FileDownloadActivity mActivity; </div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> mCount = <span class="number">0</span>;</div><div class="line">        <span class="keyword">public</span> <span class="title">DownloadTask</span>(FileDownloadActivity activity) {</div><div class="line">             mActivity = activity;</div><div class="line">        }</div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setActivity</span>(FileDownloadActivity activity) { </div><div class="line">            mActivity = activity;</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPreExecute</span>() {</div><div class="line">            <span class="keyword">super</span>.onPreExecute();</div><div class="line">            mActivity.mProgressBar.setVisibility(View.VISIBLE); </div><div class="line">            mActivity.mProgressBar.setProgress(<span class="number">0</span>);</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> Void <span class="title">doInBackground</span>(String... urls) {</div><div class="line">            <span class="keyword">for</span> (String url : urls) {</div><div class="line">                <span class="keyword">if</span> (!isCancelled()) { </div><div class="line">                    Bitmap bitmap = downloadFile(url); </div><div class="line">                    publishProgress(bitmap); </div><div class="line">                }</div><div class="line">            }</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span>(Bitmap... bitmaps) { </div><div class="line">            <span class="keyword">super</span>.onProgressUpdate(bitmaps);</div><div class="line">            <span class="keyword">if</span> (mActivity != <span class="keyword">null</span>)  {</div><div class="line">                mActivity.mProgressBar.setProgress(++mCount);</div><div class="line">                ImageView iv = <span class="keyword">new</span> ImageView(mActivity);</div><div class="line">                iv.setImageBitmap(bitmaps[<span class="number">0</span>]);</div><div class="line">                mActivity.mLayoutImages.addView(iv);</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span>(Void aVoid) {</div><div class="line">            <span class="keyword">super</span>.onPostExecute(aVoid);</div><div class="line">            <span class="keyword">if</span> (mActivity != <span class="keyword">null</span>) {</div><div class="line">                mActivity.mProgressBar.setVisibility(View.GONE); </div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCancelled</span>() {</div><div class="line">            <span class="keyword">super</span>.onCancelled();</div><div class="line">            <span class="keyword">if</span> (mActivity != <span class="keyword">null</span>) {</div><div class="line">                mActivity.mProgressBar.setVisibility(View.GONE); </div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">private</span> Bitmap <span class="title">downloadFile</span>(String url) {</div><div class="line">            Bitmap bitmap = <span class="keyword">null</span>;</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                bitmap = BitmapFactory.decodeStream((InputStream) <span class="keyword">new</span> URL(url).getContent());</div><div class="line">            } <span class="keyword">catch</span> (MalformedURLException e) {</div><div class="line">                e.printStackTrace();</div><div class="line">            } <span class="keyword">catch</span> (IOException e) {</div><div class="line">                e.printStackTrace();</div><div class="line">            }</div><div class="line">            <span class="keyword">return</span> bitmap;</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>API</strong></p>
+<ul>
+<li>execute(Params…)</li>
+<li>execute(Runnable)：Added in API level 11, onPreExecute, onPostExecute, 和 onCancelled 方法将不会被调用，并且执行的进度也不会被更新（and progress can not be published）</li>
+<li>executeOnExecutor(Executor, Params…)：Added in API level 11</li>
+<li>AsyncTask.THREAD_POOL_EXECUTOR, 任务将并发执行, 在 KitKat(4.4)版本, 线程池的大小将基于 CPU 的核心数量：N+1 个核心线程以及最多2N+1 个线程，并且队列可拥有多达128个任务，所以在4核心的平台上，可拥有最多137个任务。</li>
+<li>AsyncTask.SERIAL_EXECUTOR，保证线程安全，该调度器将任务存储在一个没有限制数量的队列里，并将其一个个传递给 THREAD_POOL_EXECUTOR 线程池去执行。</li>
+</ul>
+<table><br><caption> 在各个平台执行的不同区别 </caption><br><tbody><br><tr><td><em>API 级别</em></td><td><em>execute</em></td><td><em>executeOnExecutor</em></td></tr><br><tr><td>1~3</td><td>线性序列</td><td>还未存在</td></tr><br><tr><td>4~7</td><td>-并发</td><td>还未存在</td></tr><br><tr><td>11~12</td><td>并发</td><td>线性序列/并发（自定义）</td></tr><br><tr><td>13+</td><td>线性序列</td><td>线性序列/并发（自定义）</td></tr><br></tbody><br></table>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/12/reading-reminiscences-of-a-stock-operator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          十三遍《股票作手回忆录》
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/12/reading-nietzsche-thus-spoke-zarathustra-2122/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自愿的死亡/施予的道德 —— 《查拉图斯特拉如是说》</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-interview-ii" data-title="Android 面试题记录（二）" data-url="http://yoursite.com/2014/11/12/android-interview-ii/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2014 月光独奏
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

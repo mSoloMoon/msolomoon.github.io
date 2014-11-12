@@ -3,20 +3,44 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android 面试题纪录 | 月光独奏</title>
+  <title>Android 面试题纪录（一） | 月光独奏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. JVM和DVM的不同
+  <meta name="description" content="目录
 
-JVM is a stack-based machine; while DVM is register-based（执行相同任务比JVM使用更少的指令）;
-A stack-based virtual machine must transfer data from registers to the operand stack before manipulating th">
+JVM和DVM的不同
+Android如何启动一个应用
+UI Thread 如何工作
+UI Thread 消息机制 API 概览
+阐述 MessageQueue.IdleHandler
+Android 平台如何调度线程
+Android下线程有哪些通信方式
+进程间如何通信
+Android 如何管理内存 
+
+
+1. JVM和DVM的不同
+
+JVM is a stack-based machine">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 面试题纪录">
+<meta property="og:title" content="Android 面试题纪录（一）">
 <meta property="og:url" content="http://yoursite.com/2014/11/09/android-interview-i/">
 <meta property="og:site_name" content="月光独奏">
-<meta property="og:description" content="1. JVM和DVM的不同
+<meta property="og:description" content="目录
 
-JVM is a stack-based machine; while DVM is register-based（执行相同任务比JVM使用更少的指令）;
-A stack-based virtual machine must transfer data from registers to the operand stack before manipulating th">
+JVM和DVM的不同
+Android如何启动一个应用
+UI Thread 如何工作
+UI Thread 消息机制 API 概览
+阐述 MessageQueue.IdleHandler
+Android 平台如何调度线程
+Android下线程有哪些通信方式
+进程间如何通信
+Android 如何管理内存 
+
+
+1. JVM和DVM的不同
+
+JVM is a stack-based machine">
 <meta property="og:image" content="https://msolomoon.github.io/images/Zygote_VM_Startup.png">
 <meta property="og:image" content="https://msolomoon.github.io/images/the_ui_thread_message_passing_api.png">
 <meta property="og:image" content="https://msolomoon.github.io/images/IPC_through_Binder.png">
@@ -24,11 +48,23 @@ A stack-based virtual machine must transfer data from registers to the operand s
 <meta property="og:image" content="https://msolomoon.github.io/images/Davilk_GC_Mark_workway.png">
 <meta property="og:image" content="https://msolomoon.github.io/images/Activity_lifecycle_with_executing_thread.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 面试题纪录">
-<meta name="twitter:description" content="1. JVM和DVM的不同
+<meta name="twitter:title" content="Android 面试题纪录（一）">
+<meta name="twitter:description" content="目录
 
-JVM is a stack-based machine; while DVM is register-based（执行相同任务比JVM使用更少的指令）;
-A stack-based virtual machine must transfer data from registers to the operand stack before manipulating th">
+JVM和DVM的不同
+Android如何启动一个应用
+UI Thread 如何工作
+UI Thread 消息机制 API 概览
+阐述 MessageQueue.IdleHandler
+Android 平台如何调度线程
+Android下线程有哪些通信方式
+进程间如何通信
+Android 如何管理内存 
+
+
+1. JVM和DVM的不同
+
+JVM is a stack-based machine">
 
   
     <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
@@ -115,7 +151,7 @@ A stack-based virtual machine must transfer data from registers to the operand s
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 12.50px;">Android</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 12.50px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/思考/" style="font-size: 12.50px;">思考</a><a href="/tags/摘录/" style="font-size: 10.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 17.50px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 16.25px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -207,7 +243,7 @@ A stack-based virtual machine must transfer data from registers to the operand s
         
   
     <h1 class="article-title" itemprop="name">
-      Android 面试题纪录
+      Android 面试题纪录（一）
     </h1>
   
 
@@ -215,7 +251,20 @@ A stack-based virtual machine must transfer data from registers to the operand s
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-_JVM和DVM的不同">1. JVM和DVM的不同</h3>
+        <h3 id="目录">目录</h3>
+<ol>
+<li>JVM和DVM的不同</li>
+<li>Android如何启动一个应用</li>
+<li>UI Thread 如何工作</li>
+<li>UI Thread 消息机制 API 概览</li>
+<li>阐述 MessageQueue.IdleHandler</li>
+<li>Android 平台如何调度线程</li>
+<li>Android下线程有哪些通信方式</li>
+<li>进程间如何通信</li>
+<li>Android 如何管理内存 </li>
+</ol>
+<p><br></p>
+<h3 id="1-_JVM和DVM的不同">1. JVM和DVM的不同</h3>
 <ul>
 <li>JVM is a stack-based machine; while DVM is register-based（执行相同任务比JVM使用更少的指令）;</li>
 <li>A stack-based virtual machine must transfer data from registers to the operand stack before manipulating them. In contrast, a register-based VM operates by directly using virtual registers. This increases the relative size of instructions because they must specify which registers to use, but reduces the number of instructions that must be executed to achieve the same result.</li>
@@ -223,25 +272,32 @@ A stack-based virtual machine must transfer data from registers to the operand s
 <h3 id="2-_Android如何启动一个应用">2. Android如何启动一个应用</h3>
 <p><img src="https://msolomoon.github.io/images/Zygote_VM_Startup.png" alt="Zygote启动应用流程"></p>
 <ul>
-<li>Android启动时将率先运行一个独特的进程<strong>Zygote</strong>。 而Zygote将启动一虚拟机，该虚拟机将预先加载Android核心库并初始化各种共享资源体，最后它将使用套接字进行监听。 </li>
+<li>Android启动时将率先运行一个独特的进程<strong>Zygote</strong>。而Zygote将启动一虚拟机，该虚拟机将预先加载Android核心库并初始化各种共享资源体，最后它将使用套接字进行监听。 </li>
 <li>当用户启动一个Android应用时，Zygote将创建一个虚拟机以便其运行。它通过写时复制（Copy-On-Write）的技术拷贝Zygote虚拟机并以子进程的身份和其父进程共享内存实现的。</li>
 </ul>
+<a id="more"></a>
+
 <h3 id="3-_UI_Thread_如何工作">3. UI Thread 如何工作</h3>
-<p>UI Thread 由平台内部的类 android.app.ActivityThread 管理。</p>
+<p>UI Thread 由平台内部 android.app.ActivityThread 类管理。</p>
 <ul>
 <li>默认情况下，为Android应用开发的代码都会通过主线程（UI Thread）运行；</li>
 <li>如果应用不能在5秒内响应用户，那么用户将会看到一个显示ANR对话框并提供退出选项以允许用户终止该应用;</li>
 <li>Android设计致力于同步人眼与硬件（屏幕）刷新率，这意味着Android每秒绘制屏幕60帧数；</li>
 <li>Android平台线程通信拥有自己的处理机制（Message Passing Mechanism）。该机制以非阻塞生产者消费者模式实现，其生产者和消费者在消息传送时都不会被阻塞；另外生产者可往消息队列在任意时间任意位置中插入新的消息；</li>
-<li>API 16之后，Android引进了一个新的Choreographer对象以监控帧数时序，并在连续丢掉30帧后在日志中生成丢帧的警告；</li>
+<li>API 16之后，Android引进了一个新的Choreographer对象以监控帧数时序，并在连续丢掉30帧后在日志中予以丢帧的警告；</li>
 </ul>
-<a id="more"></a>
-
 <p><strong>The UI thread Looper</strong></p>
 <ul>
 <li>UI Thread是唯一默认装配了Looper的线程，并且先于应用组件的初始化，另外该 Looper 不能通过 Looper.quit() 终止，否则抛出 RuntimeException；</li>
 <li>关于UI Thread Looper和其它线程Looper的几点实用性区别: UI Thread Looper通过Looper.getMainLooper()可从任意位置获取；并且Looper是Android运行时环境是通过Looper.prepareMainLooper()方法装配的. 每一个应用只能进行装配一次，因此试图为其它线程装配将会抛出异常；</li>
 </ul>
+<p><strong>在 UI Thread 上捕捉异常</strong></p>
+<ul>
+<li>当应用启动时，Android 运行时有一个全局对象 UncaughtExceptionHandler。默认情况下，它将杀死该进程。</li>
+<li>但我们可以对其进行覆盖方法。典型地，覆盖方法应该只是增加一些功能。示例如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Set new global handler</span></div><div class="line">Thread.setDefaultUncaughtExceptionHandler(<span class="keyword">new</span> ErrorReportExceptionHandler());</div><div class="line"><span class="comment">// Error handler that redirects exception to the system default handler.</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ErrorReportExceptionHandler</span></span></div><div class="line">    <span class="keyword">implements</span> <span class="title">Thread</span>.<span class="title">UncaughtExceptionHandler</span> {</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Thread.UncaughtExceptionHandler defaultHandler;</div><div class="line">    <span class="keyword">public</span> <span class="title">ErrorReportExceptionHandler</span>() {</div><div class="line">        <span class="keyword">this</span>.defaultHandler = Thread.getDefaultUncaughtExceptionHandler();</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span>(Thread thread, Throwable throwable) {</div><div class="line">        reportErrorToFile(throwable);</div><div class="line">        defaultHandler.uncaughtException(thread, throwable);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
 <p><strong>如何查看 UI Thread</strong></p>
 <p>下面名为 com.eat 默认就是应用启动时的 UI Thread。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ adb shell ps -t | grep u0_a72</div><div class="line">USER      PID   PPID  VSIZE  RSS   WCHAN    PS         NAME</div><div class="line">u0_a72    <span class="number">4257</span>  <span class="number">144</span>   <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S com.eat</div><div class="line">u0_a72    <span class="number">4259</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S GC</div><div class="line">u0_a72    <span class="number">4262</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S Signal Catcher</div><div class="line">u0_a72    <span class="number">4263</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S JDWP</div><div class="line">u0_a72    <span class="number">4264</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S Compiler</div><div class="line">u0_a72    <span class="number">4265</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S ReferenceQueueDemon</div><div class="line">u0_a72    <span class="number">4266</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S FinalizerDaemon</div><div class="line">u0_a72    <span class="number">4267</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S FinalizerWatchdogDaemon</div><div class="line">u0_a72    <span class="number">4268</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S Binder_1</div><div class="line">u0_a72    <span class="number">4269</span>  <span class="number">4257</span>  <span class="number">320304</span> <span class="number">34540</span> ffffffff <span class="number">00000000</span> S Binder_2</div></pre></td></tr></table></figure>
@@ -391,7 +447,6 @@ A stack-based virtual machine must transfer data from registers to the operand s
 <li>使用弱引用（Weak References）；显式置空强引用（strong references）；</li>
 <li>及时停止线程执行；</li>
 </ul>
-<p><strong>未完待续</strong></p>
 
       
     </div>
@@ -444,7 +499,7 @@ A stack-based virtual machine must transfer data from registers to the operand s
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="android-interview-i" data-title="Android 面试题纪录" data-url="http://yoursite.com/2014/11/09/android-interview-i/"></div>
+	<div class="ds-thread" data-thread-key="android-interview-i" data-title="Android 面试题纪录（一）" data-url="http://yoursite.com/2014/11/09/android-interview-i/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
