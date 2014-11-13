@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android 面试题记录 （三） | 月光独奏</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 关于 Service 的一些细节
+
+Service 的种类：Started Service 和 Bound Service，分别对应于 Context.startService(Intent) 和 Context.bindService；
+如果一个 Service 在 onStartCommand 执行的过程中被终止，则已提交的 Intent 将得不到机会启动，该 Intent 仍会被视为一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 面试题记录 （三）">
+<meta property="og:url" content="http://yoursite.com/2014/11/13/android-interview-iii/">
+<meta property="og:site_name" content="月光独奏">
+<meta property="og:description" content="1. 关于 Service 的一些细节
+
+Service 的种类：Started Service 和 Bound Service，分别对应于 Context.startService(Intent) 和 Context.bindService；
+如果一个 Service 在 onStartCommand 执行的过程中被终止，则已提交的 Intent 将得不到机会启动，该 Intent 仍会被视为一">
+<meta property="og:image" content="https://msolomoon.github.io/images/Loader_Framework.png">
+<meta property="og:image" content="https://msolomoon.github.io/images/Loader_sequential_events.png">
+<meta property="og:image" content="https://msolomoon.github.io/images/AsyncQueryHandler_lifecycle.png">
+<meta property="og:image" content="https://msolomoon.github.io/images/asynchronous_mechanisms.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 面试题记录 （三）">
+<meta name="twitter:description" content="1. 关于 Service 的一些细节
+
+Service 的种类：Started Service 和 Bound Service，分别对应于 Context.startService(Intent) 和 Context.bindService；
+如果一个 Service 在 onStartCommand 执行的过程中被终止，则已提交的 Intent 将得不到机会启动，该 Intent 仍会被视为一">
+
+  
+    <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">软件设计及开发者</p>
+		
+
+		
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		
+
+		<div class="switch-area">
+			<section class="first-part">
+				<nav class="header-menu">
+					<ul>
+					
+						<li><a href="/">主页</a></li>
+			        
+						<li><a href="/archives">所有文章</a></li>
+			        
+						<li><a href="/categories/随笔">随笔</a></li>
+			        
+						<li><a href="/categories/摘录">摘录</a></li>
+			        
+						<li><a href="/categories/书籍">书籍</a></li>
+			        
+						<li><a href="/categories/Web">Web</a></li>
+			        
+						<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+			        
+						<li><a href="/categories/java-android">Java/Android</a></li>
+			        
+						<li><a href="/categories/project">Project</a></li>
+			        
+						<li><a href="/categories/程序员日志">程序员日志</a></li>
+			        
+						<li><a href="/about">关于</a></li>
+			        
+					</ul>
+				</nav>
+				<nav class="header-nav">
+					<div class="social">
+						
+							<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+				        
+							<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+				        
+							<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+				        
+							<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+				        
+					</div>
+				</nav>
+			</section>
+			
+			
+			<section class="second-part">
+				<div class="widget tagcloud">
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 13.75px;">思考</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.25px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.25px;">金融</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+				</div>
+			</section>
+			
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">软件设计及开发者</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+					<li><a href="/categories/摘录">摘录</a></li>
+		        
+					<li><a href="/categories/书籍">书籍</a></li>
+		        
+					<li><a href="/categories/Web">Web</a></li>
+		        
+					<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+		        
+					<li><a href="/categories/java-android">Java/Android</a></li>
+		        
+					<li><a href="/categories/project">Project</a></li>
+		        
+					<li><a href="/categories/程序员日志">程序员日志</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+			        
+						<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+			        
+						<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-android-interview-iii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/13/android-interview-iii/" class="article-date">
+  	<time datetime="2014-11-13T02:10:53.000Z" itemprop="datePublished">11月 13 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 面试题记录 （三）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_关于_Service_的一些细节">1. 关于 Service 的一些细节</h3>
+<ul>
+<li>Service 的种类：Started Service 和 Bound Service，分别对应于 Context.startService(Intent) 和 Context.bindService；</li>
+<li>如果一个 Service 在 onStartCommand 执行的过程中被终止，则已提交的 Intent 将得不到机会启动，该 Intent 仍会被视为一个挂起的请求，而非一个已启动的请求（started request）；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Started Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StartedEatService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>{</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span>(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId) { ... }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> IBinder <span class="title">onBind</span>(Intent intent) { <span class="keyword">return</span> <span class="keyword">null</span>; }</div><div class="line">}</div><div class="line"><span class="comment">// return value of onStartCommand:</span></div><div class="line"><span class="comment">// 1. START_STICKY，Service 将以新进程的形式予以重新启动而不管是否有任何挂起的请求，</span></div><div class="line"><span class="comment">// 被终止的请求将不会重新提交，如果有挂起的请求，flags 值将被设置为 START_FLAG_RETRY，</span></div><div class="line"><span class="comment">// 如果没有任何挂起的请求，重新启动后，onStartCommand 的 Intent 值为 null；</span></div><div class="line"><span class="comment">// 2. START_NOT_STICKY，与上一个 flag 相同，但有一个区别是，Service 只在有挂起的请求时才重新启动；</span></div><div class="line"><span class="comment">// 3. START_REDELIVER_INTENT，将为那些挂起的请求或正在执行的而没有完成的请求重新启动，</span></div><div class="line"><span class="comment">// 其中挂起的请求，flags 值将设置为START_FLAG_RETRY，而未完成的请求则为 START_FLAG_REDELIVERY；</span></div><div class="line"><span class="comment">// </span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>{</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> IBinder <span class="title">onBind</span>(Intent intent) { <span class="comment">/* Return communication interface */</span> }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span>(Intent intent) { <span class="comment">/* Last component has unbound */</span> }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>Local Binding</strong></p>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundLocalService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ServiceBinder mBinder = <span class="keyword">new</span> ServiceBinder();</div><div class="line">    <span class="keyword">public</span> IBinder <span class="title">onBind</span>(Intent intent) {</div><div class="line">        <span class="keyword">return</span> mBinder;</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> </span>{</div><div class="line">        <span class="keyword">public</span> BoundLocalService <span class="title">getService</span>() {</div><div class="line">            <span class="keyword">return</span> BoundLocalService.<span class="keyword">this</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publishedMethod1</span>() { ... }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publishedMethod2</span>() { ... }</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OperationListener</span> </span>{</div><div class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOperationDone</span>(<span class="keyword">int</span> i);</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doLongAsyncOperation</span>(<span class="keyword">final</span> <span class="keyword">int</span> i,</div><div class="line">        <span class="keyword">final</span> OperationListener listener) { </div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">            <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">                <span class="keyword">int</span> result = longOperation(i);</div><div class="line">                listener.onOperationDone(result); </div><div class="line">            }</div><div class="line">        }).start();</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> <span class="title">longOperation</span>(<span class="keyword">int</span> i) {</div><div class="line">        <span class="comment">// Return a result from the long operation.</span></div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundLocalActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{</div><div class="line">    <span class="keyword">private</span> LocalServiceConnection mLocalServiceConnection = <span class="keyword">new</span> LocalServiceConnection();</div><div class="line">    <span class="keyword">private</span> BoundLocalService mBoundLocalService;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsBound;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        bindService(<span class="keyword">new</span> Intent(BoundLocalActivity.<span class="keyword">this</span>, BoundLocalService.class),</div><div class="line">            mLocalServiceConnection, Service.BIND_AUTO_CREATE);</div><div class="line">        mIsBound = <span class="keyword">true</span>;</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span>() {</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="keyword">if</span> (mIsBound) {</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                unbindService(mLocalServiceConnection);</div><div class="line">                mIsBound = <span class="keyword">false</span>;</div><div class="line">            } <span class="keyword">catch</span> (IllegalArgumentException e) {</div><div class="line">                <span class="comment">// No bound service</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalServiceConnection</span> <span class="keyword">implements</span> <span class="title">ServiceConnection</span> </span>{</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span>(ComponentName componentName, IBinder iBinder) {</div><div class="line">            mBoundLocalService = ((BoundLocalService.ServiceBinder)iBinder).getService();</div><div class="line">            <span class="comment">// 这个时候便可以调用 Service 里的方法了，比如 publishedMethod1 and publishedMethod2.</span></div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span>(ComponentName componentName) {</div><div class="line">            mBoundLocalService = <span class="keyword">null</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceListener</span> <span class="keyword">implements</span> <span class="title">BoundLocalService</span>.<span class="title">OperationListener</span> </span>{</div><div class="line">        <span class="keyword">private</span> WeakReference&lt;BoundLocalActivity&gt; mWeakActivity;</div><div class="line">        <span class="keyword">public</span> <span class="title">ServiceListener</span>(BoundLocalActivity activity) {</div><div class="line">            <span class="keyword">this</span>.mWeakActivity = <span class="keyword">new</span> WeakReference&lt;BoundLocalActivity1&gt;(activity);</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOperationDone</span>(<span class="keyword">final</span> <span class="keyword">int</span> someResult) {</div><div class="line">            <span class="keyword">final</span> BoundLocalActivity localReferenceActivity = mWeakActivity.get();</div><div class="line">            <span class="keyword">if</span> (localReferenceActivity != <span class="keyword">null</span>) {</div><div class="line">                localReferenceActivity.runOnUiThread(<span class="keyword">new</span> Runnable(){</div><div class="line">                    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">                         <span class="comment">// Update on the UI thread</span></div><div class="line">                    }</div><div class="line">                });</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickExecuteOnClientUIThread</span>(View v) {</div><div class="line">        <span class="keyword">if</span> (mBoundLocalService != <span class="keyword">null</span>) {</div><div class="line">            mBoundLocalService.doLongAsyncOperation(<span class="keyword">new</span> ServiceListener(<span class="keyword">this</span>));</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>IntentService</strong></p>
+<ul>
+<li>IntentService 的 executor 是 HandlerThread。另外不像 AsyncTask，IntentService 的 executor 是可以有多个实例的。</li>
+<li>重新启动未完成的请求时，需要在 onHandleIntent 中设置：setIntentRedelivery(true);</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleIntentService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>{</div><div class="line">    <span class="keyword">public</span> <span class="title">SimpleIntentService</span>() {</div><div class="line">        <span class="keyword">super</span>(SimpleIntentService.class.getName());</div><div class="line">        setIntentRedelivery(<span class="keyword">true</span>);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span>(Intent intent) {</div><div class="line">        <span class="comment">// Called on a background thread</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>BroadcastReceiver 可以是应用程序的入口，它可以是应用创建的第一个组件（在 Activity 之前）。但该组件只在 onRecive 方法中保持活动，如果在该组件中执行异步任务，那么有可能在组件声明结束后，该组件所在的进程变为空进程，从而导致运行时在异步任务未完成时杀死该进程，以致丢失任务；</li>
+<li>为解决此情况，BroadcastReceiver 与 IntentService 的结合是一个理想的解决办法。</li>
+</ul>
+<h3 id="2-_关于_Loader">2. 关于 Loader</h3>
+<ul>
+<li>特征：当有新的数据（或数据更新）时，自动触发回调；当 Activity 或 Fragment 停止时，自动停止；必要时缓存数据（Activity 配置变更时）；避免了与线程相关的内存泄漏（仍有可能会在 Activity 变更配置重新生成时发生内存泄漏）；</li>
+<li>包含：LoaderManager（抽象类）, Loader, AsyncTaskLoader, 和 CursorLoader 类</li>
+<li>生命期：reset -&gt; start &lt;-&gt; stop -&gt; abandon -&gt; reset</li>
+</ul>
+<p><img src="https://msolomoon.github.io/images/Loader_Framework.png" alt="Loader 框架"></p>
+<p><strong>LoaderManager</strong></p>
+<ul>
+<li>LoaderManager getLoaderManager();</li>
+<li>Loader<d> initLoader(int id, Bundle args, LoaderCallbacks<d> callback)，如果识别码符合则可重用已有的 Loader</d></d></li>
+<li>Loader<d> restartLoader(int id, Bundle args, LoaderCallbacks<d> callback)，不可重用，如果已有 Loader，该 Loader 将被销毁（包括数据）并重新创建一个新的；</d></d></li>
+<li>Loader<d> getLoader(int id)</d></li>
+<li>void destroyLoader(int id)</li>
+</ul>
+<p><strong>事件序列</strong></p>
+<ul>
+<li>Loader 初始化：由 LoaderManager.initLoader 触发；</li>
+<li>加载数据：客户可使用 Loader.forceLoad() 强制加载新的数据；客户同样可调用 Loader.cancelLoad() 取消加载；</li>
+<li>重置 Loader</li>
+</ul>
+<p><img src="https://msolomoon.github.io/images/Loader_sequential_events.png" alt="Loader 回调事件序列"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SkeletonActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">D</span>&gt; </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADER_ID = <span class="number">0</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        getLoaderManager().initLoader(LOADER_ID, <span class="keyword">null</span>, <span class="keyword">this</span>);</div><div class="line">    }</div><div class="line">    <span class="comment">// LoaderCallback methods</span></div><div class="line">    <span class="keyword">public</span> Loader&lt;D&gt; <span class="title">onCreateLoader</span>(<span class="keyword">int</span> id, Bundle args) {</div><div class="line">        <span class="comment">/* TODO: Create the loader. */</span></div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span>(Loader&lt;D&gt; loader, D data) {</div><div class="line">        <span class="comment">/* TODO: Use the delivered data. */</span></div><div class="line">    }</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span>(Loader&lt;D&gt; loader) {</div><div class="line">        <span class="comment">/* TODO: The loader data is invalid, stop using it. */</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>AsyncTaskLoader</strong></p>
+<ul>
+<li>加载可以因为内容变更或用户调用 forceLoad() 而触发，因此，频繁的更新或许使得 UI Thread 失去响应能力，这时，可以使用延时加载以解决：setUpdateThrottle(long delayMs)。</li>
+</ul>
+<p><strong>CursorLoader（见下面 ContentProvider 一节）</strong></p>
+<p><strong>自定义 Loader</strong></p>
+<ul>
+<li>后台加载（AsyncTaskLoader）：public D loadInBackground() { … }</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicLoader</span> <span class="keyword">extends</span> <span class="title">AsyncTaskLoader</span>&lt;<span class="title">Integer</span>&gt;</span>{</div><div class="line">    <span class="keyword">public</span> <span class="title">BasicLoader</span>(Context context) {</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStartLoading</span>() {</div><div class="line">        <span class="keyword">super</span>.onStartLoading();</div><div class="line">        forceLoad(); </div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> Integer <span class="title">loadInBackground</span>() {</div><div class="line">       <span class="keyword">return</span> loadDummyData(); </div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> <span class="title">loadDummyData</span>() {</div><div class="line">        SystemClock.sleep(<span class="number">1000</span>);</div><div class="line">        Random rand = <span class="keyword">new</span> Random();</div><div class="line">        <span class="keyword">return</span> rand.nextInt(<span class="number">50</span>);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>自定义 File Loader</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileLoader</span> <span class="keyword">extends</span> <span class="title">AsyncTaskLoader</span>&lt;<span class="title">List</span>&lt;<span class="title">String</span>&gt;&gt; </span>{</div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; mFileNames; <span class="comment">// Cache the list of file names.</span></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SdCardObserver</span> <span class="keyword">extends</span> <span class="title">FileObserver</span> </span>{ </div><div class="line">        <span class="keyword">public</span> <span class="title">SdCardObserver</span>(String path) {</div><div class="line">            <span class="keyword">super</span>(path, FileObserver.CREATE|FileObserver.DELETE);</div><div class="line">        }</div><div class="line">        <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span>(<span class="keyword">int</span> event, String path) {</div><div class="line">            <span class="comment">// This call will force a new asynchronous data load</span></div><div class="line">            <span class="comment">// if the loader is started otherwise it will keep</span></div><div class="line">            <span class="comment">// a reference that the data has changed for future loads.</span></div><div class="line">            onContentChanged();</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> SdCardObserver mSdCardObserver;</div><div class="line">    <span class="keyword">public</span> <span class="title">FileLoader</span>(Context context) {</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        String path = context.getFilesDir().getPath();</div><div class="line">        mSdCardObserver = <span class="keyword">new</span> SdCardObserver(path);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStartLoading</span>() {</div><div class="line">        <span class="keyword">super</span>.onStartLoading();</div><div class="line">        <span class="comment">// Start observing the content.</span></div><div class="line">        mSdCardObserver.startWatching(); </div><div class="line">        <span class="keyword">if</span> (mFileNames != <span class="keyword">null</span>) { </div><div class="line">            <span class="comment">// Return the cache</span></div><div class="line">            deliverResult(mFileNames);</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (fileNames == <span class="keyword">null</span> || takeContentChanged()) {</div><div class="line">            forceLoad();</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> List&lt;String&gt; <span class="title">loadInBackground</span>() {</div><div class="line">        File directory = getContext().getFilesDir();</div><div class="line">        <span class="keyword">return</span> Arrays.asList(directory.list());</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deliverResult</span>(List&lt;String&gt; data) {</div><div class="line">        <span class="keyword">if</span> (isReset()) {</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        }</div><div class="line">        mFileNames = data; <span class="comment">// Cache the data</span></div><div class="line">        <span class="keyword">if</span> (isStarted()) { <span class="comment">// Only deliver result if the loader is started.</span></div><div class="line">            <span class="keyword">super</span>.deliverResult(data);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStopLoading</span>() {</div><div class="line">        <span class="keyword">super</span>.onStopLoading();</div><div class="line">        cancelLoad(); </div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onReset</span>() {</div><div class="line">        <span class="keyword">super</span>.onReset();</div><div class="line">        mSdCardObserver.stopWatching(); </div><div class="line">        clearResources(); </div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clearResources</span>() {</div><div class="line">       mFileNames = <span class="keyword">null</span>;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="3-_关于_BroadcastReceiver_的一些细节">3. 关于 BroadcastReceiver 的一些细节</h3>
+<ul>
+<li>从 API Level 11 开始，使用 BroadcastReceiver.goAsync() 方法可以简化执行异步任务，它将在 BroadcastReceiver.PendingResult 中保留异步执行的状态，并且延长 broadcast 的生命期直到 BroadcastReceiver.PendingResult 的状态为 finish。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>{</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span>(Context context, Intent intent) {</div><div class="line">        <span class="keyword">final</span> PendingResult result = goAsync();</div><div class="line">        <span class="keyword">new</span> Thread() {</div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">                <span class="comment">// Do background work</span></div><div class="line">                result.finish();</div><div class="line">            }</div><div class="line">        }.start();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="4-_关于ContentProvider_的一些细节">4. 关于ContentProvider 的一些细节</h3>
+<ul>
+<li>Faster Database Access with Write-Ahead Logging：db.enableWriteAheadLogging(); 【Write-Ahead Logging (WAL) 】</li>
+</ul>
+<p><strong>使用 AsyncQueryHandler（抽象类）</strong></p>
+<ul>
+<li>final void startDelete(int token, Object cookie, Uri uri, String selection, String[] selectionArgs)</li>
+<li>final void startInsert(int token, Object cookie, Uri uri, ContentValues initialValues)</li>
+<li>final void startQuery(int token, Object cookie, Uri uri, String[] projection, String selection, String[] selectionArgs, String orderBy)</li>
+<li>final void startUpdate(int token, Object cookie, Uri uri, ContentValues values, String selection, String[] selectionArgs)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EatAsyncQueryHandler</span> <span class="keyword">extends</span> <span class="title">AsyncQueryHandler</span></span>{</div><div class="line">    <span class="keyword">public</span> <span class="title">EatAsyncQueryHandler</span>(ContentResolver cr) {</div><div class="line">        <span class="keyword">super</span>(cr);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDeleteComplete</span>(<span class="keyword">int</span> token, Object cookie, <span class="keyword">int</span> result) { ... }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onUpdateComplete</span>(<span class="keyword">int</span> token, Object cookie, <span class="keyword">int</span> result) { ... }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInsertComplete</span>(<span class="keyword">int</span> token, Object cookie, Uri result) { ... }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onQueryComplete</span>(<span class="keyword">int</span> token, Object cookie, Cursor result) { }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><img src="https://msolomoon.github.io/images/AsyncQueryHandler_lifecycle.png" alt="AsyncQueryHandler 的执行"></p>
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    mAdapter = <span class="keyword">new</span> MyExpandableListAdapter(</div><div class="line">            <span class="keyword">this</span>,</div><div class="line">            android.R.layout.simple_expandable_list_item</div><div class="line">            android.R.layout.simple_expandable_list_item</div><div class="line">            <span class="keyword">new</span> String[] { Contacts.DISPLAY_NAME }, </div><div class="line">            <span class="keyword">new</span> <span class="keyword">int</span>[] { android.R.id.text1 },</div><div class="line">            <span class="keyword">new</span> String[] { Phone.NUMBER }, </div><div class="line">            <span class="keyword">new</span> <span class="keyword">int</span>[] { android.R.id.text1 });</div><div class="line">    setListAdapter(mAdapter);</div><div class="line">    mQueryHandler = <span class="keyword">new</span> QueryHandler(<span class="keyword">this</span>, mAdapter);</div><div class="line">    mQueryHandler.startQuery(TOKEN_GROUP, 		<span class="comment">// Query for people</span></div><div class="line">            <span class="keyword">null</span>,</div><div class="line">            Contacts.CONTENT_URI,</div><div class="line">            CONTACTS_PROJECTION,</div><div class="line">            Contacts.HAS_PHONE_NUMBER,</div><div class="line">            <span class="keyword">null</span>,</div><div class="line">            Contacts.DISPLAY_NAME + <span class="string">" ASC"</span>);</div><div class="line">}</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">QueryHandler</span> <span class="keyword">extends</span> <span class="title">AsyncQueryHandler</span> </span>{</div><div class="line">    <span class="keyword">private</span> CursorTreeAdapter mAdapter;</div><div class="line">    <span class="keyword">public</span> <span class="title">QueryHandler</span>(Context context, CursorTreeAdapter adapter) {</div><div class="line">        <span class="keyword">super</span>(context.getContentResolver());</div><div class="line">        <span class="keyword">this</span>.mAdapter = adapter;</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onQueryComplete</span>(<span class="keyword">int</span> token, Object cookie, Cursor cursor) {</div><div class="line">        <span class="keyword">switch</span> (token) {</div><div class="line">            <span class="keyword">case</span> TOKEN_GROUP:</div><div class="line">                mAdapter.setGroupCursor(cursor); </div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> TOKEN_CHILD:</div><div class="line">                <span class="keyword">int</span> groupPosition = (Integer) cookie;</div><div class="line">                mAdapter.setChildrenCursor(groupPosition, cursor); </div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>使用 CursorLoader</strong></p>
+<ul>
+<li>构造器：CursorLoader(Context context, Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</li>
+<li>示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactActivity</span> <span class="keyword">extends</span> <span class="title">ListActivity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">Cursor</span>&gt;</span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CONTACT_NAME_LOADER_ID = <span class="number">0</span>;</div><div class="line">    <span class="comment">// Projection that defines just the contact display name</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String[] CONTACTS_SUMMARY_PROJECTION = <span class="keyword">new</span> String[] { </div><div class="line">            ContactsContract.Contacts._ID,</div><div class="line">            ContactsContract.Contacts.DISPLAY_NAME</div><div class="line">    };</div><div class="line">    SimpleCursorAdapter mAdapter;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        initAdapter();</div><div class="line">        getLoaderManager().initLoader(CONTACT_NAME_LOADER_ID, <span class="keyword">null</span>, <span class="keyword">this</span>); </div><div class="line">    }</div><div class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initAdapter</span>() {</div><div class="line">        mAdapter = <span class="keyword">new</span> SimpleCursorAdapter(<span class="keyword">this</span>,</div><div class="line">                android.R.layout.simple_list_item_1, <span class="keyword">null</span>,</div><div class="line">                <span class="keyword">new</span> String[] { ContactsContract.Contacts.DISPLAY_NAME },</div><div class="line">                <span class="keyword">new</span> <span class="keyword">int</span>[] { android.R.id.text1}, <span class="number">0</span>);</div><div class="line">        setListAdapter(mAdapter);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> Loader&lt;Cursor&gt; <span class="title">onCreateLoader</span>(<span class="keyword">int</span> id, Bundle args) { </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(<span class="keyword">this</span>, ContactsContract.Contacts.CONTENT_URI,</div><div class="line">                CONTACTS_SUMMARY_PROJECTION, <span class="keyword">null</span>, <span class="keyword">null</span>, ContactsContract.Contacts.DISPLAY_NAME + <span class="string">" ASC"</span>);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span>(Loader&lt;Cursor&gt; loader, Cursor c) { </div><div class="line">        mAdapter.swapCursor(c);</div><div class="line">    }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span>(Loader&lt;Cursor&gt; loader) { </div><div class="line">        mAdapter.swapCursor(<span class="keyword">null</span>);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="5-_选择异步技术">5. 选择异步技术</h3>
+<p><img src="https://msolomoon.github.io/images/asynchronous_mechanisms.png" alt="Android 平台异步技术体系"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/13/udacity-software-debugging-cs259/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Udacity公开课：软件调试（优酷旁听）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/12/reading-reminiscences-of-a-stock-operator/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">十三遍《股票作手回忆录》</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-interview-iii" data-title="Android 面试题记录 （三）" data-url="http://yoursite.com/2014/11/13/android-interview-iii/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2014 月光独奏
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 16.25px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 13.75px;">思考</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.25px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.25px;">金融</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,94 @@
 	</div>
 </nav>
       
+  
+    <article id="post-udacity-software-debugging-cs259" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/13/udacity-software-debugging-cs259/" class="article-date">
+  	<time datetime="2014-11-13T05:57:01.000Z" itemprop="datePublished">11月 13 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/程序员日志/">程序员日志</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件调试/">软件调试</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/13/udacity-software-debugging-cs259/">Udacity公开课：软件调试（优酷旁听）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://v.youku.com/v_show/id_XNTM5NzcyNzgw.html" target="_blank" rel="external">Udacity公开课:CS259软件调试</a></p>
+</blockquote>
+<h3 id="课程概览">课程概览</h3>
+<blockquote>
+<p><strong>目标</strong><br>如何系统化的调试<br>使用自动化调试工具<br>使用一系列试验，进行程序科学调试假设验证</p>
+</blockquote>
+<p><strong>大纲</strong></p>
+<ol>
+<li>调试如何工作？</li>
+<li>断言实验</li>
+<li>delta 自动化调试方法</li>
+<li>程序 bug 如何产生</li>
+<li>重复错误如何发生，统计调试错误源</li>
+<li>信息挖掘 ：bug 数据库和变更数据库</li>
+</ol>
+<h3 id="第一节">第一节</h3>
+<p><strong>序言：深夜调试</strong></p>
+<ul>
+<li>程序员手工调试的弊端：注意力有限，不集中；花费更多时间以致减少了和陪伴家人的时间；</li>
+<li>软件工作量占比：测试和调试经常在 50% ~ 75%</li>
+<li>调试的困难：无法估计</li>
+</ul>
+<p><strong>启程</strong></p>
+<ul>
+<li>处理 HTML 输出文本（tag 模式与有限状态机）；</li>
+<li>简单例子<b>foo</b>：两种状态（tag、text）；</li>
+<li>第一个漏洞，<a href=">">foo</a>：三种状态（tag、text 和 quote）</li>
+<li>第二个漏洞，”<b>foo</b>“；</li>
+<li>任意输出变量值调试：时间杀手！任意变更代码调试：混乱杀手！</li>
+<li>《代码大全》- 历史：魔鬼调试指南；</li>
+<li>修复调试；糊弄单元调试案例；</li>
+<li><strong>程序变量的状态 -&gt; defect 感染点 -&gt; 感染点传染 -&gt; 错误；引发感染的情形 -&gt; 调试/测试的 cases</strong>；</li>
+<li><strong>解决：科学假设 -&gt; 预测 -&gt; 试验 -&gt; 渐进式改进假设 —&gt; 理论</strong>；</li>
+<li>假设I：简单测试，输入”foo” -&gt; “bar” -&gt; “”；（因果链）</li>
+</ul>
+<p>进度：Udacity公开课:CS259软件调试：01-29 你好断言</p>
+<p><strong>未完待续</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-java-interview-part-ii" class="article article-type-post" itemscope itemprop="blogPost">
   

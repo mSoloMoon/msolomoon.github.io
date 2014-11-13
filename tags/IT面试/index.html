@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 15.00px;">思考</a><a href="/tags/摘录/" style="font-size: 16.25px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 13.75px;">思考</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.25px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.25px;">金融</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,69 @@
 	</div>
 </nav>
       
+  
+    <article id="post-android-interview-iii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/13/android-interview-iii/" class="article-date">
+  	<time datetime="2014-11-13T02:10:53.000Z" itemprop="datePublished">11月 13 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/13/android-interview-iii/">Android 面试题记录 （三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_关于_Service_的一些细节">1. 关于 Service 的一些细节</h3>
+<ul>
+<li>Service 的种类：Started Service 和 Bound Service，分别对应于 Context.startService(Intent) 和 Context.bindService；</li>
+<li>如果一个 Service 在 onStartCommand 执行的过程中被终止，则已提交的 Intent 将得不到机会启动，该 Intent 仍会被视为一个挂起的请求，而非一个已启动的请求（started request）；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Started Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StartedEatService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>{</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span>(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId) { ... }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> IBinder <span class="title">onBind</span>(Intent intent) { <span class="keyword">return</span> <span class="keyword">null</span>; }</div><div class="line">}</div><div class="line"><span class="comment">// return value of onStartCommand:</span></div><div class="line"><span class="comment">// 1. START_STICKY，Service 将以新进程的形式予以重新启动而不管是否有任何挂起的请求，</span></div><div class="line"><span class="comment">// 被终止的请求将不会重新提交，如果有挂起的请求，flags 值将被设置为 START_FLAG_RETRY，</span></div><div class="line"><span class="comment">// 如果没有任何挂起的请求，重新启动后，onStartCommand 的 Intent 值为 null；</span></div><div class="line"><span class="comment">// 2. START_NOT_STICKY，与上一个 flag 相同，但有一个区别是，Service 只在有挂起的请求时才重新启动；</span></div><div class="line"><span class="comment">// 3. START_REDELIVER_INTENT，将为那些挂起的请求或正在执行的而没有完成的请求重新启动，</span></div><div class="line"><span class="comment">// 其中挂起的请求，flags 值将设置为START_FLAG_RETRY，而未完成的请求则为 START_FLAG_REDELIVERY；</span></div><div class="line"><span class="comment">// </span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoundService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>{</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> IBinder <span class="title">onBind</span>(Intent intent) { <span class="comment">/* Return communication interface */</span> }</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span>(Intent intent) { <span class="comment">/* Last component has unbound */</span> }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>Local Binding</strong></p>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/13/android-interview-iii/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-android-interview-ii" class="article article-type-post" itemscope itemprop="blogPost">
   
