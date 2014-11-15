@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Java | 月光独奏</title>
+  <title>Tag: 持续集成 | 月光独奏</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="五分死磕自己，六分懒惰，七分勤奋，八分安静，九分幻想，十分无趣">
 <meta property="og:type" content="website">
 <meta property="og:title" content="月光独奏">
-<meta property="og:url" content="http://yoursite.com/tags/Java/">
+<meta property="og:url" content="http://yoursite.com/tags/持续集成/">
 <meta property="og:site_name" content="月光独奏">
 <meta property="og:description" content="五分死磕自己，六分懒惰，七分勤奋，八分安静，九分幻想，十分无趣">
 <meta name="twitter:card" content="summary">
@@ -238,11 +238,11 @@
 
 
   
-    <article id="post-java-interview-part-ii" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-learning-travis-ci-i" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/11/05/java-interview-part-ii/" class="article-date">
-  	<time datetime="2014-11-05T05:25:22.000Z" itemprop="datePublished">11月 5 2014</time>
+      <a href="/2014/11/15/learning-travis-ci-i/" class="article-date">
+  	<time datetime="2014-11-15T12:31:32.000Z" itemprop="datePublished">11月 15 2014</time>
 </a>
       
   <div class="article-category">
@@ -250,7 +250,7 @@
   </div>
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
 
     </div>
   
@@ -263,7 +263,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/05/java-interview-part-ii/">Java 面试题 - Stack and Queue</a>
+      <a class="article-title" href="/2014/11/15/learning-travis-ci-i/">遇见 Travis —— 与 Github 结合的开源持续集成服务器</a>
     </h1>
   
 
@@ -271,29 +271,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="ArrayDeque">ArrayDeque<e></e></h3>
-<ul>
-<li>Resizable-array implementation of the Deque interface. </li>
-<li>此类很可能在用作堆栈时快于 Stack，在用作队列时快于 LinkedList。大多数 ArrayDeque 操作以摊销的固定时间运行。</li>
-</ul>
-<h3 id="JAVA中Stack和Heap的区别">JAVA中Stack和Heap的区别</h3>
-<ul>
-<li>每个应用程序运行时，都有属于自己的一段内存空间，用于存放临时变量、参数传递、函数调用时的PC值的保存。这叫stack。</li>
-<li>所有的应用可以从一个系统共用的空间中申请供自己使用的内存，这个共用的空间叫heap。</li>
-<li>Java中对象都是分配在heap(堆)中。从heap中分配内存所消耗的时间远远大于从stack产生存储空间所需的时间。</li>
-<li>要使用heap中申请的变量或对象只能定义变量指针，并要求在运行过程中通过new来动态分配内存空间，而且必须显示地free你申请过的内存，不过Java的垃圾回收机解决了这个问题，它会帮你释放这部分内存。</li>
-<li>另外，栈有一个很重要的特殊性，就是存在栈中的数据可以共享。int a=3; int b=3; 创建 a 变量后，由于在栈中已经有3这个字面值，于是 b 直接指向3的地址。在编译器内部，遇到 a=4；时，它就会重新搜索栈中是否有4的字面值，如果没有，重新开辟地址存放4的值；如果已经有了，则直接将a指向这个地址。因此a值的改变不会影响到b的值。</li>
-<li>像String str = “abc”；这种场合下，其字符串值是保存了一个指向存在栈中数据的引用；</li>
-</ul>
-<h3 id="面试题补充">面试题补充</h3>
-<h4 id="1、_Describe_how_you_could_use_a_single_array_to_implement_three_stacks">1、 Describe how you could use a single array to implement three stacks</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> stackSize = <span class="number">300</span>;</div><div class="line"><span class="keyword">int</span>[] buffer = <span class="keyword">new</span> <span class="keyword">int</span> [stackSize * <span class="number">3</span>];</div><div class="line"><span class="keyword">int</span>[] stackPointer = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>}; <span class="comment">// stack pointers to track top elem</span></div><div class="line"><span class="keyword">void</span> push(<span class="keyword">int</span> stackNum, <span class="keyword">int</span> value) {</div><div class="line">  <span class="comment">/* Find the index of the top element in the array + 1, and</span></div><div class="line">    * increment the stack pointer */</div><div class="line">  <span class="keyword">int</span> index = stackNum * stackSize + stackPointer[stackNum] + <span class="number">1</span>;</div><div class="line">  stackPointer[stackNum]++;</div><div class="line">  buffer[index] = value; </div><div class="line">}</div><div class="line"><span class="keyword">int</span> pop(<span class="keyword">int</span> stackNum) {</div><div class="line">  <span class="keyword">int</span> index = stackNum * stackSize + stackPointer[stackNum];</div><div class="line">  stackPointer[stackNum]--;</div><div class="line">  <span class="keyword">int</span> value = buffer[index];</div><div class="line">  buffer[index]=<span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span> value;</div><div class="line">}</div><div class="line"><span class="keyword">int</span> peek(<span class="keyword">int</span> stackNum) {</div><div class="line">  <span class="keyword">int</span> index = stackNum * stackSize + stackPointer[stackNum];</div><div class="line">  <span class="keyword">return</span> buffer[index];</div><div class="line">}</div><div class="line"><span class="keyword">boolean</span> isEmpty(<span class="keyword">int</span> stackNum) {</div><div class="line">  <span class="keyword">return</span> stackPointer[stackNum] == stackNum*stackSize;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/05/java-interview-part-ii/#more">more >></a>
-          </p>
         
       
     </div>
@@ -311,11 +288,11 @@
 
 
   
-    <article id="post-java-interview-part-i" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-learning-jenkins-i" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/11/05/java-interview-part-i/" class="article-date">
-  	<time datetime="2014-11-05T02:02:07.000Z" itemprop="datePublished">11月 5 2014</time>
+      <a href="/2014/11/14/learning-jenkins-i/" class="article-date">
+  	<time datetime="2014-11-14T15:19:11.000Z" itemprop="datePublished">11月 14 2014</time>
 </a>
       
   <div class="article-category">
@@ -323,7 +300,7 @@
   </div>
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
 
     </div>
   
@@ -336,7 +313,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/05/java-interview-part-i/">Java 面试题 - Arrays and Strings</a>
+      <a class="article-title" href="/2014/11/14/learning-jenkins-i/">遇见 JenKins - 持续集成（一）</a>
     </h1>
   
 
@@ -344,20 +321,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://msolomoon.github.io/images/Java_full_container_taxonomy.JPG" alt="Java容器类库图"></p>
-<p><br></p>
-<h3 id="HashMap和Hashtable">HashMap和Hashtable</h3>
+        <blockquote>
+<p>一个程序员（工程师）的工作要是少了<strong>持续集成</strong>这一环节，他（她）就不能算是程序员。</p>
+</blockquote>
+<h3 id="JenKins_认知">JenKins 认知</h3>
+<blockquote>
+<p><strong>持续开发 -&gt; 持续测试 -&gt; 持续构建 -&gt; 持续部署/交付</strong></p>
+</blockquote>
+<p><strong>JenKins 是什么</strong></p>
 <ul>
-<li>HashMap不是线程安全的，由于非线程安全，效率上可能高于Hashtable；</li>
-<li>Hastmap是Java 1.2引进的Map interface的一个实现；其中键和值都是对象，可以包含重复值。HashMap允许null key和null value，而hashtable不允许;</li>
-<li>为一个HashMap提供外同步。其中一个方法就是利用Collections类的静态的synchronizedMap()，它创建一个线程安全的Map对象，并返回一个封装的对象。这个对象的方法可以让你同步访问潜在的HashMap;</li>
-<li>HashMap去掉了HashTable的contains方法，但加上了containsValue()和containsKey()方法;</li>
-<li>HashTable是线程安全的一个Collection，继承自陈旧的Dictionary类；</li>
+<li>持续性构建或测试软件工程</li>
+<li>监控外部工作的执行</li>
+</ul>
+<p><strong>JenKins 最佳实践</strong></p>
+<ul>
+<li>安全性：强制采取认证和权限控制</li>
+<li>周期性备份</li>
+<li>使用“文件指纹”（file fingerprinting）管理（因交叉工程协作带来的）依赖性</li>
+<li>最可靠的构建是清洁构建（clean builds，which are built fully from Source Code Control）</li>
+<li>紧密结合问题追踪系统（如 JIRA 或 bugzilla）以减少手工维护变更记录的麻烦</li>
+<li>紧密结合源代码浏览工具（如 FishEye），但前提是使用 Subversion 作为源代码版本管理工具</li>
+<li>坚持对每一个构建生成趋势报告和进行自动化测试</li>
+<li>为 JenKins 分配足够多的磁盘空间</li>
+<li>为要移除的构建工作打包仓储</li>
+<li>为不同的分支（维护或开发）都单独建立构建工作</li>
+<li>为平行构建的工作分配不同的端口，但最好避免同时构建多个工程</li>
+<li>使用 Email 功能以保持团队对开发工作的感知</li>
+<li>分步式测试计划以保证失败地构建得以尽早上报（比如在整体套件测试之前进行嗅探性测试）</li>
+<li>为构建工作制定维护计划，比如定期清理以避免磁盘耗尽</li>
+<li>为成功的构建上标签，描述</li>
+<li>Configure Jenkins bootstrapper to update your working copy prior to running the build goal/target</li>
+<li>In larger systems, don’t build on the master（do this by setting the executor count to zero）</li>
 </ul>
 
         
           <p class="article-more-link">
-            <a href="/2014/11/05/java-interview-part-i/#more">more >></a>
+            <a href="/2014/11/14/learning-jenkins-i/#more">more >></a>
           </p>
         
       

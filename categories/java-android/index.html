@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 13.75px;">Android</a><a href="/tags/C-C/" style="font-size: 11.25px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.25px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.25px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.25px;">IT面试</a><a href="/tags/Java/" style="font-size: 12.50px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.25px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.25px;">历史</a><a href="/tags/哲学/" style="font-size: 11.25px;">哲学</a><a href="/tags/思考/" style="font-size: 13.75px;">思考</a><a href="/tags/持续部署/" style="font-size: 11.25px;">持续部署</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.50px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.50px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.25px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.25px;">金融</a><a href="/tags/随笔/" style="font-size: 18.75px;">随笔</a><a href="/tags/项目/" style="font-size: 12.50px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 13.33px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 13.33px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 12.22px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,75 @@
 	</div>
 </nav>
       
+  
+    <article id="post-learning-gradle-in-action-i" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/15/learning-gradle-in-action-i/" class="article-date">
+  	<time datetime="2014-11-15T15:28:45.000Z" itemprop="datePublished">11月 15 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/15/learning-gradle-in-action-i/">学习 Gradle —— Java 下一代构建工具（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>高效软件工程的核心：自动化</strong><br>自动化构建类型及其进化史：请求式构建 -&gt; 触发式构建 -&gt; 计划式构建<br>自动化构建工具要素 ：任务（DAG - Directed Acyclic Graph，即一段可工作的构件单元 + 依赖）、依赖管理</p>
+</blockquote>
+<h3 id="Gradle_箴言">Gradle 箴言</h3>
+<ul>
+<li><strong>让不可行变得可行，让可行变得易行，让易行变得简洁</strong></li>
+<li>Maven VS Gradle</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">project</span> <span class="attribute">xmlns</span>=<span class="value">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">			<span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">			<span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://maven.apache.org/POM/4.0.0</span></div><div class="line">							http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;</div><div class="line">	<span class="tag">&lt;<span class="title">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="title">modelVersion</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.mycompany.app<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>my-app<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">project</span>&gt;</span></div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'java'</span></div><div class="line"><span class="keyword">group</span> = <span class="string">'com.mycompany.app'</span></div><div class="line">archivesBaseName = <span class="string">'my-app'</span></div><div class="line">version = <span class="string">'1.0-SNAPSHOT'</span></div><div class="line"><span class="keyword">repositories</span> {</div><div class="line">	mavenCentral()</div><div class="line">}</div><div class="line"><span class="keyword">dependencies</span> {</div><div class="line">	testCompile <span class="string">'junit:junit:4.11'</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/15/learning-gradle-in-action-i/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-android-interview-iii" class="article article-type-post" itemscope itemprop="blogPost">
   
