@@ -169,6 +169,86 @@
 </nav>
       
   
+    <article id="post-learning-pro-git-2nd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/16/learning-pro-git-2nd/" class="article-date">
+  	<time datetime="2014-11-16T12:52:47.000Z" itemprop="datePublished">11月 16 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/书籍/">书籍</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/16/learning-pro-git-2nd/">学习 Git（一）—— Pro Git 2nd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起步">起步</h3>
+<p><strong>Git 认知</strong></p>
+<ul>
+<li>Snapshots, Not Diff erences</li>
+<li>Nearly Every Operation Is Local</li>
+<li>Everything in Git is check-summed before it is stored and is then referred to by that checksum</li>
+<li>Git Generally Only Adds Data</li>
+<li>The Three States ：the Git directory, working directory, and the staging area</li>
+<li>Git 基本工作流程 ：增删改（working directory）-&gt; 存储快照（staging area）-&gt; 提交（Git directory）</li>
+<li>Git 文件状态 ：untracked、unmodified、modified、staged</li>
+</ul>
+<p><strong>配置 Git</strong></p>
+<blockquote>
+<p>/etc/gitconfig ：every user，$ git config —system<br>~/.gitconfig  or  ~/.config/git/config ：specified user, $ git config —global<br>.git/config ：specified repository, $ git config</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"John Doe"</span></div><div class="line">$ git config --global user.email johndoe@example.com</div><div class="line">$ git config --global core.editor emacs		<span class="comment"># 默认 vim</span></div><div class="line">$ git config --list		<span class="comment"># $ git config user.name</span></div></pre></td></tr></table></figure>
+
+
+
+<h3 id="实战（一）">实战（一）</h3>
+<ul>
+<li>新项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git init     <span class="comment"># 在某个项目目录里初始化一个 Git working directory -&gt; .git 目录</span></div><div class="line">$ git add *.c  <span class="comment"># 存储快照（staging area）</span></div><div class="line">$ git commit -m <span class="string">'initial project version'</span>  <span class="comment"># 提交</span></div><div class="line">$ git remote add origin https://github.com/username/example.git</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/16/learning-pro-git-2nd/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-learning-gradle-in-action-i" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -210,7 +290,7 @@
 <li><strong>让不可行变得可行，让可行变得易行，让易行变得简洁</strong></li>
 <li>Maven VS Gradle</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">project</span> <span class="attribute">xmlns</span>=<span class="value">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">			<span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">			<span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://maven.apache.org/POM/4.0.0</span></div><div class="line">							http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;</div><div class="line">	<span class="tag">&lt;<span class="title">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="title">modelVersion</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.mycompany.app<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>my-app<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">project</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">project</span> <span class="attribute">xmlns</span>=<span class="value">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">			<span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">			<span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://maven.apache.org/POM/4.0.0</span></div><div class="line">				http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;</div><div class="line">	<span class="tag">&lt;<span class="title">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="title">modelVersion</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.mycompany.app<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>my-app<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">project</span>&gt;</span></div></pre></td></tr></table></figure>
 
 
 
@@ -221,56 +301,6 @@
           <p class="article-more-link">
             <a href="/2014/11/15/learning-gradle-in-action-i/#more">more >></a>
           </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-learning-travis-ci-i" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/15/learning-travis-ci-i/" class="article-date">
-  	<time datetime="2014-11-15T12:31:32.000Z" itemprop="datePublished">11月 15 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/程序员日志/">程序员日志</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/15/learning-travis-ci-i/">遇见 Travis —— 与 Github 结合的开源持续集成服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
         
       
     </div>

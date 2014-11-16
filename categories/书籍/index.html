@@ -169,6 +169,86 @@
 </nav>
       
   
+    <article id="post-learning-pro-git-2nd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/16/learning-pro-git-2nd/" class="article-date">
+  	<time datetime="2014-11-16T12:52:47.000Z" itemprop="datePublished">11月 16 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/书籍/">书籍</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/16/learning-pro-git-2nd/">学习 Git（一）—— Pro Git 2nd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起步">起步</h3>
+<p><strong>Git 认知</strong></p>
+<ul>
+<li>Snapshots, Not Diff erences</li>
+<li>Nearly Every Operation Is Local</li>
+<li>Everything in Git is check-summed before it is stored and is then referred to by that checksum</li>
+<li>Git Generally Only Adds Data</li>
+<li>The Three States ：the Git directory, working directory, and the staging area</li>
+<li>Git 基本工作流程 ：增删改（working directory）-&gt; 存储快照（staging area）-&gt; 提交（Git directory）</li>
+<li>Git 文件状态 ：untracked、unmodified、modified、staged</li>
+</ul>
+<p><strong>配置 Git</strong></p>
+<blockquote>
+<p>/etc/gitconfig ：every user，$ git config —system<br>~/.gitconfig  or  ~/.config/git/config ：specified user, $ git config —global<br>.git/config ：specified repository, $ git config</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"John Doe"</span></div><div class="line">$ git config --global user.email johndoe@example.com</div><div class="line">$ git config --global core.editor emacs		<span class="comment"># 默认 vim</span></div><div class="line">$ git config --list		<span class="comment"># $ git config user.name</span></div></pre></td></tr></table></figure>
+
+
+
+<h3 id="实战（一）">实战（一）</h3>
+<ul>
+<li>新项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git init     <span class="comment"># 在某个项目目录里初始化一个 Git working directory -&gt; .git 目录</span></div><div class="line">$ git add *.c  <span class="comment"># 存储快照（staging area）</span></div><div class="line">$ git commit -m <span class="string">'initial project version'</span>  <span class="comment"># 提交</span></div><div class="line">$ git remote add origin https://github.com/username/example.git</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/16/learning-pro-git-2nd/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-reading-reminiscences-of-a-stock-operator" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

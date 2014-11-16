@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习 Git（一）—— Pro Git 2nd | 月光独奏</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="起步
+Git 认知
+
+Snapshots, Not Diff erences
+Nearly Every Operation Is Local
+Everything in Git is check-summed before it is stored and is then referred to by that checksum
+Git Generally Only Adds Data
+The T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习 Git（一）—— Pro Git 2nd">
+<meta property="og:url" content="http://yoursite.com/2014/11/16/learning-pro-git-2nd/">
+<meta property="og:site_name" content="月光独奏">
+<meta property="og:description" content="起步
+Git 认知
+
+Snapshots, Not Diff erences
+Nearly Every Operation Is Local
+Everything in Git is check-summed before it is stored and is then referred to by that checksum
+Git Generally Only Adds Data
+The T">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习 Git（一）—— Pro Git 2nd">
+<meta name="twitter:description" content="起步
+Git 认知
+
+Snapshots, Not Diff erences
+Nearly Every Operation Is Local
+Everything in Git is check-summed before it is stored and is then referred to by that checksum
+Git Generally Only Adds Data
+The T">
+
+  
+    <link rel="alternative" href="/atom.xml" title="月光独奏" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">软件设计及开发者</p>
+		
+
+		
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		
+
+		<div class="switch-area">
+			<section class="first-part">
+				<nav class="header-menu">
+					<ul>
+					
+						<li><a href="/">主页</a></li>
+			        
+						<li><a href="/archives">所有文章</a></li>
+			        
+						<li><a href="/categories/随笔">随笔</a></li>
+			        
+						<li><a href="/categories/摘录">摘录</a></li>
+			        
+						<li><a href="/categories/书籍">书籍</a></li>
+			        
+						<li><a href="/categories/Web">Web</a></li>
+			        
+						<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+			        
+						<li><a href="/categories/java-android">Java/Android</a></li>
+			        
+						<li><a href="/categories/project">Project</a></li>
+			        
+						<li><a href="/categories/程序员日志">程序员日志</a></li>
+			        
+						<li><a href="/about">关于</a></li>
+			        
+					</ul>
+				</nav>
+				<nav class="header-nav">
+					<div class="social">
+						
+							<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+				        
+							<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+				        
+							<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+				        
+							<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+				        
+					</div>
+				</nav>
+			</section>
+			
+			
+			<section class="second-part">
+				<div class="widget tagcloud">
+					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 13.33px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 13.33px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 12.22px;">项目</a>
+				</div>
+			</section>
+			
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://msolo-programmer.qiniudn.com/msolo_me_square.png">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">月光独奏</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">软件设计及开发者</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+					<li><a href="/categories/摘录">摘录</a></li>
+		        
+					<li><a href="/categories/书籍">书籍</a></li>
+		        
+					<li><a href="/categories/Web">Web</a></li>
+		        
+					<li><a href="/categories/C-Cpp-Go">C/Cpp/Go</a></li>
+		        
+					<li><a href="/categories/java-android">Java/Android</a></li>
+		        
+					<li><a href="/categories/project">Project</a></li>
+		        
+					<li><a href="/categories/程序员日志">程序员日志</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/mSoloMoon" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://t.qq.com/zhengguangyu_msolo" title="weibo">weibo</a>
+			        
+						<a class="email" target="_blank" href="mailto://yuezhi.msolo@outlook.com" title="email">email</a>
+			        
+						<a class="qq" target="_blank" href="/212499714" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-learning-pro-git-2nd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/16/learning-pro-git-2nd/" class="article-date">
+  	<time datetime="2014-11-16T12:52:47.000Z" itemprop="datePublished">11月 16 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/书籍/">书籍</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习 Git（一）—— Pro Git 2nd
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起步">起步</h3>
+<p><strong>Git 认知</strong></p>
+<ul>
+<li>Snapshots, Not Diff erences</li>
+<li>Nearly Every Operation Is Local</li>
+<li>Everything in Git is check-summed before it is stored and is then referred to by that checksum</li>
+<li>Git Generally Only Adds Data</li>
+<li>The Three States ：the Git directory, working directory, and the staging area</li>
+<li>Git 基本工作流程 ：增删改（working directory）-&gt; 存储快照（staging area）-&gt; 提交（Git directory）</li>
+<li>Git 文件状态 ：untracked、unmodified、modified、staged</li>
+</ul>
+<p><strong>配置 Git</strong></p>
+<blockquote>
+<p>/etc/gitconfig ：every user，$ git config —system<br>~/.gitconfig  or  ~/.config/git/config ：specified user, $ git config —global<br>.git/config ：specified repository, $ git config</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"John Doe"</span></div><div class="line">$ git config --global user.email johndoe@example.com</div><div class="line">$ git config --global core.editor emacs		<span class="comment"># 默认 vim</span></div><div class="line">$ git config --list		<span class="comment"># $ git config user.name</span></div></pre></td></tr></table></figure>
+
+
+
+<h3 id="实战（一）">实战（一）</h3>
+<ul>
+<li>新项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git init     <span class="comment"># 在某个项目目录里初始化一个 Git working directory -&gt; .git 目录</span></div><div class="line">$ git add *.c  <span class="comment"># 存储快照（staging area）</span></div><div class="line">$ git commit -m <span class="string">'initial project version'</span>  <span class="comment"># 提交</span></div><div class="line">$ git remote add origin https://github.com/username/example.git</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<ul>
+<li>查看文件状态</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git status   <span class="comment"># 查看文件状态, 简洁版 -&gt; git status -s</span></div><div class="line"> M README            <span class="comment"># 修改但未存储快照</span></div><div class="line">MM Rakefile          <span class="comment"># 修改并已存储快照后，再次修改，both staged and unstaged</span></div><div class="line">A  lib/git.rb        <span class="comment"># 已存储快照</span></div><div class="line">M  lib/simplegit.rb  <span class="comment"># 修改并已存储快照</span></div><div class="line">?? LICENSE.txt       <span class="comment"># untracked</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>克隆已有的项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/libgit2/libgit2 mylibgit</div></pre></td></tr></table></figure>
+
+<ul>
+<li>忽略要处理的文件 ：在 .gitignore 中创建要忽略文件的正则表达式，其中 # 开头为注释</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat .gitignore</div><div class="line">*.[oa]   <span class="comment"># 忽略 .o 或 .a 的文件</span></div><div class="line">*~       <span class="comment"># 忽略文件尾是 ~ 的文件</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>比较 ：$ git diff，$ git diff —staged，$ git diff —cached</li>
+<li><p>跳过快照区步骤 ：Git 自动提交已经追踪到的但没有存储到快照区（git add）的新文件 -&gt; $ git commit -a -m ‘added new benchmarks’</p>
+</li>
+<li><p>删除文件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ rm grit.gemspec</div><div class="line">$ git rm grit.gemspec</div><div class="line">$ git rm --cached README  <span class="comment"># 忽略处理该文件</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>更改文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git mv README.md README  <span class="comment"># 等同于 mv README.md README -&gt; git rm README.md -&gt; git add README</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>查看日志</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ git log</div><div class="line">$ git log -p -<span class="number">2</span>    <span class="comment"># -p 显示每一次提交的差别， -2 显示最近2次提交的日志</span></div><div class="line">$ git log --stat   <span class="comment"># --stat 显示简略的统计信息</span></div><div class="line">$ git log --pretty=oneline   <span class="comment"># 格式化显示</span></div><div class="line">$ git log --pretty=format:<span class="string">"%h - %an, %ar : %s"</span></div><div class="line">%H    Commit <span class="built_in">hash</span>                   %h    Abbreviated commit <span class="built_in">hash</span></div><div class="line">%T    Tree <span class="built_in">hash</span>                     %t    Abbreviated tree <span class="built_in">hash</span></div><div class="line">%P    Parent hashes                 %p    Abbreviated parent hashes</div><div class="line">%an   Author name                   %ae   Author e-mail</div><div class="line">%ad   Author date (format respects the –date= option)</div><div class="line">%ar   Author date, relative         %cn   Committer name</div><div class="line">%ce   Committer email               %<span class="built_in">cd</span>   Committer date</div><div class="line">%cr   Committer date, relative      %s    Subject</div><div class="line">$ git log --pretty=format:<span class="string">"%h %s"</span> --graph   <span class="comment"># 以更好的格式显示分支及合并的历史记录</span></div><div class="line">$ git log --since=<span class="number">2</span>.weeks    <span class="comment"># 前2个礼拜，其格式接受：2008-01-15，2 years 1 day 3 minutes ago</span></div><div class="line">$ git log --author=userOne</div><div class="line">$ git log -Sfunction_name    <span class="comment"># 显示上一次提交中增加或删除的函数索引 function_name</span></div><div class="line">$ git log --grep=<span class="string">"update"</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>撤消或重新提交</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git commit -m <span class="string">'initial commit'</span></div><div class="line">$ git add forgotten_file</div><div class="line">$ git commit --amend</div><div class="line">$ git reset HEAD CONTRIBUTING.md	<span class="comment"># 删除快照</span></div><div class="line">$ git checkout -- CONTRIBUTING.md <span class="comment"># 恢复到上一次提交之后修改之前的文件</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>Git 命令别名</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git config --global alias.co checkout</div><div class="line">$ git config --global alias.br branch</div><div class="line">$ git config --global alias.ci commit</div><div class="line">$ git config --global alias.st status</div><div class="line">$ git config --global alias.unstage <span class="string">'reset HEAD --'</span></div><div class="line">$ git config --global alias.last <span class="string">'log -1 HEAD'</span></div></pre></td></tr></table></figure>
+
+<h3 id="与远程进行协作">与远程进行协作</h3>
+<ul>
+<li>添加远程仓库别名 : $ git remote add pb <a href="https://github.com/paulboone/ticgit" target="_blank" rel="external">https://github.com/paulboone/ticgit</a></li>
+<li>显示别名及其代表的URL ：$ git remote -v</li>
+<li>通过别名获取仓库 ：$ git fetch pb</li>
+<li>推送到远程仓库 ：$ git push origin master</li>
+<li>检查远程仓库状态 ：$ git remote show origin</li>
+<li>重命名远程仓库别名 ：$ git remote rename pb paul</li>
+<li>删除别名 ：$ git remote rm paul</li>
+</ul>
+<h3 id="为项目添加标签">为项目添加标签</h3>
+<blockquote>
+<p>Git 使用两种类型的标签 ：轻量级的（lightweight）和带注解的（Annotated）<br>轻量级 ：为某次特别的提交而添加的标签<br>带注解 ：包含所有必要的信息，像是标签的作者、日期、电邮、注解和 GPG 等（更像是一次版本？）</p>
+</blockquote>
+<ul>
+<li>列出标签 ：$ git tag，$ git tag -l ‘v1.8.5*’  # 只列出1.8.5系列的版本</li>
+<li>创建 Annotated 标签 ：$ git tag -a v1.4 -m ‘my version 1.4’</li>
+<li>列出标签信息 ：$ git show v1.4</li>
+<li>创建 Lightweight 标签 ：$ git tag v1.4-lw</li>
+<li>推送标签 ：$ git push origin v1.5，$ git push origin —tags （默认情况下，推送不包含标签）</li>
+<li>签出某个标签的版本 ：$ git checkout -b version2 v2.0.0（切记，标签默认不会被推送） </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/11/15/learning-gradle-in-action-i/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习 Gradle —— Java 下一代构建工具（一）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learning-pro-git-2nd" data-title="学习 Git（一）—— Pro Git 2nd" data-url="http://yoursite.com/2014/11/16/learning-pro-git-2nd/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2014 月光独奏
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
