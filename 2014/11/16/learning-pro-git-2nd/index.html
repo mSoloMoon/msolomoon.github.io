@@ -265,10 +265,8 @@ The T">
 
 <ul>
 <li>比较 ：$ git diff，$ git diff —staged，$ git diff —cached</li>
-<li><p>跳过快照区步骤 ：Git 自动提交已经追踪到的但没有存储到快照区（git add）的新文件 -&gt; $ git commit -a -m ‘added new benchmarks’</p>
-</li>
-<li><p>删除文件</p>
-</li>
+<li>跳过快照区步骤 ：Git 自动提交已经追踪到的但没有存储到快照区（git add）的新文件 -&gt; $ git commit -a -m ‘added new benchmarks’</li>
+<li>删除文件</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ rm grit.gemspec</div><div class="line">$ git rm grit.gemspec</div><div class="line">$ git rm --cached README  <span class="comment"># 忽略处理该文件</span></div></pre></td></tr></table></figure>
 
