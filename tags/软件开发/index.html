@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 13.33px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 13.33px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 12.22px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.56px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 15.56px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 13.33px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,176 @@
 	</div>
 </nav>
       
+  
+    <article id="post-project-stockeye-jenkins-calendarstock-lib" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/18/project-stockeye-jenkins-calendarstock-lib/" class="article-date">
+  	<time datetime="2014-11-17T19:23:14.000Z" itemprop="datePublished">11月 18 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/18/project-stockeye-jenkins-calendarstock-lib/">持续集成之路 —— Stockeye CalendarStock 库开发实录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>关键字 ：Jenkins、Gradle、JUnit、Jacoco、jar 包和库</strong></p>
+</blockquote>
+<h3 id="库项目结构">库项目结构</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">| build.gradle</div><div class="line">| src</div><div class="line">|   |- main</div><div class="line">|         |- java/com/msolo/stockeye/calendarstock/UtilCalTime.java</div><div class="line">|   |- test</div><div class="line">|         |- java/com/msolo/stockeye/calendarstock/UtilCalTimeTest.java</div></pre></td></tr></table></figure>
+
+<h3 id="构建脚本（无_Jacoco）">构建脚本（无 Jacoco）</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'java'</span></div><div class="line">version = <span class="number">0.1</span></div><div class="line"><span class="keyword">repositories</span> {</div><div class="line">	mavenCentral()</div><div class="line">}</div><div class="line"><span class="keyword">dependencies</span> {</div><div class="line">	testCompile <span class="string">'junit:junit:4.11'</span></div><div class="line">}</div><div class="line"><span class="keyword">task</span> libJavadocs(type: Javadoc) {</div><div class="line">	<span class="keyword">source</span> = <span class="keyword">sourceSets</span>.main.allJava</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="Jenkins_项目配置（无_JaCoCo）">Jenkins 项目配置（无 JaCoCo）</h3>
+<ul>
+<li>项目名称：android_stockeye_cal_lib</li>
+<li>源码管理：<a href="https://github.com/mSoloMoon/android_stockeye_calendar_lib.git" target="_blank" rel="external">https://github.com/mSoloMoon/android_stockeye_calendar_lib.git</a></li>
+<li>构建触发器：Poll SCM -&gt; <em> </em> <em> </em> *</li>
+<li>构建步骤1：Invoke Gradle script -&gt; Switch -&gt; clean build javadoc</li>
+<li>构建后操作1：Publish JUnit test result report -&gt; XML -&gt; <em>*/build/test-results/</em>.xml</li>
+<li>构建后操作2：Publish Javadoc -&gt; build/docs/javadoc/</li>
+</ul>
+<h3 id="持续集成（无_JaCoCo）">持续集成（无 JaCoCo）</h3>
+<p><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_1.png" alt="项目首页"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_2.png" alt="测试结果总结"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_3.png" alt="控制台输出"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_4.png" alt="Javadoc"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_5.png" alt="工作空间"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_6.png" alt="JUnit报告1"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_7.png" alt="JUnit报告2"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_8.png" alt="生成的Jar包"></p>
+<h3 id="构建脚本（增加_JaCoCo）">构建脚本（增加 JaCoCo）</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 增加的部分</div><div class="line">apply plugin: <span class="string">"jacoco"</span></div><div class="line">jacocoTestReport {</div><div class="line">    group = <span class="string">"reporting"</span></div><div class="line">    description = <span class="string">"Generate Jacoco coverage reports after running tests."</span></div><div class="line">    reports {</div><div class="line">        xml.enabled <span class="literal">true</span></div><div class="line">        html.enabled <span class="literal">true</span></div><div class="line">        csv.enabled <span class="literal">false</span></div><div class="line">    }</div><div class="line">    //classDirectories = fileTree(dir: <span class="string">'build/classes/main'</span>, include: <span class="string">'com/thc/**'</span>)</div><div class="line">    //<span class="built_in">source</span>Directories = fileTree(dir: <span class="string">'scr/java'</span>, include: <span class="string">'com/thc/**'</span>)</div><div class="line">    additionalSourceDirs = files(<span class="built_in">source</span>Sets.main.allJava.srcDirs)</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="Jenkins_项目配置（增加_Jacoco）">Jenkins 项目配置（增加 Jacoco）</h3>
+<ul>
+<li>构建后操作3：Record JaCoCo coverage report</li>
+<li>构建后操作4：E-mail Notification</li>
+</ul>
+<h3 id="持续集成（增加_JaCoCo）">持续集成（增加 JaCoCo）</h3>
+<p><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_9.png" alt="项目首页"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_10.png" alt="Code Coverage report"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_11.png" alt="控制台输出"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-learning-gradle-in-action-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/18/learning-gradle-in-action-ii/" class="article-date">
+  	<time datetime="2014-11-17T17:43:29.000Z" itemprop="datePublished">11月 18 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/18/learning-gradle-in-action-ii/">学习 Gradle —— Java 下一代构建工具（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>Gradle 构建生命期</strong><br>初始化阶段（initialization phase）：创建 Project 实例 -&gt;<br>配置阶段（configuration phase）：constructs a model representation of the tasks -&gt;<br>执行阶段（execution phase）</p>
+</blockquote>
+<h3 id="Gradle_构建脚本精要">Gradle 构建脚本精要</h3>
+<blockquote>
+<p>Gradle 构建的原理 -&gt; 基于 <strong>DDD（domain-driven design）</strong>进行建模。</p>
+</blockquote>
+<p><strong>构建模块</strong></p>
+<ul>
+<li>模块：项目（the Project interface）</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Build script conﬁguration</span></div><div class="line"><span class="function">apply</span>(options<span class="value">: Map&lt;String,?&gt;)</span></div><div class="line"><span class="function">buildscript</span>(conﬁg: Closure)</div><div class="line">//</div><div class="line">// Dependency management</div><div class="line"><span class="function">dependencies</span>(conﬁg: Closure)</div><div class="line">conﬁ<span class="function">gurations</span>(conﬁg: Closure)</div><div class="line"><span class="function">getDependencies</span>()</div><div class="line">getConﬁ<span class="function">gurations</span>()</div><div class="line">//</div><div class="line">// Properties</div><div class="line"><span class="function">getAnt</span>()</div><div class="line"><span class="function">getName</span>()</div><div class="line"><span class="function">getDescription</span>()</div><div class="line"><span class="function">getGroup</span>()</div><div class="line"><span class="function">getPath</span>()</div><div class="line"><span class="function">getVersion</span>()</div><div class="line"><span class="function">getLogger</span>()</div><div class="line"><span class="function">setDescription</span>(description: String)</div><div class="line"><span class="function">setVersion</span>(version: Object)</div><div class="line">//</div><div class="line">// File creation</div><div class="line">ﬁ<span class="function">le</span>(path: Object)</div><div class="line">ﬁ<span class="function">les</span>(paths: Object...)</div><div class="line">ﬁ<span class="function">leTree</span>(baseDir: Object)</div><div class="line">//</div><div class="line">// Task creation</div><div class="line"><span class="function">task</span>(args: Map&lt;String,?&gt;, name: String)</div><div class="line"><span class="function">task</span>(args: Map&lt;String,?&gt;, name: String, c: Closure)</div><div class="line"><span class="function">task</span>(name: String)</div><div class="line"><span class="function">task</span>(name: String, c: Closure)</div><div class="line">// 示例</div><div class="line"><span class="function">setDescription</span>(<span class="string">"myProject"</span>)                       </div><div class="line">println <span class="string">"Description of project $name: "</span> + project.description</div></pre></td></tr></table></figure>
+
+<blockquote>
+<p>管理项目版本<br>def projectVersion = new ProjectVersion()<br>projectVersion.major = 0<br>projectVersion.minor = 1<br>projectVersion.release = false<br>version = projectVersion</p>
+</blockquote>
+<ul>
+<li>模块：任务（the Task interface）: 默认新创建的任务类型 -&gt; org.gradle.api.DefaultTask，private</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Task dependencies</span></div><div class="line">dependsOn(tasks: Object...)</div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Action deﬁnition</span></div><div class="line"><span class="keyword">doFirst</span>(action: Closure)</div><div class="line"><span class="keyword">doLast</span>(action: Closure)</div><div class="line">getActions()</div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Input/output data declaration</span></div><div class="line">getInputs()</div><div class="line">getOutputs()</div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Properties</span></div><div class="line">getAnt()</div><div class="line">getDescription()</div><div class="line">getEnabled()</div><div class="line">getGroup()</div><div class="line">setDescription(<span class="keyword">description</span>: String)</div><div class="line">setEnabled(enabled: <span class="keyword">boolean</span>)</div><div class="line">setGroup(<span class="keyword">group</span>: String)</div><div class="line"><span class="comment">// 清理任务</span></div><div class="line"><span class="keyword">task</span> first &lt;&lt; { <span class="keyword">println</span> <span class="string">"first"</span> }</div><div class="line"><span class="keyword">task</span> second &lt;&lt; { <span class="keyword">println</span> <span class="string">"second"</span> }</div><div class="line">first.finalizedBy second 	<span class="comment">// 执行完或单独执行任务 first 后会触发任务 second（由它进行清理）</span></div><div class="line"><span class="comment">// 配置 : 其定义中没有 Action 或其缩写 &lt;&lt;</span></div><div class="line">ext.versionFile = <span class="keyword">file</span>(<span class="string">'version.properties'</span>)   </div><div class="line"><span class="keyword">task</span> loadVersion {                     </div><div class="line">   <span class="keyword">project</span>.version = readVersion()</div><div class="line">}</div><div class="line">ProjectVersion readVersion() {</div><div class="line">   logger.quiet <span class="string">'Reading the version file.'</span></div><div class="line">   <span class="keyword">if</span>(!versionFile.exists()) {</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> GradleException(<span class="string">"Required version file does not exist: $versionFile.canonicalPath"</span>) </div><div class="line">   }</div><div class="line">   Properties versionProps = <span class="keyword">new</span> Properties() </div><div class="line">   versionFile.withInputStream { stream -&gt;  </div><div class="line">      versionProps.load(stream)</div><div class="line">   }</div><div class="line">   <span class="keyword">new</span> ProjectVersion(versionProps.major.<span class="keyword">toInteger</span>(), </div><div class="line">       versionProps.minor.<span class="keyword">toInteger</span>(), versionProps.release.toBoolean())</div><div class="line">}</div><div class="line"><span class="comment">// 声明任务的输入和输出</span></div><div class="line"><span class="keyword">task</span> makeReleaseVersion(<span class="keyword">group</span>: <span class="string">'versioning'</span>, <span class="keyword">description</span>: <span class="string">'Makes project a release version.'</span>) {    </div><div class="line">   <span class="comment">// inputs 和 outputs 在配置阶段执行</span></div><div class="line">   inputs.property(<span class="string">'release'</span>, version.release)           </div><div class="line">   outputs.<span class="keyword">file</span> versionFile                </div><div class="line">   <span class="keyword">doLast</span> {</div><div class="line">      version.release = <span class="keyword">true</span></div><div class="line">      <span class="keyword">ant</span>.propertyfile(<span class="keyword">file</span>: versionFile) {</div><div class="line">         entry(key: <span class="string">'release'</span>, type: <span class="string">'string'</span>, operation: <span class="string">'='</span>, value: <span class="string">'true'</span>)</div><div class="line">      }</div><div class="line">   }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>自定义任务</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReleaseVersionTask</span> <span class="keyword">extends</span> <span class="title">DefaultTask</span> </span>{                 </div><div class="line">   <span class="annotation">@Input</span> Boolean release                    </div><div class="line">   <span class="annotation">@OutputFile</span> File destFile                 </div><div class="line">   ReleaseVersionTask() {</div><div class="line">      group = <span class="symbol">'versionin</span>g'                             </div><div class="line">      description = <span class="symbol">'Makes</span> project a release version.' </div><div class="line">   }</div><div class="line">   <span class="annotation">@TaskAction</span>                       </div><div class="line">   void start() {</div><div class="line">      project.version.release = <span class="keyword">true</span></div><div class="line">      ant.propertyfile(file: destFile) {</div><div class="line">         entry(key: <span class="symbol">'releas</span>e', <span class="keyword">type</span>: <span class="symbol">'strin</span>g', operation: '=', value: <span class="symbol">'tru</span>e')</div><div class="line">      }</div><div class="line">   }</div><div class="line">}</div><div class="line">task makeReleaseVersion(<span class="keyword">type</span>: ReleaseVersionTask) {     </div><div class="line">   release = version.release           </div><div class="line">   destFile = versionFile              </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<ul>
+<li>额外属性（extra properties）: 使用 ext 命名空间</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">project.ext.<span class="variable">myProp =</span> 'myValue'      </div><div class="line">ext {                               </div><div class="line">   <span class="variable">someOtherProp =</span> <span class="number">123</span></div><div class="line">}</div><div class="line"><span class="keyword">assert</span> <span class="variable">myProp =</span>= 'myValue'              </div><div class="line">println project.someOtherProp           </div><div class="line">ext.<span class="variable">someOtherProp =</span> <span class="number">567</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>Gradle 属性单独定义示范</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 文件：gradle.properties</span></div><div class="line">exampleProp = myValue</div><div class="line">someOtherProp = <span class="number">455</span></div><div class="line"><span class="comment">// 文件：build.gradle</span></div><div class="line">assert <span class="keyword">project</span>.exampleProp == <span class="string">'myValue'</span></div><div class="line"><span class="keyword">task</span> printGradleProperty &lt;&lt; {</div><div class="line">   <span class="keyword">println</span> <span class="string">"Second property: $someOtherProp"</span></div><div class="line">}</div><div class="line"><span class="comment">// 命令行 ：-P 项目属性；-D 系统属性</span></div><div class="line"><span class="comment">// 环境属性 ：ORG_GRADLE_PROJECT_propertyName=someValue</span></div></pre></td></tr></table></figure>
+
+<h2 id="#">#</h2>
+<h2 id="#-1">#</h2>
+<h2 id="#-2">#</h2>
+<p>To do</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-learning-pro-git-2nd" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -766,147 +936,6 @@
         
           <p class="article-more-link">
             <a href="/2014/11/09/android-interview-i/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-project-stockeye-package-calendarstock" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/08/project-stockeye-package-calendarstock/" class="article-date">
-  	<time datetime="2014-11-08T07:00:38.000Z" itemprop="datePublished">11月 8 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project/">project</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/08/project-stockeye-package-calendarstock/">Stockeye项目 - CalendarStock包（初步设计）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="预构">预构</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// class UtilCalTime</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getStrCal</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeHHMMSS</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getTimeFormat</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getLatestDayOfStock</span>(); </div><div class="line"><span class="keyword">public</span> String[] <span class="title">getWorkdayArrayUtilNow</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIntWeekday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">getWeekday</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCountByTenSecond</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkIsWorkday</span>(); </div><div class="line"><span class="keyword">public</span> String <span class="title">convertIntToCalFormat</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">convertStrCalToInt</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getQuarterByMonth</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeekIndexOfYear</span>(); </div><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDateIndexOfYear</span>();</div></pre></td></tr></table></figure>
-
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/08/project-stockeye-package-calendarstock/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-reading-bruce-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/05/reading-bruce-thinking-in-java/" class="article-date">
-  	<time datetime="2014-11-05T06:38:44.000Z" itemprop="datePublished">11月 5 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/书籍/">书籍</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘录/">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/05/reading-bruce-thinking-in-java/">拜读Bruce大作 —— 《Java编程思想》(第一遍)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://msolomoon.github.io/images/bookcover_bruce_thinking_in_java.jpg" alt="Java编程思想"></p>
-<p><br></p>
-<blockquote>
-<p><strong>所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次</strong>。</p>
-</blockquote>
-<h3 id="第一章_对象导论">第一章 对象导论</h3>
-<blockquote>
-<p><strong>对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
-<ol>
-<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；</li>
-<li><strong>每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</strong></li>
-<li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧；</li>
-</ol>
-</blockquote>
-<ul>
-<li>继承关系探讨，“是一个” 与 “像是一个”，【书：有时必须在导出类型中添加新的接口元素，这个新的类型仍然可以替代基类，但是这种替代并不完美，因为基类无法访问新添加的方法。这种情况我们可以描述为is-like-a关系。】</li>
-<li>多态的可互换对象，【书：为了执行动态绑定，Java使用一小段特殊代码来替代绝对地址调用；它忽略类型的具体细节，仅仅和基类交互。这段代码和具体类型信息是分离的…把将导出类看做是它的基类的过程称为向上转型(upcasting)…这里要表达的是，如果你是一个Shape，我知道你可以 erase() 和 draw() 你自己，那么去做吧…】</li>
-<li>单根继承结构的好处：1.简化参数传递，保证所有对象都具有某些功能，执行基本操作；2.使得垃圾回收器的实现变得容易多；3.为异常处理等系统级操作带来灵活性；</li>
-<li>异常处理：异常是一种对象；有助于编写出更健壮程序的机制；</li>
-</ul>
-<h3 id="第二章_一切都是对象">第二章 一切都是对象</h3>
-<blockquote>
-<p>一切都是引用，引用操纵对象；<br>对象存储到什么地方：new 对象存储在堆（寄存器、堆栈、堆、常量存储区、非RAM存储区[流对象和持久化对象-即磁盘等]）；<br>基本类型存储到什么地方：变量直接存储“值”，并置于堆栈中，更加高效；<br>java中的数组，【书：当创建一个数组对象时，实际上就是创建一个引用数组。并且每个引用都会被初始化为一个特定值，该值拥有自己的关键字null】；</p>
-</blockquote>
-<ul>
-<li><strong>永远不需要销毁对象?!</strong></li>
-<li>static 关键字：static 方法可以创建或使用与其类型相同的被命名对象；因此常常拿来做“牧羊人”的角色，负责看护与其隶属统一类型的实例群；</li>
-</ul>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/11/05/reading-bruce-thinking-in-java/#more">more >></a>
           </p>
         
       

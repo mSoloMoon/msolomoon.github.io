@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 13.33px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 13.33px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 12.22px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 14.44px;">Android</a><a href="/tags/C-C/" style="font-size: 11.11px;">C/C++</a><a href="/tags/Go/" style="font-size: 11.11px;">Go</a><a href="/tags/IT问题录/" style="font-size: 11.11px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 16.67px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.56px;">Java</a><a href="/tags/Java-Web/" style="font-size: 11.11px;">Java Web</a><a href="/tags/书籍笔记/" style="font-size: 10.00px;">书籍笔记</a><a href="/tags/历史/" style="font-size: 11.11px;">历史</a><a href="/tags/哲学/" style="font-size: 11.11px;">哲学</a><a href="/tags/思考/" style="font-size: 14.44px;">思考</a><a href="/tags/持续部署/" style="font-size: 10.00px;">持续部署</a><a href="/tags/持续集成/" style="font-size: 15.56px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.56px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.78px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 12.22px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 11.11px;">软件调试</a><a href="/tags/金融/" style="font-size: 11.11px;">金融</a><a href="/tags/随笔/" style="font-size: 18.89px;">随笔</a><a href="/tags/项目/" style="font-size: 13.33px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,86 @@
 	</div>
 </nav>
       
+  
+    <article id="post-project-stockeye-jenkins-calendarstock-lib" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/18/project-stockeye-jenkins-calendarstock-lib/" class="article-date">
+  	<time datetime="2014-11-17T19:23:14.000Z" itemprop="datePublished">11月 18 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/18/project-stockeye-jenkins-calendarstock-lib/">持续集成之路 —— Stockeye CalendarStock 库开发实录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>关键字 ：Jenkins、Gradle、JUnit、Jacoco、jar 包和库</strong></p>
+</blockquote>
+<h3 id="库项目结构">库项目结构</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">| build.gradle</div><div class="line">| src</div><div class="line">|   |- main</div><div class="line">|         |- java/com/msolo/stockeye/calendarstock/UtilCalTime.java</div><div class="line">|   |- test</div><div class="line">|         |- java/com/msolo/stockeye/calendarstock/UtilCalTimeTest.java</div></pre></td></tr></table></figure>
+
+<h3 id="构建脚本（无_Jacoco）">构建脚本（无 Jacoco）</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'java'</span></div><div class="line">version = <span class="number">0.1</span></div><div class="line"><span class="keyword">repositories</span> {</div><div class="line">	mavenCentral()</div><div class="line">}</div><div class="line"><span class="keyword">dependencies</span> {</div><div class="line">	testCompile <span class="string">'junit:junit:4.11'</span></div><div class="line">}</div><div class="line"><span class="keyword">task</span> libJavadocs(type: Javadoc) {</div><div class="line">	<span class="keyword">source</span> = <span class="keyword">sourceSets</span>.main.allJava</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="Jenkins_项目配置（无_JaCoCo）">Jenkins 项目配置（无 JaCoCo）</h3>
+<ul>
+<li>项目名称：android_stockeye_cal_lib</li>
+<li>源码管理：<a href="https://github.com/mSoloMoon/android_stockeye_calendar_lib.git" target="_blank" rel="external">https://github.com/mSoloMoon/android_stockeye_calendar_lib.git</a></li>
+<li>构建触发器：Poll SCM -&gt; <em> </em> <em> </em> *</li>
+<li>构建步骤1：Invoke Gradle script -&gt; Switch -&gt; clean build javadoc</li>
+<li>构建后操作1：Publish JUnit test result report -&gt; XML -&gt; <em>*/build/test-results/</em>.xml</li>
+<li>构建后操作2：Publish Javadoc -&gt; build/docs/javadoc/</li>
+</ul>
+<h3 id="持续集成（无_JaCoCo）">持续集成（无 JaCoCo）</h3>
+<p><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_1.png" alt="项目首页"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_2.png" alt="测试结果总结"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_3.png" alt="控制台输出"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_4.png" alt="Javadoc"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_5.png" alt="工作空间"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_6.png" alt="JUnit报告1"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_7.png" alt="JUnit报告2"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_8.png" alt="生成的Jar包"></p>
+<h3 id="构建脚本（增加_JaCoCo）">构建脚本（增加 JaCoCo）</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 增加的部分</div><div class="line">apply plugin: <span class="string">"jacoco"</span></div><div class="line">jacocoTestReport {</div><div class="line">    group = <span class="string">"reporting"</span></div><div class="line">    description = <span class="string">"Generate Jacoco coverage reports after running tests."</span></div><div class="line">    reports {</div><div class="line">        xml.enabled <span class="literal">true</span></div><div class="line">        html.enabled <span class="literal">true</span></div><div class="line">        csv.enabled <span class="literal">false</span></div><div class="line">    }</div><div class="line">    //classDirectories = fileTree(dir: <span class="string">'build/classes/main'</span>, include: <span class="string">'com/thc/**'</span>)</div><div class="line">    //<span class="built_in">source</span>Directories = fileTree(dir: <span class="string">'scr/java'</span>, include: <span class="string">'com/thc/**'</span>)</div><div class="line">    additionalSourceDirs = files(<span class="built_in">source</span>Sets.main.allJava.srcDirs)</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="Jenkins_项目配置（增加_Jacoco）">Jenkins 项目配置（增加 Jacoco）</h3>
+<ul>
+<li>构建后操作3：Record JaCoCo coverage report</li>
+<li>构建后操作4：E-mail Notification</li>
+</ul>
+<h3 id="持续集成（增加_JaCoCo）">持续集成（增加 JaCoCo）</h3>
+<p><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_9.png" alt="项目首页"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_10.png" alt="Code Coverage report"><br><img src="https://msolomoon.github.io/images/Project_android_stockeye_cal_lib_11.png" alt="控制台输出"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-project-stockeye-package-calendarstock" class="article article-type-post" itemscope itemprop="blogPost">
   
