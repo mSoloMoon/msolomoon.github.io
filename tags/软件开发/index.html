@@ -217,110 +217,15 @@
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> {</div><div class="line">    <span class="keyword">repositories</span> {</div><div class="line">        jcenter()</div><div class="line">    }</div><div class="line">    <span class="keyword">dependencies</span> {</div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:0.13.2'</span></div><div class="line">        <span class="keyword">classpath</span> <span class="string">'org.robolectric:robolectric-gradle-plugin:0.13.+'</span></div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="keyword">allprojects</span> {</div><div class="line">    <span class="keyword">repositories</span> {</div><div class="line">        jcenter()</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
 
 <p><strong>目录结构</strong></p>
-<p>`` bash<br>| build.gradle<br>| src<br>|   |- androidTest<br>|         |- java/com/msolo/stockeye/MainActivityTest.java<br>|         |- java/com/msolo/stockeye/StockeyeApplication.java<br>|   |- main<br>|         |- java/com/msolo/stockeye/MainActivity.java<br>|         |- java/com/msolo/stockeye/StockeyeApplication.java</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**app. build.gradle**</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- more --&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">| build.gradle</div><div class="line">| src</div><div class="line">|   |- androidTest</div><div class="line">|         |- java/com/msolo/stockeye/MainActivityTest.java</div><div class="line">|         |- java/com/msolo/stockeye/StockeyeApplication.java</div><div class="line">|   |- main</div><div class="line">|         |- java/com/msolo/stockeye/MainActivity.java</div><div class="line">|         |- java/com/msolo/stockeye/StockeyeApplication.java</div></pre></td></tr></table></figure>
 
-<p> groovy<br>apply plugin: ‘com.android.application’</p>
-<p>android {<br>    compileSdkVersion 18<br>    buildToolsVersion ‘19.1.0’</p>
-<pre><code><span class="title">defaultConfig</span> {
-    <span class="title">applicationId</span> <span class="string">"com.msolo.stockeye"</span>
-    minSdkVersion <span class="number">16</span>
-    targetSdkVersion <span class="number">18</span>
-    versionCode <span class="number">1</span>
-    versionName <span class="string">"1.0"</span>
-}
-buildTypes {
-    <span class="title">release</span> {
-        <span class="title">runProguard</span> <span class="built_in">false</span>
-        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
-    }
-}
+<p><strong>app. build.gradle</strong></p>
 
-packagingOptions {
-    <span class="title">exclude</span> <span class="string">'META-INF/NOTICE'</span>
-    exclude <span class="string">'META-INF/LICENSE'</span>
-    exclude <span class="string">'META-INF/LICENSE.txt'</span>
-    exclude <span class="string">'LICENSE.txt'</span>
-}
-</code></pre><p>}<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>    compile ‘com.android.support:support-v4:19+’</p>
-<pre><code>androidTestCompile <span class="string">'org.hamcrest:hamcrest-integration:1.1'</span>
-androidTestCompile <span class="string">'org.hamcrest:hamcrest-core:1.1'</span>
-androidTestCompile <span class="string">'org.hamcrest:hamcrest-library:1.1'</span>
-
-androidTestCompile(<span class="string">'junit:junit:4.+'</span>) {
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">hamcrest</span>-<span class="title">core</span>'</span>
-}
-androidTestCompile(<span class="string">'org.robolectric:robolectric:2.3'</span>) {
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">classworlds</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">commons</span>-<span class="title">logging</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">httpclient</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">artifact</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">artifact</span>-<span class="title">manager</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">error</span>-<span class="title">diagnostics</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">model</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">project</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">maven</span>-<span class="title">settings</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">plexus</span>-<span class="title">container</span>-<span class="title">default</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">plexus</span>-<span class="title">interpolation</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">plexus</span>-<span class="title">utils</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">support</span>-<span class="title">v4</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">wagon</span>-<span class="title">file</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">wagon</span>-<span class="title">http</span>-<span class="title">lightweight</span>'</span>
-    exclude <span class="class"><span class="keyword">module</span>: '<span class="title">wagon</span>-<span class="title">provider</span>-<span class="title">api</span>'</span>
-}
-</code></pre><p>}<br>apply plugin: ‘robolectric’</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>TDD 示范程序<span class="keyword">*</span><span class="keyword">*</span></div></pre></td></tr></table></figure>
-
-<p> java<br>package com.msolo.stockeye;</p>
-<p>import org.junit.Test;<br>import org.junit.runner.RunWith;<br>import org.robolectric.RobolectricTestRunner;</p>
-<p>import static org.junit.Assert.assertEquals;</p>
-<p>@RunWith(RobolectricTestRunner.class)<br>public class MainActivityTest {</p>
-<pre><code>@Test
-<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testActivityDisplayHelloWorldSuccessful</span>() {
-
-    String hello = <span class="keyword">new</span> MainActivity().getResources().getString(R.<span class="keyword">string</span>.hello_world);
-    assertEquals(<span class="string">"Hello World!"</span>, hello);
-
-}
-</code></pre><p>}</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="strong">**示范测试**</span></div><div class="line"></div><div class="line"><span class="blockquote">&gt; E:\android_workspaces\TDDStockeye&gt;d:gradle-2.1\bin\gradle test</span></div><div class="line"><span class="blockquote">&gt; :app:preBuild                                                                    </span></div><div class="line"><span class="blockquote">&gt; :app:preDebugBuild                </span></div><div class="line"><span class="blockquote">&gt; :app:checkDebugManifest                </span></div><div class="line"><span class="blockquote">&gt; :app:prepareDebugDependencies                 </span></div><div class="line"><span class="blockquote">&gt; :app:compileDebugAidl UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:compileDebugRenderscript UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:generateDebugBuildConfig UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:generateDebugAssets UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:mergeDebugAssets UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:generateDebugResValues UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:generateDebugResources UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:mergeDebugResources UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:processDebugManifest UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:processDebugResources UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:generateDebugSources UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:compileDebugJava UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:compileTestDebugJava                                                                    </span></div><div class="line"><span class="blockquote">&gt; :app:processTestDebugResources UP-TO-DATE      </span></div><div class="line"><span class="blockquote">&gt; :app:testDebugClasses                 </span></div><div class="line"><span class="blockquote">&gt; :app:testDebug                                     </span></div><div class="line"><span class="blockquote">&gt; :app:test                 </span></div><div class="line"><span class="blockquote">&gt;                </span></div><div class="line">&gt; BUILD SUCCESSFUL</div><div class="line"><span class="blockquote">&gt;                </span></div><div class="line">&gt; Total time: 11.647 secs</div><div class="line"></div><div class="line"><span class="strong">**测试结果**</span>：file:///E:/android_workspaces/TDDStockeye/app/build/test-report/debug/index.html</div><div class="line"></div><div class="line">![](https://msolomoon.github.io/images/Project<span class="emphasis">_android_</span>stockeye<span class="emphasis">_notification_</span>stockquote_1.png)</div><div class="line">![](https://msolomoon.github.io/images/Project<span class="emphasis">_android_</span>stockeye<span class="emphasis">_notification_</span>stockquote_2.png)</div><div class="line"></div><div class="line"><span class="header">###NotificationStockQuote TDD###</span></div><div class="line"></div><div class="line"><span class="strong">**NotificationStockQuote 测试计划**</span></div><div class="line"></div><div class="line"><span class="bullet">1. </span>单例类 (代号：Annn，实际中不必这么繁琐！)</div><div class="line"><span class="bullet">2. </span>初始化（代号：Bnnn，获取 NOTIFICATION_SERVICE，）</div><div class="line"><span class="bullet">3. </span>To do...</div><div class="line"></div><div class="line"><span class="strong">**第01次（A001）**</span>：测试默认构造器为私有，【注：TDD 快速测试示范意义】</div></pre></td></tr></table></figure>
-
-<p> java<br>// NotificationStockQuoteTest.java<br>@Test<br>public void testSingletonOfNotificationStockQuote() {<br>    notificationStockQuote = new NotificationStockQuote();<br>    NotificationStockQuote notificationStockQuoteAnother = new NotificationStockQuote();<br>    assertNotSame(notificationStockQuoteAnother, notificationStockQuote);<br>}<br>// NotificationStockQuote.java<br>public class NotificationStockQuote {<br>    private static NotificationStockQuote sInstance = null;<br>    private NotificationStockQuote() {}<br>    public static NotificationStockQuote getInstance() {<br>        return new NotificationStockQuote();<br>    }<br>}</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 结果预期：失败；NotificationStockQuote 类默认构造器可以在外部被调用。</div><div class="line"></div><div class="line">![](https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_3.png)</div><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>第02次（A002）<span class="keyword">*</span><span class="keyword">*</span>：测试默认构造器为私有，并且构造生成的对象为单例对象</div></pre></td></tr></table></figure>
-
-<p> java<br>// NotificationStockQuoteTest.java<br>@Test<br>public void testSingletonOfNotificationStockQuote() {<br>    NotificationStockQuote notificationStockQuoteAnother = NotificationStockQuote.getInstance();<br>    notificationStockQuote = NotificationStockQuote.getInstance();<br>    assertSame(notificationStockQuoteAnother, notificationStockQuote);<br>}<br>// NotificationStockQuote.java<br>public class NotificationStockQuote {<br>    private static NotificationStockQuote sInstance = null;<br>    private NotificationStockQuote() {}<br>    public static NotificationStockQuote getInstance() {<br>        return new NotificationStockQuote();<br>    }<br>}</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="ruby"> <span class="symbol">file:</span>/<span class="regexp">//</span><span class="constant">E</span><span class="symbol">:/android_workspaces/TDDStockeye/app/build/test-report/debug/index</span>.html</span></div><div class="line">-<span class="ruby"> 结果预期：失败；<span class="constant">NotificationStockQuote</span> 类默认构造器私有，但返回的对象不是单例。</span></div><div class="line"></div><div class="line">![](https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_4.png)</div><div class="line"></div><div class="line">**第03次（A003）**：测试默认构造器为私有，并且构造生成的对象为单例对象</div></pre></td></tr></table></figure>
-
-<p> java<br>// NotificationStockQuoteTest.java<br>@Before<br>public void setUp() {<br>    notificationStockQuote = NotificationStockQuote.getInstance();<br>}<br>@Test<br>public void testSingletonOfNotificationStockQuote() {<br>    NotificationStockQuote notificationStockQuoteAnother = NotificationStockQuote.getInstance();<br>    assertSame(notificationStockQuoteAnother, notificationStockQuote);<br>}<br>// NotificationStockQuote.java<br>public class NotificationStockQuote {<br>    private static NotificationStockQuote sInstance = null;<br>    private NotificationStockQuote() {}<br>    public static NotificationStockQuote getInstance() {<br>        if (null == sInstance) {<br>            sInstance = new NotificationStockQuote();<br>        }<br>        return sInstance;<br>    }<br>}</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 结果预期：成功；NotificationStockQuote 类默认构造器私有，返回的对象是单例。</div><div class="line"></div><div class="line">![](https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_5.png) </div><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>第04次（B001）<span class="keyword">*</span><span class="keyword">*</span>：测试 NotificationStockQuote 完成对 Notification 服务管理对象的初始化</div></pre></td></tr></table></figure>
-
-<p> java<br>// NotificationStockQuoteTest.java<br>@Test<br>public void testInit() {<br>    NotificationManager notificationManager = (NotificationManager) Robolectric.application.getSystemService(Context.NOTIFICATION_SERVICE);<br>    notificationStockQuote.init();<br>    NotificationStockQuote.HelperTestNotificationStockQuote helper = notificationStockQuote.new HelperTestNotificationStockQuote();<br>    assertNotNull(helper.getNotificationManager());<br>    assertSame(notificationManager, helper.getNotificationManager());<br>}<br>// NotificationStockQuote.java<br>public void init() {<br>}<br>/<em>*
- </em></p>
-<ul>
-<li>This is an inner class for helping test NotificationStockQuote,</li>
-<li>and it should be delete in production.<br>*</li>
-<li>Date   | Name    | Change<br>*————+—————————————————————————</li>
-<li>141119 | mSolo   | REQ #001: add method getNotificationManager().<br><em>
-</em>/<br>public class HelperTestNotificationStockQuote {<br> public HelperTestNotificationStockQuote() {}<br> public NotificationManager getNotificationManager() {<pre><code> <span class="keyword">return</span> notificationManager;
-</code></pre> }<br>}</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 结果预期：失败；NotificationStockQuote 对象并没有完成对 Notification 服务管理对象的初始化。</div><div class="line"></div><div class="line">![](https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_6.png) </div><div class="line">![](https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_7.png) </div><div class="line"></div><div class="line"><span class="keyword">*</span><span class="keyword">*</span>第05次（B002）<span class="keyword">*</span><span class="keyword">*</span>：测试 NotificationStockQuote 完成对 Notification 对象的初始化</div></pre></td></tr></table></figure>
-
-<p> java<br>@Test<br>public void testInit() {<br>    NotificationManager notificationManager = (NotificationManager) Robolectric.application.getSystemService(Context.NOTIFICATION_SERVICE);<br>    //notificationStockQuote.init();<br>    MimicNotificationStockQuote mimic = new MimicNotificationStockQuote();<br>    mimic.init();<br>    assertNotNull(mimic.notificationManager);<br>    assertSame(notificationManager, mimic.notificationManager);<br>}<br>/<em>*
- </em></p>
-<ul>
-<li>This is an inner class for mimic NotificationStockQuote.<br>*</li>
-<li>Date   | Name    | Change<br>*————+—————————————————————————</li>
-<li>141119 | mSolo   | REQ #001: mimic method init().<br><em>
-</em>/<br>private class MimicNotificationStockQuote {<br> public NotificationManager notificationManager = null;<br> public MimicNotificationStockQuote() {}<br> public void init() {<pre><code><span class="attribute"> notificationManager </span>=<span class="string"> (NotificationManager)Robolectric.application.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);</span>
-</code></pre> }<br>}<br>// NotificationStockQuote.java<br>public void init() {<br> notificationManager = (NotificationManager) StockeyeApplication.getAppContext().getSystemService(Context.NOTIFICATION_SERVICE);<br>}<br>```</li>
-</ul>
-<ul>
-<li>结果预期：成功；NotificationStockQuote 对象完成对 Notification 服务的初始化。【注：不是很严格的测试】</li>
-</ul>
-<p><img src="https://msolomoon.github.io/images/Project_android_stockeye_notification_stockquote_8.png" alt=""> </p>
-<h3 id="未完待续">未完待续</h3>
-
+        
+          <p class="article-more-link">
+            <a href="/2014/11/19/project-stockeye-jenkins-android-notification-stockquote/#more">more >></a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
