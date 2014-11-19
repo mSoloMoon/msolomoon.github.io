@@ -213,12 +213,9 @@
 <li>类：NotificationStockQuote，接口 -&gt; IObserverNotificationStockQuote，数据结构 -&gt; 二维数组（界面布局采取Listview）</li>
 </ul>
 <p><img src="https://msolomoon.github.io/images/Project_android_stockeye_notification_drawing.png" alt=""> </p>
-<h3 id="项目配置和目录结构">项目配置和目录结构</h3>
+<h3 id="项目概览">项目概览</h3>
 <p><strong>项目 build.gradle</strong></p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> {</div><div class="line">    <span class="keyword">repositories</span> {</div><div class="line">        jcenter()</div><div class="line">    }</div><div class="line">    <span class="keyword">dependencies</span> {</div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:0.13.2'</span></div><div class="line">        <span class="keyword">classpath</span> <span class="string">'org.robolectric:robolectric-gradle-plugin:0.13.+'</span></div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="keyword">allprojects</span> {</div><div class="line">    <span class="keyword">repositories</span> {</div><div class="line">        jcenter()</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p><strong>目录结构</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">| build.gradle</div><div class="line">| src</div><div class="line">|   |- androidTest</div><div class="line">|         |- java/com/msolo/stockeye/MainActivityTest.java</div><div class="line">|         |- java/com/msolo/stockeye/StockeyeApplication.java</div><div class="line">|   |- main</div><div class="line">|         |- java/com/msolo/stockeye/MainActivity.java</div><div class="line">|         |- java/com/msolo/stockeye/StockeyeApplication.java</div></pre></td></tr></table></figure>
 
 <p><strong>app. build.gradle</strong></p>
 
