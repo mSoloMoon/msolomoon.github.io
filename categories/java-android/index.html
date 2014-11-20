@@ -494,7 +494,7 @@
 <p><img src="https://msolomoon.github.io/images/Zygote_VM_Startup.png" alt="Zygote启动应用流程"></p>
 <ul>
 <li>Android启动时将率先运行一个独特的进程<strong>Zygote</strong>。而Zygote将启动一虚拟机，该虚拟机将预先加载Android核心库并初始化各种共享资源体，最后它将使用套接字进行监听。 </li>
-<li>当用户启动一个Android应用时，Zygote将创建一个虚拟机以便其运行。它通过写时复制（Copy-On-Write）的技术拷贝Zygote虚拟机并以子进程的身份和其父进程共享内存实现的。</li>
+<li>当用户启动一个Android应用时，Zygote将创建一个虚拟机（通过写时复制（Copy-On-Write）的技术拷贝Zygote虚拟机）以便其运行，并以子进程的身份和其父进程共享内存。</li>
 </ul>
 
         
