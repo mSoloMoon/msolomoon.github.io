@@ -169,6 +169,89 @@
 </nav>
       
   
+    <article id="post-reading-bruce-thinking-in-java" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/05/reading-bruce-thinking-in-java/" class="article-date">
+  	<time datetime="2014-11-05T06:38:44.000Z" itemprop="datePublished">11月 5 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/书籍/">书籍</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘录/">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/05/reading-bruce-thinking-in-java/">拜读Bruce大作 —— 《Java编程思想》(第一遍)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://msolomoon.github.io/images/bookcover_bruce_thinking_in_java.jpg" alt="Java编程思想"></p>
+<p><br></p>
+<blockquote>
+<p><strong>所有优秀的作者，包括那些编写软件的程序员，都清楚其著作的某些部分直至重新创作的时候才变得完美，有时甚至要反复重写多次</strong>。</p>
+</blockquote>
+<h3 id="第一章_对象导论">第一章 对象导论</h3>
+<blockquote>
+<p><strong>对象是一个通过对问题域(即上下文)中的元素进行建模，是一个其封装了以数据成员或属性表示的内部状态和以成员方法与接口表示的行为的抽象概念</strong>。</p>
+<ol>
+<li>对象始于抽象 -&gt; 抽象始于问题建模【问题域即上下文】；</li>
+<li><strong>每个对象都有一个接口，接口体现服务，每个对象都提供服务，将对象看作“服务的提供者”有助于提高对象的内聚性；</strong></li>
+<li>使用面向对象的好处：便于对问题进行表示和交流；可应用设计良好的继承机制；拥有比如多态(可替代性(substitutability)：某一特定类型的所有对象都可以接收同样的消息)等高级开发技巧；</li>
+</ol>
+</blockquote>
+<ul>
+<li>继承关系探讨，“是一个” 与 “像是一个”，【书：有时必须在导出类型中添加新的接口元素，这个新的类型仍然可以替代基类，但是这种替代并不完美，因为基类无法访问新添加的方法。这种情况我们可以描述为is-like-a关系。】</li>
+<li>多态的可互换对象，【书：为了执行动态绑定，Java使用一小段特殊代码来替代绝对地址调用；它忽略类型的具体细节，仅仅和基类交互。这段代码和具体类型信息是分离的…把将导出类看做是它的基类的过程称为向上转型(upcasting)…这里要表达的是，如果你是一个Shape，我知道你可以 erase() 和 draw() 你自己，那么去做吧…】</li>
+<li>单根继承结构的好处：1.简化参数传递，保证所有对象都具有某些功能，执行基本操作；2.使得垃圾回收器的实现变得容易多；3.为异常处理等系统级操作带来灵活性；</li>
+<li>异常处理：异常是一种对象；有助于编写出更健壮程序的机制；</li>
+</ul>
+<h3 id="第二章_一切都是对象">第二章 一切都是对象</h3>
+<blockquote>
+<p>一切都是引用，引用操纵对象；<br>对象存储到什么地方：new 对象存储在堆（寄存器、堆栈、堆、常量存储区、非RAM存储区[流对象和持久化对象-即磁盘等]）；<br>基本类型存储到什么地方：变量直接存储“值”，并置于堆栈中，更加高效；<br>java中的数组，【书：当创建一个数组对象时，实际上就是创建一个引用数组。并且每个引用都会被初始化为一个特定值，该值拥有自己的关键字null】；</p>
+</blockquote>
+<ul>
+<li><strong>永远不需要销毁对象?!</strong></li>
+<li>static 关键字：static 方法可以创建或使用与其类型相同的被命名对象；因此常常拿来做“牧羊人”的角色，负责看护与其隶属统一类型的实例群；</li>
+</ul>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/05/reading-bruce-thinking-in-java/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-java-interview-part-ii" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -758,68 +841,6 @@
         
           <p class="article-more-link">
             <a href="/2014/10/31/excerpt-song-dynasty-qing-dynasty-18-compare/#more">more >></a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-life-daily-log-141031" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/10/31/life-daily-log-141031/" class="article-date">
-  	<time datetime="2014-10-31T05:56:19.000Z" itemprop="datePublished">10月 31 2014</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-  </div>
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活记录/">生活记录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/31/life-daily-log-141031/">生活点滴 - 141031</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>早上醒来的时候，又回忆起了《生化危机》系列电影，一边打开音乐聆听着“Tokyo”，一边思考着鲁迅先生著作中的智慧，</p>
-<blockquote>
-<p>凡事总须研究，才会明白。古来时常吃人，我也还记得，可是不甚清楚。我翻开历史一查，这历史没有年代，歪歪斜斜的每页上都写着“仁义道德”几个字。我横竖睡不着，仔细看了半夜，才从字缝里看出字来，满本都写着两个字是“吃人”！（鲁迅《狂人日志》）</p>
-</blockquote>
-<p>我以为，鲁迅先生的话是在精神层面的，然而肉身层面也时有发生，可令人没想到的是，我却忘了肉身离不开精神，精神亦离不开肉身，此谓身心。</p>
-<p>现如今我们自诩的现代文明社会，“吃人”的现象已呈现蔓延趋势，只不过比起古代的信仰即敬畏，现在则是贪婪与人性扭曲一面的强化即权力的欺凌。</p>
-<p>对此，我无法评述，只能一遍又一遍回味鲁迅先生的作品聊以宽慰，并庆幸鲁迅先生能够弃医从文（星光闪耀【人类群星闪耀时】——斯蒂芬·茨威格）。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/10/31/life-daily-log-141031/#more">more >></a>
           </p>
         
       
