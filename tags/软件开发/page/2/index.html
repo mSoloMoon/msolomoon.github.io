@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 14.29px;">Android</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.71px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.71px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍/" style="font-size: 10.00px;">书籍</a><a href="/tags/养生/" style="font-size: 10.00px;">养生</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/哲学/" style="font-size: 10.00px;">哲学</a><a href="/tags/思考/" style="font-size: 12.86px;">思考</a><a href="/tags/持续集成/" style="font-size: 15.71px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.71px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.14px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 11.43px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 10.00px;">软件调试</a><a href="/tags/金融/" style="font-size: 10.00px;">金融</a><a href="/tags/随笔/" style="font-size: 18.57px;">随笔</a><a href="/tags/项目/" style="font-size: 12.86px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 15.00px;">Android</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍/" style="font-size: 10.00px;">书籍</a><a href="/tags/养生/" style="font-size: 10.00px;">养生</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/哲学/" style="font-size: 10.00px;">哲学</a><a href="/tags/思考/" style="font-size: 13.33px;">思考</a><a href="/tags/持续集成/" style="font-size: 15.00px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 16.67px;">生活记录</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 11.67px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 10.00px;">软件调试</a><a href="/tags/金融/" style="font-size: 10.00px;">金融</a><a href="/tags/随笔/" style="font-size: 18.33px;">随笔</a><a href="/tags/项目/" style="font-size: 13.33px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,76 @@
 	</div>
 </nav>
       
+  
+    <article id="post-android-interview-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/12/android-interview-ii/" class="article-date">
+  	<time datetime="2014-11-12T03:04:46.000Z" itemprop="datePublished">11月 12 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT面试/">IT面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/12/android-interview-ii/">Android 面试题记录（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-_管理基本线程的生命期">1. 管理基本线程的生命期</h3>
+<p><strong>生命期</strong> ：New -&gt; Runnable -&gt; Blocked/Waiting（Thread.sleep() | Thread.yield()） -&gt; Terminated</p>
+<p>Uncaught Exceptions</p>
+<ul>
+<li>Thread global handler：static void setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Thread local handler：void setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler);</li>
+<li>Unhandled Exceptions on the UI Thread，参见<a href="http://msolomoon.github.io/2014/11/09/android-interview-i/" target="_blank" rel="external">面试题记录（一）</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unexpected error occurred"</span>);</div><div class="line">    }</div><div class="line">});</div><div class="line">t.setUncaughtExceptionHandler(<span class="keyword">new</span> Thread.UncaughtExceptionHandler() {</div><div class="line">    <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span>(Thread thread, Throwable throwable) {</div><div class="line">        <span class="comment">// A basic logging of the message. Could be replaced by log to file or a network post.</span></div><div class="line">        Log.d(TAG, throwable.toString());</div><div class="line">    }</div><div class="line">});</div><div class="line">t.start();</div></pre></td></tr></table></figure>
+
+<p><strong>在 Activity 中保持线程</strong></p>
+<ul>
+<li>public Object onRetainNonConfigurationInstance()：Called by the platform before a configuration change occurs, the implementation should return any object that you want to be retained across a configuration change (e.g., a thread) and passed to the new  Activity object.</li>
+<li>public Object getLastNonConfigurationInstance()：Called by the platform before a configuration change occurs, it can be called in onCreate or onStart and returns null if the Activity is started for another reason than a configuration change.  </li>
+</ul>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/11/12/android-interview-ii/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-begin-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   

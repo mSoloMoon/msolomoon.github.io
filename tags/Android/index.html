@@ -100,7 +100,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/Android/" style="font-size: 14.29px;">Android</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.71px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.71px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍/" style="font-size: 10.00px;">书籍</a><a href="/tags/养生/" style="font-size: 10.00px;">养生</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/哲学/" style="font-size: 10.00px;">哲学</a><a href="/tags/思考/" style="font-size: 12.86px;">思考</a><a href="/tags/持续集成/" style="font-size: 15.71px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.71px;">摘录</a><a href="/tags/生活记录/" style="font-size: 17.14px;">生活记录</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 11.43px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 10.00px;">软件调试</a><a href="/tags/金融/" style="font-size: 10.00px;">金融</a><a href="/tags/随笔/" style="font-size: 18.57px;">随笔</a><a href="/tags/项目/" style="font-size: 12.86px;">项目</a>
+					<a href="/tags/Android/" style="font-size: 15.00px;">Android</a><a href="/tags/C/" style="font-size: 10.00px;">C++</a><a href="/tags/C-C/" style="font-size: 10.00px;">C/C++</a><a href="/tags/Go/" style="font-size: 10.00px;">Go</a><a href="/tags/IT问题录/" style="font-size: 10.00px;">IT问题录</a><a href="/tags/IT面试/" style="font-size: 15.00px;">IT面试</a><a href="/tags/Java/" style="font-size: 15.00px;">Java</a><a href="/tags/Java-Web/" style="font-size: 10.00px;">Java Web</a><a href="/tags/书籍/" style="font-size: 10.00px;">书籍</a><a href="/tags/养生/" style="font-size: 10.00px;">养生</a><a href="/tags/历史/" style="font-size: 10.00px;">历史</a><a href="/tags/哲学/" style="font-size: 10.00px;">哲学</a><a href="/tags/思考/" style="font-size: 13.33px;">思考</a><a href="/tags/持续集成/" style="font-size: 15.00px;">持续集成</a><a href="/tags/摘录/" style="font-size: 15.00px;">摘录</a><a href="/tags/生活记录/" style="font-size: 16.67px;">生活记录</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软件开发/" style="font-size: 20.00px;">软件开发</a><a href="/tags/软件框架/" style="font-size: 11.67px;">软件框架</a><a href="/tags/软件调试/" style="font-size: 10.00px;">软件调试</a><a href="/tags/金融/" style="font-size: 10.00px;">金融</a><a href="/tags/随笔/" style="font-size: 18.33px;">随笔</a><a href="/tags/项目/" style="font-size: 13.33px;">项目</a>
 				</div>
 			</section>
 			
@@ -168,6 +168,76 @@
 	</div>
 </nav>
       
+  
+    <article id="post-xiaofeng-android-design-pattern-command" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/30/xiaofeng-android-design-pattern-command/" class="article-date">
+  	<time datetime="2014-12-30T02:59:58.000Z" itemprop="datePublished">12月 30 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java-android/">java-android</a>
+  </div>
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件开发/">软件开发</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/30/xiaofeng-android-design-pattern-command/">实践设计模式 ：Command 命令者模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="背景">背景</h3>
+<ul>
+<li>软件：公司有物 App. Android 版 </li>
+<li>目标：LoginAcitivity</li>
+<li>说明：登录使用了友盟第三方组件，因为微信配置等问题，导致上一版本的微信登录功能没有实现；目前只实现了的有：新浪微博、腾讯QQ；</li>
+<li>缺点：1. 类过于庞大，导致类的职责包含过多，过杂; 2. SDK老旧，其中微信功能实现有重大更新；</li>
+<li>补充：1. 因为所有功能都实现在一个类中，因此牵涉的代码较少，容易重构；</li>
+</ul>
+<h3 id="重构与设计模式">重构与设计模式</h3>
+<ul>
+<li>架构：抽离系统的登录功能，独立为登录子系统，并使其成为架构第一层级;</li>
+<li>设计：使用设计模式的 Command 命令者模式;</li>
+</ul>
+<h4 id="实践_Command_模式">实践 Command 模式</h4>
+<ol>
+<li>Client  : LoginActivity, 创建一个具体命令对象（如原生登录，第三方登录【微信，微博 etc.】）并设定它的接收者；</li>
+<li>Invoker : LoginAuthInvoker, 要求该命令执行这个请求；</li>
+<li>Receiver: SourceLoginAuthCommand, UmengLoginAuthCommand, WeiXinLoginAuthCommand, 知道如何实施与执行一个请求相关的操作。</li>
+<li>Service : LoginConn 到公司有物服务器的登录接口；LoginConnManager 管理到公司有物服务器的登录连接；LoginAuthThirdPartyService 服务于第三方登录的一些琐碎操作及创建 LoginConnManager 对象; </li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-project-stockeye-jenkins-android-notification-stockquote" class="article article-type-post" itemscope itemprop="blogPost">
   
